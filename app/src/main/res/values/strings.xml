@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Whatsapp Status Saver</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+<!--    ADS DATA-->
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="banner_ad_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="native_ad_id">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="phone_number_hint">Enter Phone Number</string>
+
+<!--    Share app message data-->
+    <string name="share_subject">WhatsApp Status Saver</string>
+    <string name="share_text_body">Download this app \n, With this you will be able to download your whatsapp status.</string>
+</resources>
