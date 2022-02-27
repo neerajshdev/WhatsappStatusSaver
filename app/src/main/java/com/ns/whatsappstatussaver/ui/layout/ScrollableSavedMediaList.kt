@@ -17,6 +17,7 @@ import com.ns.whatsappstatussaver.models.Media
 import com.ns.whatsappstatussaver.models.StatusImage
 import com.ns.whatsappstatussaver.models.StatusVideo
 import com.ns.whatsappstatussaver.ui.components.*
+import kotlin.random.Random
 
 
 @Composable
@@ -39,6 +40,7 @@ fun ScrollableSavedMediaList(
                 .shadow(4.dp, shape = MaterialTheme.shapes.medium)
 
 
+            if (Random.nextBoolean()) NativeAdUnit(itemModifier)
             if (mediaItem is StatusImage) {
                 SavedImageCard(
                     image = mediaItem.image,

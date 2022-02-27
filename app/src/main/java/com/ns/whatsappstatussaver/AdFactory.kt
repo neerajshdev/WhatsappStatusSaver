@@ -18,16 +18,16 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import kotlin.random.Random
 
-
+var shouldReqAd = false
 fun fetchAdConfig(onSuccess: () -> Unit) {
     Firebase.remoteConfig.fetchAndActivate()
         .addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                shouldReqAd = true
                 val updated = task.result
                 if (updated) onSuccess()
                 isDebug {
                     Log.d(TAG, "Config params updated: $updated")
-                    Log.d(TAG, "app_id = ${Firebase.remoteConfig.getString("app_id")}")
                     Log.d(TAG, "native = ${Firebase.remoteConfig.getString("native")}")
                     Log.d(TAG, "banner = ${Firebase.remoteConfig.getString("banner")}")
                     Log.d(TAG, "interstitial = ${Firebase.remoteConfig.getString("interstitial")}")
@@ -44,9 +44,8 @@ fun fetchAdConfig(onSuccess: () -> Unit) {
 
 /* Interstitial Ad Unit */
 fun loadInterstitialAd(context: Context, onAdLoaded: (InterstitialAd) -> Unit) {
-
-    var key = ""
-    key = if (Random.nextBoolean()) {
+    if(!shouldReqAd) return
+    var key: String = if (Random.nextBoolean()) {
         "interstitial_video"
     } else {
         "interstitial"
@@ -68,7 +67,7 @@ fun loadInterstitialAd(context: Context, onAdLoaded: (InterstitialAd) -> Unit) {
         adRequest,
         object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
-                Log.d(TAG, adError?.message)
+                Log.d(TAG, adError.message)
             }
 
             override fun onAdLoaded(ad: InterstitialAd) {
@@ -103,6 +102,7 @@ fun loadNativeAdUnits(
     count: Int,
     onAdLoaded: (NativeAd) -> Unit
 ) {
+    if(!shouldReqAd) return
     val videoOptions = VideoOptions.Builder()
         .setStartMuted(false)
         .build()

@@ -130,9 +130,8 @@ fun DrawerHeader() {
             painter = painterResource(id = R.drawable.splash_image),
             contentDescription = null,
             modifier = Modifier
-                .size(96.dp)
+                .size(48.dp)
         )
-
         Text(
             text = "Status Saver",
             fontSize = 26.sp,

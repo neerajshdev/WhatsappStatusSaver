@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
@@ -21,15 +22,17 @@ class SplashActivity : AppCompatActivity() {
         val configSettings = remoteConfigSettings {
             minimumFetchIntervalInSeconds = 3600
         }
+
         remoteConfig.setConfigSettingsAsync(configSettings)
         fetchAdConfig {}
+        MobileAds.initialize(this) {}
 
         val handler = Handler(mainLooper)
         handler.postDelayed({
             val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2000)
+        }, 4000)
     }
 }
 
