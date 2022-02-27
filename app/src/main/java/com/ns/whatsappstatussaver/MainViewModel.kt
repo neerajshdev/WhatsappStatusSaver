@@ -74,7 +74,6 @@ class MainViewModel : ViewModel() {
 //    }
 
     private fun whatsappMedia(): String {
-        // todo("Update the code because it uses the deprecated function")
         return Environment.getExternalStorageDirectory().toString() + WHATSAPP_STATUS
     }
 

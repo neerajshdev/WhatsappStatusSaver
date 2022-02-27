@@ -3,7 +3,7 @@ package com.ns.whatsappstatussaver
 
 fun formatTime(timeInMillis: Long) :String {
     var seconds = (timeInMillis / 1000).toInt()
-    var minutes = seconds / 60
+    val minutes = seconds / 60
     seconds %= 60
     var time = ""
 
@@ -14,7 +14,7 @@ fun formatTime(timeInMillis: Long) :String {
 }
 
 val debug = BuildConfig.DEBUG
-fun isDebug(content: () -> Unit) {
+inline fun isDebug(content: () -> Unit) {
     if (debug) {
         content()
     }
