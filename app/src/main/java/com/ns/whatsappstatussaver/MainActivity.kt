@@ -2,6 +2,7 @@ package com.ns.whatsappstatussaver
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -16,8 +17,8 @@ import com.ns.whatsappstatussaver.ui.theme.WhatsappStatusSaverTheme
 import java.io.File
 
 const val TAG = "AppOut"
-var WhatsApp_media_dir : String? = null
-var Saved_media_dir : String? = null
+var WhatsApp_media_dir: String? = null
+var Saved_media_dir: String? = null
 
 class MainActivity : ComponentActivity() {
 
@@ -25,16 +26,32 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         // init directories
         val parentDir = getAbsoluteDir(this, null).absolutePath
-        WhatsApp_media_dir = parentDir + File.separator + "WhatsApp/Media/.Statuses/"
+        val pathToWhatsappStatus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) "Android/media/com.whatsapp/WhatsApp/Media/.Statuses/" else "WhatsApp/Media/.Statuses/"
+
+        WhatsApp_media_dir = parentDir + File.separator + pathToWhatsappStatus
         Saved_media_dir = parentDir + File.separator + "DCIM/StatusSaver/"
 
         if (!File(Saved_media_dir!!).exists()) File(Saved_media_dir!!).mkdir()
 
-        val filePath = "$parentDir/WhatsAppStatusSaverLogcat.txt"
-        Runtime.getRuntime().exec(arrayOf("logcat", "-f", filePath, "--pid", android.os.Process.myPid().toString(), "ActivityManager:I", "MyApp:D", "*:D"))
+        val filePath = Saved_media_dir + "WhatsAppStatusSaverLogcat.txt"
+        Runtime.getRuntime().exec(
+            arrayOf(
+                "logcat",
+                "-f",
+                filePath,
+                "--pid",
+                android.os.Process.myPid().toString(),
+                "ActivityManager:I",
+                "MyApp:D",
+                "*:D"
+            )
+        )
 
         isDebug {
-            Log.d(TAG, "whatsapp media dir = $WhatsApp_media_dir")
+            Log.d(
+                TAG,
+                "whatsapp media dir = $WhatsApp_media_dir : Exists = ${File(WhatsApp_media_dir!!).exists()}"
+            )
             Log.d(TAG, "saved media dir = $Saved_media_dir")
         }
 
@@ -51,9 +68,15 @@ class MainActivity : ComponentActivity() {
     private fun checkExternalStoragePermissions() {
         // check for write external storage permission
         val canWrite =
-            ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
         val canRead =
-            ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
 
         isDebug {
             Log.d(TAG, "canWrite: $canWrite")
@@ -77,7 +100,8 @@ class MainActivity : ComponentActivity() {
                 val allAccepted = writeExternalStorage && readExternalStorage
 
                 if (!allAccepted) {
-                    Toast.makeText(this, "Required permissions were disallowed!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Required permissions were disallowed!", Toast.LENGTH_LONG)
+                        .show()
                     finish()
                 } else {
                     initContent()

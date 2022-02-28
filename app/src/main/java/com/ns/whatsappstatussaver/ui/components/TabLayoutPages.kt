@@ -77,7 +77,6 @@ fun TabScreenTwo(model: MainViewModel) {
 @Composable
 fun TabScreenThree() {
     val activity = (LocalContext.current as MainActivity)
-    val composeView: View  = LocalView.current
     AndroidView(
         modifier = Modifier.fillMaxSize(),
         factory = {
@@ -128,8 +127,7 @@ fun TabScreenThree() {
 
 
 private fun WhatsappAvailable(uri: String, pm: PackageManager): Boolean {
-    val isInstalled: Boolean
-    isInstalled = try {
+    val isInstalled: Boolean = try {
         pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES)
         true
     } catch (e: PackageManager.NameNotFoundException) {

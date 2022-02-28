@@ -1,8 +1,0 @@
-com/ns/whatsappstatussaver/databinding/BannerAdUnitBinding.java
- com.ns.whatsappstatussaver.databinding.BannerAdUnitBinding
-com/ns/whatsappstatussaver/databinding/NativeAdViewBinding.java
- com.ns.whatsappstatussaver.databinding.NativeAdViewBinding
-com/ns/whatsappstatussaver/BuildConfig.java
- com.ns.whatsappstatussaver.BuildConfig
-com/ns/whatsappstatussaver/databinding/VideoViewBinding.java
- com.ns.whatsappstatussaver.databinding.VideoViewBinding
