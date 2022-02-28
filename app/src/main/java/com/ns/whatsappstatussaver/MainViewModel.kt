@@ -1,6 +1,5 @@
 package com.ns.whatsappstatussaver
 
-import android.os.Environment
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
@@ -13,7 +12,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 
-const val WHATSAPP_STATUS = "/WhatsApp/Media/.Statuses/"
 
 class MainViewModel : ViewModel() {
 
@@ -39,17 +37,33 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.Default) {
             updateMediaFiles()
             updateMap()
-
             updateMedia()
-
             // Saved Media
             updateSavedMedia()
+
+            fun  printFiles(files: List<String>) : String {
+                var out = ""
+                for (file in files) {
+                    out += file + "\n"
+                }
+                return  out
+            }
+
+            isDebug {
+                Log.d(
+                    TAG, "MainViewModel Data initialized =>\n" +
+                            "WhatsApp mediaFiles = ${
+                              printFiles(mediaFiles)  
+                            }" +
+                            "Saved media files = ${printFiles(savedMediaFiles)}"
+                )
+            }
         }
     }
 
     private fun updateMediaFiles() {
-        mediaFiles = repository.getListFiles(File(whatsappMedia()))
-        savedMediaFiles = repository.getListFiles(File(savedFilePath()))
+        mediaFiles = repository.getListFiles(File(WhatsApp_media_dir!!))
+        savedMediaFiles = repository.getListFiles(File(Saved_media_dir!!))
     }
 
     private fun updateMap() {
@@ -73,31 +87,28 @@ class MainViewModel : ViewModel() {
 //        updateSavedMedia()
 //    }
 
-    private fun whatsappMedia(): String {
-        return Environment.getExternalStorageDirectory().toString() + WHATSAPP_STATUS
-    }
 
     fun saveFile(src: File, onSuccess: (String) -> Unit) {
         val name = src.name
-        val dest = File(savedFilePath() + File.separator + name)
-        Log.d(TAG, "saveFile: dest = ${dest.absolutePath}")
+        val dest = File(Saved_media_dir  + name)
+
+        isDebug {
+            Log.d(TAG, "saveFile: dest = ${dest.absolutePath}")
+            Log.d(TAG, "is dest file exits: ${dest.exists()}")
+        }
+
         viewModelScope.launch {
             withContext(Dispatchers.Default) {
                 repository.saveFile(src, dest)
             }
             onSuccess.invoke(dest.absolutePath)
             withContext(Dispatchers.Default) {
-                savedMediaFiles = repository.getListFiles(File(savedFilePath()))
+                savedMediaFiles = repository.getListFiles(File(Saved_media_dir!!))
                 updateSavedMedia()
             }
         }
     }
 
-    private fun savedFilePath(): String {
-        val path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
-        if (!path.exists()) path.mkdir()
-        return path.absolutePath + File.separator + "StatusSaver"
-    }
 
 
     private fun videoFiles(): List<String> {

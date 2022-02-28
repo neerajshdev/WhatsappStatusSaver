@@ -30,36 +30,38 @@ class Repository {
         return paths
     }
 
-    fun loadImage(from: String): ImageBitmap {
+
+
+    private fun loadImage(from: String): ImageBitmap {
         val bitmap = BitmapFactory.decodeFile(from)
         return bitmap.asImageBitmap()
     }
 
-    fun getVideoFrame(src: String, time: Long): ImageBitmap {
+    private fun getVideoFrame(src: String, time: Long ): ImageBitmap {
         val vmr = MediaMetadataRetriever()
         // extract data
         vmr.setDataSource(src)
-        val bitmap = vmr.getFrameAtTime(time);
+        val bitmap = vmr.getFrameAtTime(time)
         vmr.release()
         return bitmap!!.asImageBitmap()
     }
 
 
-    fun getVideoFrames(src: List<String>, time: Long): MutableList<ImageBitmap> {
-        val vmr = MediaMetadataRetriever()
+//    fun getVideoFrames(src: List<String>, time: Long): MutableList<ImageBitmap> {
+//        val vmr = MediaMetadataRetriever()
+//
+//        val imageBitmaps = mutableListOf<ImageBitmap>()
+//        src.forEach {
+//            vmr.setDataSource(it)
+//            val image = vmr.getFrameAtTime(time)?.asImageBitmap()
+//            imageBitmaps.add(image!!)
+//        }
+//        vmr.release()
+//
+//        return imageBitmaps
+//    }
 
-        val imageBitmaps = mutableListOf<ImageBitmap>()
-        src.forEach {
-            vmr.setDataSource(it)
-            val image = vmr.getFrameAtTime(time)?.asImageBitmap()
-            imageBitmaps.add(image!!)
-        }
-        vmr.release()
-
-        return imageBitmaps
-    }
-
-    fun getVideoDuration(src: String): String {
+    private fun getVideoDuration(src: String): String {
         val vmr = MediaMetadataRetriever()
         vmr.setDataSource(src)
         val duration = vmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
@@ -98,7 +100,6 @@ class Repository {
     fun saveFile(from: File, to: File) {
         val fis = from.inputStream()
         val fos = to.outputStream()
-
         val data = fis.readBytes()
         fos.write(data)
         fis.close()

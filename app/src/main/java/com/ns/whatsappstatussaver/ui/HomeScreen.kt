@@ -19,7 +19,6 @@ import com.ns.whatsappstatussaver.ui.router.Screen
 import com.ns.whatsappstatussaver.ui.router.ScreenType
 import kotlinx.coroutines.launch
 import java.io.File
-import com.ns.whatsappstatussaver.R
 import com.ns.whatsappstatussaver.loadInterstitialAd
 
 enum class Show {

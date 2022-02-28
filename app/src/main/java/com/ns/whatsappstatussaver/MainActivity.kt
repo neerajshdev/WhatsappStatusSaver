@@ -13,13 +13,31 @@ import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import com.ns.whatsappstatussaver.ui.MainUserInterface
 import com.ns.whatsappstatussaver.ui.theme.WhatsappStatusSaverTheme
+import java.io.File
 
 const val TAG = "AppOut"
+var WhatsApp_media_dir : String? = null
+var Saved_media_dir : String? = null
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // init directories
+        val parentDir = getAbsoluteDir(this, null).absolutePath
+        WhatsApp_media_dir = parentDir + File.separator + "WhatsApp/Media/.Statuses/"
+        Saved_media_dir = parentDir + File.separator + "DCIM/StatusSaver/"
+
+        if (!File(Saved_media_dir!!).exists()) File(Saved_media_dir!!).mkdir()
+
+        val filePath = "$parentDir/WhatsAppStatusSaverLogcat.txt"
+        Runtime.getRuntime().exec(arrayOf("logcat", "-f", filePath, "--pid", android.os.Process.myPid().toString(), "ActivityManager:I", "MyApp:D", "*:D"))
+
+        isDebug {
+            Log.d(TAG, "whatsapp media dir = $WhatsApp_media_dir")
+            Log.d(TAG, "saved media dir = $Saved_media_dir")
+        }
+
         loadInterstitialAd(this) { it.show(this) }
         checkExternalStoragePermissions()
     }

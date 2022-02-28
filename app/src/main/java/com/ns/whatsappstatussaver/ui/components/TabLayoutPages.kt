@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.viewinterop.AndroidView
 import com.hbb20.CountryCodePicker
 import com.ns.whatsappstatussaver.MainActivity
@@ -76,6 +77,7 @@ fun TabScreenTwo(model: MainViewModel) {
 @Composable
 fun TabScreenThree() {
     val activity = (LocalContext.current as MainActivity)
+    val composeView: View  = LocalView.current
     AndroidView(
         modifier = Modifier.fillMaxSize(),
         factory = {

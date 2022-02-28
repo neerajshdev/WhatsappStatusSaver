@@ -14,6 +14,7 @@ import com.google.android.gms.ads.nativead.NativeAdView
 import com.ns.whatsappstatussaver.R
 import com.ns.whatsappstatussaver.loadNativeAdUnits
 import com.ns.whatsappstatussaver.populateNativeAdView
+import com.ns.whatsappstatussaver.shouldReqAd
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -39,6 +40,7 @@ fun NativeAdUnit(modifier: Modifier = Modifier) {
         }
     }
 
+    if(shouldReqAd)
     Box(modifier = modifier.size(360.dp)) {
         if (ad != null) {
             AndroidView(

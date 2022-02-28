@@ -1,4 +1,4 @@
-package com.ns.whatsappstatussaver
+package com.ns.whatsappstatussaver.ui
 
 import android.app.Activity
 import android.view.ViewGroup
@@ -17,6 +17,8 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.PlayerView
+import com.ns.whatsappstatussaver.MainViewModel
+import com.ns.whatsappstatussaver.loadInterstitialAd
 import com.ns.whatsappstatussaver.ui.router.Screen
 import com.ns.whatsappstatussaver.ui.router.ScreenType
 import java.io.File

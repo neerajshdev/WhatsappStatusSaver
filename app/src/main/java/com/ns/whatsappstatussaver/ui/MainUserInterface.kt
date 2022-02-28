@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.ns.whatsappstatussaver.MainViewModel
-import com.ns.whatsappstatussaver.VideoScreen
 import com.ns.whatsappstatussaver.loadInterstitialAd
 import com.ns.whatsappstatussaver.ui.components.BannerAdUnit
 import com.ns.whatsappstatussaver.ui.router.Screen
