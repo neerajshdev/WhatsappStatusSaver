@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\whatsapp_msg_sender.xml",
+        "source": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\src\\main\\res\\layout\\whatsapp_msg_sender.xml"
+    },
+    {
+        "merged": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\banner_ad_unit.xml",
+        "source": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\src\\main\\res\\layout\\banner_ad_unit.xml"
+    },
+    {
+        "merged": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\video_view.xml",
+        "source": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\src\\main\\res\\layout\\video_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\native_ad_view.xml",
+        "source": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\src\\main\\res\\layout\\native_ad_view.xml"
+    }
+]
