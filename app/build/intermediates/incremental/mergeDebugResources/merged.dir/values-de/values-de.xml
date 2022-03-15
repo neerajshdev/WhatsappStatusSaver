@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0,25-fach</item>
+    <item>0,5-fach</item>
+    <item>0,75-fach</item>
+    <item>Standard</item>
+    <item>1,25-fach</item>
+    <item>1,5-fach</item>
+    <item>2-fach</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">%d Sekunde vorspulen</item>
     <item quantity="other">%d Sekunden vorspulen</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">Pausieren</string>
     <string name="exo_controls_play_description">Wiedergeben</string>
     <string name="exo_controls_playback_speed">Geschwindigkeit</string>
-    <string name="exo_controls_playback_speed_normal">Normal</string>
     <string name="exo_controls_previous_description">Zurück</string>
     <string name="exo_controls_repeat_all_description">Alle wiederholen</string>
     <string name="exo_controls_repeat_off_description">Keinen wiederholen</string>

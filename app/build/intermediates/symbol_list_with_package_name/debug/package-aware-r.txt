@@ -1,4 +1,4 @@
-com.ns.whatsappstatussaver
+com.softneez.wasaver
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -65,8 +65,7 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
-array exo_playback_speeds
-array exo_speed_multiplied_by_100
+array exo_controls_playback_speeds
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme
@@ -2539,6 +2538,8 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable admob_close_button_black_circle_white_cross
+drawable admob_close_button_white_circle_black_cross
 drawable avd_hide_password
 drawable avd_show_password
 drawable btn_checkbox_checked_mtrl
@@ -3794,8 +3795,6 @@ layout whatsapp_msg_sender
 menu example_menu
 menu example_menu2
 mipmap ic_launcher
-mipmap ic_launcher_adaptive_back
-mipmap ic_launcher_adaptive_fore
 plurals exo_controls_fastforward_by_amount_description
 plurals exo_controls_rewind_by_amount_description
 plurals mtrl_badge_content_description
@@ -3864,11 +3863,9 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
-string admob_app_id
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
-string banner_ad_id
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
 string character_counter_content_description
@@ -3902,6 +3899,7 @@ string default_web_client_id
 string dropdown_menu
 string dummy_button
 string dummy_content
+string enter_your_message
 string error_icon_content_description
 string exo_controls_cc_disabled_description
 string exo_controls_cc_enabled_description
@@ -3916,7 +3914,6 @@ string exo_controls_overflow_show_description
 string exo_controls_pause_description
 string exo_controls_play_description
 string exo_controls_playback_speed
-string exo_controls_playback_speed_normal
 string exo_controls_previous_description
 string exo_controls_repeat_all_description
 string exo_controls_repeat_off_description
@@ -3971,8 +3968,11 @@ string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string in_progress
 string indeterminate
-string interstitial_ad_id
 string item_view_role_description
+string key_banner_add_id
+string key_interstitial_add_id
+string key_interstitial_video_add_id
+string key_native_ad_id
 string m3_ref_typeface_brand_display_regular
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -4054,7 +4054,6 @@ string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string mtrl_timepicker_confirm
-string native_ad_id
 string navigation_menu
 string no_result_found
 string not_selected
@@ -4085,12 +4084,11 @@ string search_hint
 string search_menu_title
 string select_country
 string selected
-string share_subject
-string share_text_body
 string status_bar_notification_info_overflow
 string tab
 string template_percent
 string title_activity_fullscreen
+string top_bar_title
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow
@@ -4396,7 +4394,6 @@ style ExoStyledControls_Button_Center_Next
 style ExoStyledControls_Button_Center_PlayPause
 style ExoStyledControls_Button_Center_Previous
 style ExoStyledControls_Button_Center_RewWithAmount
-style ExoStyledControls_ButtonText
 style ExoStyledControls_TimeBar
 style ExoStyledControls_TimeText
 style ExoStyledControls_TimeText_Duration
@@ -4704,11 +4701,11 @@ style Theme_MaterialComponents_Light_NoActionBar
 style Theme_MaterialComponents_Light_NoActionBar_Bridge
 style Theme_MaterialComponents_NoActionBar
 style Theme_MaterialComponents_NoActionBar_Bridge
-style Theme_WhatsappStatusSaver
 style Theme_WhatsappStatusSaver_AppBarOverlay
-style Theme_WhatsappStatusSaver_Fullscreen
-style Theme_WhatsappStatusSaver_NoActionBar
 style Theme_WhatsappStatusSaver_PopupOverlay
+style Theme_softneez_wasaver
+style Theme_softneez_wasaver_NoActionBar
+style Theme_wasaver
 style ThemeOverlay_AppCompat
 style ThemeOverlay_AppCompat_ActionBar
 style ThemeOverlay_AppCompat_Dark

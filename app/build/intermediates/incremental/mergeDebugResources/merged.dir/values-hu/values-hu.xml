@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0,25×</item>
+    <item>0,5×</item>
+    <item>0,75×</item>
+    <item>Normál</item>
+    <item>1,25×</item>
+    <item>1,5×</item>
+    <item>2×</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">Előretekerés %d másodperccel</item>
     <item quantity="other">Előretekerés %d másodperccel</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">Szüneteltetés</string>
     <string name="exo_controls_play_description">Lejátszás</string>
     <string name="exo_controls_playback_speed">Sebesség</string>
-    <string name="exo_controls_playback_speed_normal">Normál</string>
     <string name="exo_controls_previous_description">Előző</string>
     <string name="exo_controls_repeat_all_description">Összes szám ismétlése</string>
     <string name="exo_controls_repeat_off_description">Nincs ismétlés</string>

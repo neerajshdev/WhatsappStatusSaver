@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>၀.၂၅ ဆ</item>
+    <item>၀.၅ ဆ</item>
+    <item>၀.၇၅ ဆ</item>
+    <item>ပုံမှန်</item>
+    <item>၁.၂၅ ဆ</item>
+    <item>၁.၅ ဆ</item>
+    <item>၂ ဆ</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">ရှေ့သို့ %d စက္ကန့်ရစ်ရန်</item>
     <item quantity="other">ရှေ့သို့ %d စက္ကန့်ရစ်ရန်</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">ခဏရပ်ရန်</string>
     <string name="exo_controls_play_description">ဖွင့်ရန်</string>
     <string name="exo_controls_playback_speed">မြန်နှုန်း</string>
-    <string name="exo_controls_playback_speed_normal">ပုံမှန်</string>
     <string name="exo_controls_previous_description">ယခင်</string>
     <string name="exo_controls_repeat_all_description">အားလုံး ပြန်ကျော့ရန်</string>
     <string name="exo_controls_repeat_off_description">မည်သည်ကိုမျှ ပြန်မကျော့ရန်</string>

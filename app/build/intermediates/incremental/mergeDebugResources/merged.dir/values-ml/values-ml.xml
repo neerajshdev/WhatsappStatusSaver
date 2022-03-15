@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0.25x</item>
+    <item>0.5x</item>
+    <item>0.75x</item>
+    <item>സാധാരണ വേഗത്തിൽ</item>
+    <item>1.25x</item>
+    <item>1.5x</item>
+    <item>2x</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">വേഗത്തിൽ %d സെക്കൻഡ് മുന്നോട്ട് നീക്കുക</item>
     <item quantity="other">വേഗത്തിൽ %d സെക്കൻഡ് മുന്നോട്ട് നീക്കുക</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">തൽക്കാലം നിർത്തുക</string>
     <string name="exo_controls_play_description">പ്ലേ ചെയ്യുക</string>
     <string name="exo_controls_playback_speed">വേഗത</string>
-    <string name="exo_controls_playback_speed_normal">സാധാരണം</string>
     <string name="exo_controls_previous_description">മുമ്പത്തേത്</string>
     <string name="exo_controls_repeat_all_description">എല്ലാം ആവർത്തിക്കുക</string>
     <string name="exo_controls_repeat_off_description">ഒന്നും ആവർത്തിക്കരുത്</string>

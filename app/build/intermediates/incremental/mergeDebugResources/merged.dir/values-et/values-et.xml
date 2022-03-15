@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0,25-kordne</item>
+    <item>0,5-kordne</item>
+    <item>0,75-kordne</item>
+    <item>Tavaline</item>
+    <item>1,25-kordne</item>
+    <item>1,5-kordne</item>
+    <item>2-kordne</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">Keri %d sekund edasi</item>
     <item quantity="other">Keri %d sekundit edasi</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">Peata</string>
     <string name="exo_controls_play_description">Esita</string>
     <string name="exo_controls_playback_speed">Kiirus</string>
-    <string name="exo_controls_playback_speed_normal">Tavaline</string>
     <string name="exo_controls_previous_description">Eelmine</string>
     <string name="exo_controls_repeat_all_description">Korda kõiki</string>
     <string name="exo_controls_repeat_off_description">Ära korda ühtegi</string>

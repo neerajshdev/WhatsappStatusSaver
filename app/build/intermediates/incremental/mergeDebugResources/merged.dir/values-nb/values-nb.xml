@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0,25x</item>
+    <item>0,5x</item>
+    <item>0,75x</item>
+    <item>Normal</item>
+    <item>1,25x</item>
+    <item>1,5x</item>
+    <item>2x</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">Spol %d sekund fremover</item>
     <item quantity="other">Spol %d sekunder fremover</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">Sett på pause</string>
     <string name="exo_controls_play_description">Spill av</string>
     <string name="exo_controls_playback_speed">Hastighet</string>
-    <string name="exo_controls_playback_speed_normal">Normal</string>
     <string name="exo_controls_previous_description">Forrige</string>
     <string name="exo_controls_repeat_all_description">Gjenta alle</string>
     <string name="exo_controls_repeat_off_description">Ikke gjenta noen</string>

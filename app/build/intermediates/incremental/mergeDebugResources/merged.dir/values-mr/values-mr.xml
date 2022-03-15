@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>०.२५x</item>
+    <item>०.५x</item>
+    <item>०.७५x</item>
+    <item>सामान्य</item>
+    <item>१.२५x</item>
+    <item>१.५x</item>
+    <item>२x</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">%d सेकंद फास्ट फॉरवर्ड करा</item>
     <item quantity="other">%d सेकंद फास्ट फॉरवर्ड करा</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">विराम</string>
     <string name="exo_controls_play_description">प्‍ले करा</string>
     <string name="exo_controls_playback_speed">वेग</string>
-    <string name="exo_controls_playback_speed_normal">सामान्य</string>
     <string name="exo_controls_previous_description">मागील</string>
     <string name="exo_controls_repeat_all_description">सर्व रीपीट करा</string>
     <string name="exo_controls_repeat_off_description">रीपीट करू नका</string>

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0,25×</item>
+    <item>0,5×</item>
+    <item>0,75×</item>
+    <item>Normální</item>
+    <item>1,25×</item>
+    <item>1,5×</item>
+    <item>2×</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">Posunout vpřed o %d sekundu</item>
     <item quantity="few">Posunout vpřed o %d sekundy</item>
@@ -85,7 +94,6 @@
     <string name="exo_controls_pause_description">Pozastavit</string>
     <string name="exo_controls_play_description">Přehrát</string>
     <string name="exo_controls_playback_speed">Rychlost</string>
-    <string name="exo_controls_playback_speed_normal">Normální</string>
     <string name="exo_controls_previous_description">Předchozí</string>
     <string name="exo_controls_repeat_all_description">Opakovat vše</string>
     <string name="exo_controls_repeat_off_description">Neopakovat</string>

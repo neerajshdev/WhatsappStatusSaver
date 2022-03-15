@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.WhatsappStatusSaver" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.softneez.wasaver" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.WhatsappStatusSaver.NoActionBar">
+    <style name="Theme.softneez.wasaver.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
@@ -24,7 +24,7 @@
 
     <style name="Theme.WhatsappStatusSaver.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Theme.WhatsappStatusSaver.Fullscreen" parent="Theme.WhatsappStatusSaver">
+    <style name="Theme.wasaver" parent="Theme.softneez.wasaver">
         <item name="android:actionBarStyle">
             @style/Widget.Theme.WhatsappStatusSaver.ActionBar.Fullscreen
         </item>

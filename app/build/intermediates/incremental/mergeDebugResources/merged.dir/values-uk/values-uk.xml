@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0,25x</item>
+    <item>0,5x</item>
+    <item>0,75x</item>
+    <item>Звичайна</item>
+    <item>1,25x</item>
+    <item>1,5x</item>
+    <item>2x</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">Перемотати вперед на %d секунду</item>
     <item quantity="few">Перемотати вперед на %d секунди</item>
@@ -85,7 +94,6 @@
     <string name="exo_controls_pause_description">Призупинити</string>
     <string name="exo_controls_play_description">Відтворити</string>
     <string name="exo_controls_playback_speed">Швидкість</string>
-    <string name="exo_controls_playback_speed_normal">Звичайна</string>
     <string name="exo_controls_previous_description">Назад</string>
     <string name="exo_controls_repeat_all_description">Повторити всі</string>
     <string name="exo_controls_repeat_off_description">Не повторювати</string>

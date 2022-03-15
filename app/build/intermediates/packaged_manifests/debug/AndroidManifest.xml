@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ns.whatsappstatussaver"
+    package="com.softneez.wasaver"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="28" />
+        android:targetSdkVersion="31" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" /> <!-- Android package visibility setting -->
-    <queries>
 
+    <queries>
+        <package android:name="com.whatsapp" />
         <!-- For browser content -->
         <intent>
             <action android:name="android.intent.action.VIEW" />
@@ -22,15 +21,15 @@
             <category android:name="android.intent.category.BROWSABLE" />
 
             <data android:scheme="https" />
-        </intent>
-        <!-- End of browser content -->
+        </intent> <!-- End of browser content -->
         <!-- For CustomTabsService -->
         <intent>
             <action android:name="android.support.customtabs.action.CustomTabsService" />
         </intent>
-        <!-- End of CustomTabsService -->
     </queries>
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -43,12 +42,11 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WhatsappStatusSaver.NoActionBar" >
+        android:theme="@style/Theme.softneez.wasaver.NoActionBar" >
         <activity
-            android:name="com.ns.whatsappstatussaver.SplashActivity"
+            android:name="com.softneez.wasaver.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,7 +55,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ns.whatsappstatussaver.MainActivity"
+            android:name="com.softneez.wasaver.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" >
         </activity>
@@ -65,7 +63,7 @@
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-7194455044083449~5703886692" />
 
         <activity
             android:name="androidx.compose.ui.tooling.PreviewActivity"
@@ -78,7 +76,7 @@
 
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:authorities="com.ns.whatsappstatussaver.mobileadsinitprovider"
+            android:authorities="com.softneez.wasaver.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
@@ -115,7 +113,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.ns.whatsappstatussaver.firebaseinitprovider"
+            android:authorities="com.softneez.wasaver.firebaseinitprovider"
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />
@@ -147,7 +145,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.ns.whatsappstatussaver.androidx-startup"
+            android:authorities="com.softneez.wasaver.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

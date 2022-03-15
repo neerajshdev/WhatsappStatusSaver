@@ -4,7 +4,17 @@
             "outputFile": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\gradle\\caches\\transforms-3\\c97cb3519010326d3fea32e6c9fcbf19\\transformed\\material-1.5.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\gradle\\caches\\transforms-3\\edd88cdc7980e84fc2ab690d6e9cd93f\\transformed\\work-runtime-2.7.0\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
+                    }
+                },
+                {
+                    "source": "C:\\gradle\\caches\\transforms-3\\fbb2046ac5120fd294bf10a413586e47\\transformed\\material-1.5.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,5,8,13,17,20,23,26,31,34,38",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +33,7 @@
                     }
                 },
                 {
-                    "source": "C:\\gradle\\caches\\transforms-3\\b1924c13f8adbad9f729b1f2dded25e8\\transformed\\appcompat-1.4.1\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\gradle\\caches\\transforms-3\\a871abf261a1d943958f5333fdb3ed0e\\transformed\\appcompat-1.4.1\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -42,17 +52,7 @@
                     }
                 },
                 {
-                    "source": "C:\\gradle\\caches\\transforms-3\\599f95a1241f8db459b0949a9a791f3b\\transformed\\work-runtime-2.7.0\\res\\values-v23\\values-v23.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,121",
-                        "endColumns": "65,62",
-                        "endOffsets": "116,179"
-                    }
-                },
-                {
-                    "source": "C:\\gradle\\caches\\transforms-3\\d38a1d517767159fd2751bfea3fc53f5\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\gradle\\caches\\transforms-3\\b27e90bf91f1f7a5531616a8b8d352b9\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

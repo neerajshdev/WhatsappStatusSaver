@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>أسرع بـ 0.25 مرة</item>
+    <item>أسرع بـ 0.5 مرات</item>
+    <item>أسرع بـ 0.75 مرة</item>
+    <item>عادية</item>
+    <item>أسرع بـ 1.25 مرة</item>
+    <item>أسرع بـ 1.5 مرة</item>
+    <item>أسرع بمرتين</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="zero">تقديم سريع للفيديو بمقدار %d ثانية</item>
     <item quantity="one">تقديم سريع للفيديو بمقدار ثانية واحدة (%d)</item>
@@ -91,7 +100,6 @@
     <string name="exo_controls_pause_description">إيقاف مؤقت</string>
     <string name="exo_controls_play_description">تشغيل</string>
     <string name="exo_controls_playback_speed">السرعة</string>
-    <string name="exo_controls_playback_speed_normal">عادية</string>
     <string name="exo_controls_previous_description">السابق</string>
     <string name="exo_controls_repeat_all_description">تكرار الكل</string>
     <string name="exo_controls_repeat_off_description">عدم التكرار</string>

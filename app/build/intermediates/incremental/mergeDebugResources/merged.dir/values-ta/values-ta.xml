@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0.25x</item>
+    <item>0.5x</item>
+    <item>0.75x</item>
+    <item>இயல்பு</item>
+    <item>1.25x</item>
+    <item>1.5x</item>
+    <item>2x</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">%d வினாடி ஃபாஸ்ட் ஃபார்வர்ட் ஆகும்</item>
     <item quantity="other">%d வினாடிகள் ஃபாஸ்ட் ஃபார்வர்ட் ஆகும்</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">இடைநிறுத்து</string>
     <string name="exo_controls_play_description">இயக்கு</string>
     <string name="exo_controls_playback_speed">வேகம்</string>
-    <string name="exo_controls_playback_speed_normal">இயல்பு</string>
     <string name="exo_controls_previous_description">முந்தையது</string>
     <string name="exo_controls_repeat_all_description">அனைத்தையும் மீண்டும் இயக்கு</string>
     <string name="exo_controls_repeat_off_description">எதையும் மீண்டும் இயக்காதே</string>

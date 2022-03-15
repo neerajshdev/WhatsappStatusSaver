@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>x 0,25</item>
+    <item>x 0,5</item>
+    <item>x 0,75</item>
+    <item>Normal</item>
+    <item>x 1,25</item>
+    <item>x 1,5</item>
+    <item>x 2</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">Avancer de %d seconde</item>
     <item quantity="other">Avancer de %d secondes</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">Pause</string>
     <string name="exo_controls_play_description">Lecture</string>
     <string name="exo_controls_playback_speed">Vitesse</string>
-    <string name="exo_controls_playback_speed_normal">Normale</string>
     <string name="exo_controls_previous_description">Précédent</string>
     <string name="exo_controls_repeat_all_description">Tout lire en boucle</string>
     <string name="exo_controls_repeat_off_description">Ne rien lire en boucle</string>

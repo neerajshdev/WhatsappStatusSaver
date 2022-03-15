@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>০.২৫x</item>
+    <item>০.৫x</item>
+    <item>০.৭৫x</item>
+    <item>স্বাভাবিক</item>
+    <item>১.২৫x</item>
+    <item>১.৫x</item>
+    <item>২x</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">%d সেকেন্ড ফাস্ট ফরওয়ার্ড করুন</item>
     <item quantity="other">%d সেকেন্ড ফাস্ট ফরওয়ার্ড করুন</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">পজ করুন</string>
     <string name="exo_controls_play_description">চালান</string>
     <string name="exo_controls_playback_speed">স্পিড</string>
-    <string name="exo_controls_playback_speed_normal">সাধারণ</string>
     <string name="exo_controls_previous_description">পূর্ববর্তী</string>
     <string name="exo_controls_repeat_all_description">সবগুলি আইটেম আবার চালান</string>
     <string name="exo_controls_repeat_off_description">কোনও আইটেম আবার চালাবেন না</string>

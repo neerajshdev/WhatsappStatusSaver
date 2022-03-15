@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="exo_controls_playback_speeds">
+    <item>0.25x</item>
+    <item>0.5x</item>
+    <item>0.75x</item>
+    <item>ਸਧਾਰਨ</item>
+    <item>1.25x</item>
+    <item>1.5x</item>
+    <item>2x</item>
+  </string-array>
     <plurals name="exo_controls_fastforward_by_amount_description">
     <item quantity="one">ਤੇਜ਼ੀ ਨਾਲ %d ਸਕਿੰਟ ਅੱਗੇ ਕਰੋ</item>
     <item quantity="other">ਤੇਜ਼ੀ ਨਾਲ %d ਸਕਿੰਟ ਅੱਗੇ ਕਰੋ</item>
@@ -79,7 +88,6 @@
     <string name="exo_controls_pause_description">ਰੋਕੋ</string>
     <string name="exo_controls_play_description">ਚਲਾਓ</string>
     <string name="exo_controls_playback_speed">ਗਤੀ</string>
-    <string name="exo_controls_playback_speed_normal">ਸਧਾਰਨ</string>
     <string name="exo_controls_previous_description">ਪਿੱਛੇ</string>
     <string name="exo_controls_repeat_all_description">ਸਾਰਿਆਂ ਨੂੰ ਦੁਹਰਾਓ</string>
     <string name="exo_controls_repeat_off_description">ਕਿਸੇ ਨੂੰ ਨਾ ਦੁਹਰਾਓ</string>
@@ -182,7 +190,7 @@
     <string msgid="8655164131929253426" name="on">"ਚਾਲੂ ਹੈ"</string>
     <string name="password_toggle_content_description">ਪਾਸਵਰਡ ਦਿਖਾਓ</string>
     <string name="s1">ਚਿੱਤਰ ਰੱਖਿਅਤ ਕਰੋ</string>
-    <string name="s2">ਕੀ ਇਸ਼ਤਿਹਾਰ ਨੂੰ ਤਸਵੀਰ ਗੈਲਰੀ ਵਿੱਚ ਚਿੱਤਰ ਸਟੋਰ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?</string>
+    <string name="s2">ਕੀ ਵਿਗਿਆਪਨ ਨੂੰ ਤਸਵੀਰ ਗੈਲਰੀ ਵਿੱਚ ਚਿੱਤਰ ਸਟੋਰ ਕਰਨ ਦੇਣੀ ਹੈ?</string>
     <string name="s3">ਸਵੀਕਾਰ ਕਰੋ</string>
     <string name="s4">ਅਸਵੀਕਾਰ ਕਰੋ</string>
     <string name="s5">ਕੈਲੰਡਰ ਇਵੈਂਟ ਬਣਾਓ</string>
