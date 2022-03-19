@@ -3794,6 +3794,8 @@ int layout whatsapp_msg_sender 0x7f0d0091
 int menu example_menu 0x7f0e0000
 int menu example_menu2 0x7f0e0001
 int mipmap ic_launcher 0x7f0f0000
+int mipmap ic_launcher_adaptive_back 0x7f0f0001
+int mipmap ic_launcher_adaptive_fore 0x7f0f0002
 int plurals exo_controls_fastforward_by_amount_description 0x7f100000
 int plurals exo_controls_rewind_by_amount_description 0x7f100001
 int plurals mtrl_badge_content_description 0x7f100002
