@@ -23,13 +23,12 @@ fun SplashContent() {
         color = brightWhite
     )) {
         Image(
-            painter = painterResource(id = R.mipmap.ic_launcher),
+            painter = painterResource(id = R.drawable.splash_image),
             contentDescription = null,
             modifier = Modifier
                 .size(144.dp, 144.dp)
                 .align(alignment = Alignment.Center)
         )
-
         Text(
             text = "Status Saver\nfor Whatsapp",
             fontSize = 24.sp,

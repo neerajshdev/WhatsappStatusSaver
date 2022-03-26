@@ -6,7 +6,6 @@ plugins {
 
 android {
     compileSdk 31
-
     defaultConfig {
         applicationId "com.softneez.wasaver"
         minSdk 21
@@ -14,16 +13,27 @@ android {
         versionCode 1
         versionName "1.0"
 
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
         }
     }
 
+
+    // invoke the assembleRelease build task
+//    signingConfigs {
+//        release {
+//            storeFile file("myreleasekey.keystore")
+//            storePassword System.console().readLine("\nKeyStore Password: ")
+//            keyAlias System.console().readLine("\nKeyStore Alias: ")
+//            keyPassword System.console().readLine("\nKey Password: ")
+//        }
+//    }
+
     buildTypes {
         release {
             minifyEnabled true
+            testCoverageEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -39,7 +49,7 @@ android {
 
     buildFeatures {
         compose true
-        viewBinding true
+        viewBinding false
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
