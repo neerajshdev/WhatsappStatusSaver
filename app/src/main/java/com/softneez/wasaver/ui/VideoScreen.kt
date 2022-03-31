@@ -1,6 +1,7 @@
 package com.softneez.wasaver.ui
 
 import android.app.Activity
+import android.net.Uri
 import android.view.ViewGroup
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -27,7 +28,12 @@ import java.io.File
 @Composable
 fun VideoScreen(model: MainViewModel) {
     var context = LocalContext.current
-    val uri = File(model.videoEntry!!.path).toURI()
+    val videoPath = model.videoEntry!!.path
+    val uri = if (videoPath.startsWith("content")) {
+        Uri.parse(videoPath)
+    } else {
+        File(videoPath).toURI()
+    }
     val mediaItem = MediaItem.fromUri(uri.toString())
     val exoPlayer = ExoPlayer.Builder(context).build()
 

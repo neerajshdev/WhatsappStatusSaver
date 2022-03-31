@@ -2,6 +2,7 @@ package com.softneez.wasaver
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -10,16 +11,31 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
 import androidx.activity.viewModels
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.softneez.wasaver.ui.MainUserInterface
 import com.softneez.wasaver.ui.theme.WhatsappStatusSaverTheme
 import java.io.File
 
-const val TAG = "AppOut"
+const val TAG = "debugOut"
 var pathToWhatsFiles = ""
 var saved_media_dir: String? = null
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
+    val permissions by lazy {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+        } else {
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+    }
+
+    lateinit var onStoragePermissionResult: (Boolean) -> Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,24 +50,10 @@ class MainActivity : ComponentActivity() {
         if (File(pathToWhatsAppStatus).exists())
           pathToWhatsFiles = pathToWhatsAppStatus
 
-        saved_media_dir = "$parentDir/DCIM/StatusSaver"
-
+        saved_media_dir = if(Build.VERSION.SDK_INT == Build.VERSION_CODES.R) "${getExternalFilesDir(null)!!.absolutePath}/StatusSaver" else "$parentDir/DCIM/StatusSaver"
         // make saved directory if it does not exists
         if (!File(saved_media_dir!!).exists()) File(saved_media_dir!!).mkdir()
-
         val filePath = saved_media_dir + "WhatsAppStatusSaverLogcat.txt"
-        Runtime.getRuntime().exec(
-            arrayOf(
-                "logcat",
-                "-f",
-                filePath,
-                "--pid",
-                android.os.Process.myPid().toString(),
-                "ActivityManager:I",
-                "MyApp:D",
-                "*:D"
-            )
-        )
 
         isDebug {
             Log.d(
@@ -62,74 +64,51 @@ class MainActivity : ComponentActivity() {
         }
 
         loadInterstitialAd(this) { it.show(this) }
-        checkExternalStoragePermissions()
-    }
 
-    private fun requestPermissionLauncher(onResponse: (Map<String, Boolean>) -> Unit): ActivityResultLauncher<Array<String>> {
-        return registerForActivityResult(RequestMultiplePermissions()) { grantResult ->
-            onResponse.invoke(grantResult)
-        }
-    }
-
-    private fun checkExternalStoragePermissions() {
-        // check for write external storage permission
-        val canWrite =
-            ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
-        val canRead =
-            ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
-
-        isDebug {
-            Log.d(TAG, "canWrite: $canWrite")
-            Log.d(TAG, "canRead: $canRead")
-        }
-
-        if (canRead && canWrite) {
-            // Display the ui
-            initContent()
-        } else {
-            //  permission result
-            val requestPermission = requestPermissionLauncher { result ->
-                val writeExternalStorage = result[Manifest.permission.WRITE_EXTERNAL_STORAGE]!!
-                val readExternalStorage = result[Manifest.permission.READ_EXTERNAL_STORAGE]!!
-                isDebug {
-                    Log.d(TAG, "Permission Result ->")
-                    Log.d(TAG, "write_external_storage: $writeExternalStorage")
-                    Log.d(TAG, "read_external_storage: $readExternalStorage")
-                }
-
-                val allAccepted = writeExternalStorage && readExternalStorage
-
-                if (!allAccepted) {
-                    Toast.makeText(this, "Required permissions were disallowed!", Toast.LENGTH_LONG)
-                        .show()
-                    finishAndRemoveTask()
-                } else {
-                    initContent()
-                }
+        requestPermissionLauncher = registerForActivityResult(RequestMultiplePermissions()) { result ->
+            var accepted = true
+            for (permission in permissions) {
+                accepted = accepted.and(result[permission] ?: false)
             }
-
-            // Request the permissions
-            requestPermission.launch(
-                arrayOf(
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                )
-            )
+            onStoragePermissionResult.invoke(accepted)
         }
+
+        initContent()
+    }
+
+    private fun isStoragePermissionsGranted(): Boolean {
+        var grantPermissions = true
+        for (permission in permissions) {
+            val isGranted = ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+            grantPermissions = grantPermissions.and(isGranted)
+            isDebug {
+                Log.d(TAG, "$permission: $isGranted")
+            }
+        }
+        return grantPermissions
     }
 
     private fun initContent() {
         val model: MainViewModel by viewModels()
-        model.init()
+        model.init(this)
+
         setContent {
-            WhatsappStatusSaverTheme {
-                MainUserInterface(model = model)
+            val isStoragePermissionsGranted = remember {
+                mutableStateOf(isStoragePermissionsGranted())
+            }
+            if (!isStoragePermissionsGranted.value) {
+                onStoragePermissionResult = { result ->
+                    isStoragePermissionsGranted.value = result
+                    if (!result) {
+                        requestPermissionLauncher.launch(permissions)
+                        Toast.makeText(this, "Please, allow for storage permissions.", Toast.LENGTH_LONG).show()
+                    }
+                }
+                requestPermissionLauncher.launch(permissions)
+            } else {
+                WhatsappStatusSaverTheme {
+                    MainUserInterface(model = model)
+                }
             }
         }
     }

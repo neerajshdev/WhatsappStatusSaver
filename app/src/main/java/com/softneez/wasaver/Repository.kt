@@ -1,21 +1,27 @@
 package com.softneez.wasaver
 
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.media.MediaMetadataRetriever
+import android.net.Uri
+import android.provider.DocumentsContract
 import android.util.Log
+import android.util.Size
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.core.net.toFile
+import androidx.documentfile.provider.DocumentFile
 import com.softneez.wasaver.models.StatusImage
 import com.softneez.wasaver.models.StatusVideo
-import java.io.File
+import java.io.*
 
 class Repository {
+
     fun getListFiles(parentDir: File): List<String> {
         val paths = mutableListOf<String>()
         val files = parentDir.listFiles()
-
         if (files != null) {
             for (file in files) {
                 Log.e("check", file.name)
@@ -30,17 +36,40 @@ class Repository {
         return paths
     }
 
+    // uri should be whatsapp .Statuses folder
+    fun getDocument(context: Context, uri: Uri): List<String> {
+        val document = DocumentFile.fromTreeUri(context, uri)
+        val uris = mutableListOf<String>()
+        if (document != null && document.exists()) {
+            for (docFile in document.listFiles()) {
+                if (docFile.uri.toString().endsWith(imageExtension) ||
+                    docFile.uri.toString().endsWith(videoExtension)
+                )
+                    uris.add(docFile.uri.toString())
+            }
+        }
+        return uris
+    }
 
-
-    private fun loadImage(from: String): ImageBitmap {
-        val bitmap = BitmapFactory.decodeFile(from)
+    private fun loadImage(context: Context, from: String): ImageBitmap {
+        val bitmap = if (from.startsWith("content")) {
+            context.contentResolver.openFileDescriptor(Uri.parse(from), "r").use {
+                BitmapFactory.decodeFileDescriptor(it!!.fileDescriptor)
+            }
+        } else {
+            BitmapFactory.decodeFile(from)
+        }
         return bitmap.asImageBitmap()
     }
 
-    private fun getVideoFrame(src: String, time: Long ): ImageBitmap {
+    private fun getVideoFrame(context: Context, src: String, time: Long): ImageBitmap {
         val vmr = MediaMetadataRetriever()
         // extract data
-        vmr.setDataSource(src)
+        if (src.startsWith("content")) {
+            vmr.setDataSource(context, Uri.parse(src))
+        } else {
+            vmr.setDataSource(src)
+        }
         val bitmap = vmr.getFrameAtTime(time)
         vmr.release()
         return bitmap!!.asImageBitmap()
@@ -61,9 +90,14 @@ class Repository {
 //        return imageBitmaps
 //    }
 
-    private fun getVideoDuration(src: String): String {
+    private fun getVideoDuration(context: Context, src: String): String {
         val vmr = MediaMetadataRetriever()
-        vmr.setDataSource(src)
+        if (src.startsWith("content")) {
+//            val fd = context.contentResolver.openFileDescriptor(Uri.parse(src), "r").use { it!!.fileDescriptor }
+            vmr.setDataSource(context, Uri.parse(src))
+        } else {
+            vmr.setDataSource(src)
+        }
         val duration = vmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
         val len = formatTime(duration!!.toLong())
         vmr.release()
@@ -72,27 +106,29 @@ class Repository {
 
     // fill data into mutableStateList
     fun loadStatusVideo(
+        context: Context,
         paths: List<String>,
         into: SnapshotStateList<StatusVideo>,
         saved: Map<String, Boolean>
     ) {
         for (path in paths) {
             // get frame at 1000 ms
-            val imageBitmap = getVideoFrame(path, 1000)
-            val videoLen = getVideoDuration(path)
+            val imageBitmap = getVideoFrame(context, path, 1000)
+            val videoLen = getVideoDuration(context, path)
             val video = StatusVideo(path, imageBitmap, videoLen, saved[File(path).name]!!)
             into.add(video)
         }
     }
 
     fun loadStatusImage(
+        context: Context,
         paths: List<String>,
         into: SnapshotStateList<StatusImage>,
         saved: Map<String, Boolean>
     ) {
         for (path in paths) {
-            val imageBitmap = loadImage(path)
-            val image = StatusImage(path, imageBitmap, mutableStateOf(saved[File(path).name]!!))
+            val imageBitmap = loadImage(context, path)
+            val image = StatusImage(path, imageBitmap, mutableStateOf(saved[File(path).name] ?: false))
             into.add(image)
         }
     }
@@ -104,5 +140,13 @@ class Repository {
         fos.write(data)
         fis.close()
         fos.close()
+    }
+
+    fun saveContent(from: InputStream, to: OutputStream) {
+        val data = from.readBytes()
+        to.write(data)
+
+        from.close()
+        to.close()
     }
 }

@@ -72,7 +72,7 @@ fun HomeScreenContent(model: MainViewModel) {
                     Screen.setScreen(ScreenType.SCREEN_IMAGE)
                 },
                 onDownloadClick = { statusImage ->
-                    model.saveFile(src = File(statusImage.path), onSuccess = { path ->
+                    model.saveFile(src = statusImage.path, onSuccess = { path ->
                         statusImage.isSaved.value = true
                         Toast.makeText(context, "File saved to: $path", Toast.LENGTH_SHORT).show()
                         loadInterstitialAd(context){it.show(context as Activity)}
@@ -88,7 +88,7 @@ fun HomeScreenContent(model: MainViewModel) {
                 },
                 onDownloadClick = { statusVideo ->
                     model.saveFile(
-                        src = File(statusVideo.path),
+                        src = statusVideo.path,
                         onSuccess = {
                             statusVideo.isSaved.value = true
                             Toast.makeText(context, "File saved to: $it", Toast.LENGTH_SHORT).show()

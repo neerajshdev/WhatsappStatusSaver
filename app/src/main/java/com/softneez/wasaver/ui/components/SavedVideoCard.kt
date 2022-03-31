@@ -12,6 +12,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -44,11 +45,12 @@ fun SavedVideoCard(
 
         Text(
             text = label,
+            color= Color.White,
             modifier = Modifier
                 .align(alignment = Alignment.TopEnd)
-                .padding(end = 8.dp, bottom = 8.dp)
+                .padding(8.dp)
                 .background(
-                    color = MaterialTheme.colors.surface,
+                    color = MaterialTheme.colors.primary,
                     shape = MaterialTheme.shapes.small
                 )
                 .padding(8.dp)

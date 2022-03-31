@@ -4,15 +4,27 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.hbb20.CountryCodePicker
 import com.softneez.wasaver.MainActivity
@@ -33,26 +45,70 @@ fun TabScreenOne(
     model: MainViewModel
 ) {
     val context = LocalContext.current
-    ScrollableRecentMediaList(
-        media = model.recentMedia,
-        onItemChosen = {
-            if (it is StatusImage) {
-                model.imageEntry = it
-                Screen.setScreen(ScreenType.SCREEN_IMAGE)
-            } else if (it is StatusVideo) {
-                model.videoEntry = it
-                Screen.setScreen(ScreenType.SCREEN_VIDEO)
+
+    // show the media files if the path to media is knows
+    // else ask the user to select the media folder
+    // this is all required for android 11
+    if(model.mediaSelected.value) {
+        val isModelInit = remember {
+            mutableStateOf(false)
+        }
+        // init the model content only once
+        if (!isModelInit.value) {
+            model.initMedia()
+            isModelInit.value = true
+        }
+
+        ScrollableRecentMediaList(
+            media = model.recentMedia,
+            onItemChosen = {
+                if (it is StatusImage) {
+                    model.imageEntry = it
+                    Screen.setScreen(ScreenType.SCREEN_IMAGE)
+                } else if (it is StatusVideo) {
+                    model.videoEntry = it
+                    Screen.setScreen(ScreenType.SCREEN_VIDEO)
+                }
+            },
+            onDownloadClick = { media ->
+                model.saveFile(media.path, onSuccess = { str ->
+                    media.isSaved.value = true
+                    Toast.makeText(context, "File saved to: $str", Toast.LENGTH_SHORT).show()
+                    loadInterstitialAd(context){it.show(context as Activity)}
+                })
+            },
+            modifier = Modifier.fillMaxSize()
+        )
+    } else {
+        MediaSelectDiaLog() {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    model.selectMedia()
+                }
             }
-        },
-        onDownloadClick = { media ->
-            model.saveFile(File(media.path), onSuccess = { str ->
-                media.isSaved.value = true
-                Toast.makeText(context, "File saved to: $str", Toast.LENGTH_SHORT).show()
-                loadInterstitialAd(context){it.show(context as Activity)}
-            })
-        },
-        modifier = Modifier.fillMaxSize()
-    )
+        }
+    }
+}
+
+
+@Composable
+fun MediaSelectDiaLog(onMediaSelectClick: () -> Unit) {
+    Box (modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+        Column (horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceAround) {
+            Text(
+                text = "OOPs! Click on Locate and select the Media folder.",
+                style = MaterialTheme.typography.h5,
+                textAlign = TextAlign.Center
+            )
+
+            Button(onClick = onMediaSelectClick) {
+                Text(
+                    text = "Locate",
+                    style = MaterialTheme.typography.button
+                )
+            }
+        }
+    }
 }
 
 

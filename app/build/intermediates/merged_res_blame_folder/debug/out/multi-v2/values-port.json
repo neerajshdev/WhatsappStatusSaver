@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\nsxyl\\AndroidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "outputFile": "C:\\Users\\nsxyl\\androidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {
-                    "source": "C:\\gradle\\caches\\transforms-3\\a871abf261a1d943958f5333fdb3ed0e\\transformed\\appcompat-1.4.1\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\a871abf261a1d943958f5333fdb3ed0e\\transformed\\appcompat-1.4.1\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

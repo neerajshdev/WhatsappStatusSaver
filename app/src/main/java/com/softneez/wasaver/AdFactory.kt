@@ -16,6 +16,7 @@ import com.google.android.gms.ads.nativead.NativeAdOptions
 import com.google.android.gms.ads.nativead.NativeAdView
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
+import kotlin.math.absoluteValue
 import kotlin.random.Random
 
 val shouldReqAd by lazy {
@@ -26,7 +27,7 @@ val reqAdAfterCount by lazy {
     Firebase.remoteConfig.getString("show_ad_after_count").toInt()
 }
 
-var count = 0
+var count = 0xffff
 
 fun fetchAdConfig(onSuccess: () -> Unit) {
     Firebase.remoteConfig.fetchAndActivate()
@@ -56,7 +57,16 @@ fun fetchAdConfig(onSuccess: () -> Unit) {
 /* Interstitial Ad Unit */
 fun loadInterstitialAd(context: Context, onAdLoaded: (InterstitialAd) -> Unit) {
     count++
-    if(!shouldReqAd || count < reqAdAfterCount) return
+    if(!shouldReqAd || count < reqAdAfterCount)  {
+        isDebug {
+            if (shouldReqAd)
+            Log.d(TAG, "Ad Canceled, count: $count < reqAdAfterCount: $reqAdAfterCount")
+            else {
+                Log.d(TAG, "Ad Canceled, should req ad: $shouldReqAd")
+            }
+        }
+        return
+    }
     count = 0
 
     val key: String = if (Random.nextBoolean()) {

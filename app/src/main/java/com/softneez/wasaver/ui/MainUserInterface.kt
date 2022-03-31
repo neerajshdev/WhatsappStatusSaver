@@ -20,6 +20,7 @@ import com.softneez.wasaver.ui.router.ScreenType
 @Composable
 fun MainUserInterface(model: MainViewModel) {
     val ctx = LocalContext.current as Activity
+
     Box(modifier = Modifier.fillMaxSize()) {
         Surface(color = MaterialTheme.colors.background, modifier = Modifier) {
             Crossfade(targetState = Screen.current.value) {
@@ -32,12 +33,13 @@ fun MainUserInterface(model: MainViewModel) {
         }
 
         if (Screen.current.value == ScreenType.HOME_SCREEN && shouldReqAd)
-        BannerAdUnit(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-        )
+            BannerAdUnit(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+            )
     }
+
 
     var enable by remember {
         mutableStateOf(true)
