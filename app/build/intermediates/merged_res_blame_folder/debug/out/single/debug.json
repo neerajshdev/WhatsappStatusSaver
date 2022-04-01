@@ -76,6 +76,10 @@
         "source": "C:\\Users\\nsxyl\\androidStudioProjects\\WhatsappStatusSaver\\app\\src\\main\\res\\drawable\\ic_round_home_24.xml"
     },
     {
+        "merged": "C:\\Users\\nsxyl\\androidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\merged_res\\debug\\drawable_drawable_logo.png.flat",
+        "source": "C:\\Users\\nsxyl\\androidStudioProjects\\WhatsappStatusSaver\\app\\src\\main\\res\\drawable\\drawable_logo.png"
+    },
+    {
         "merged": "C:\\Users\\nsxyl\\androidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_round_download_done_24.xml.flat",
         "source": "C:\\Users\\nsxyl\\androidStudioProjects\\WhatsappStatusSaver\\app\\src\\main\\res\\drawable\\ic_round_download_done_24.xml"
     },

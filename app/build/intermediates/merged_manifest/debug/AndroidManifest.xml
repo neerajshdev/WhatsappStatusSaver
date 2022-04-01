@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.softneez.wasaver"
+    package="com.nibodev.statussaverforwhatsapp"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -47,10 +47,9 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.softneez.wasaver.NoActionBar" >
         <activity
-            android:name="com.softneez.wasaver.SplashActivity"
+            android:name="com.nibodev.statussaverforwhatsapp.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,7 +58,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.softneez.wasaver.MainActivity"
+            android:name="com.nibodev.statussaverforwhatsapp.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" >
         </activity>
@@ -67,7 +66,7 @@
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7194455044083449~3033412747" />
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <activity
             android:name="androidx.compose.ui.tooling.PreviewActivity"
@@ -80,7 +79,7 @@
 
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:authorities="com.softneez.wasaver.mobileadsinitprovider"
+            android:authorities="com.nibodev.statussaverforwhatsapp.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
@@ -133,7 +132,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.softneez.wasaver.firebaseinitprovider"
+            android:authorities="com.nibodev.statussaverforwhatsapp.firebaseinitprovider"
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />
@@ -149,7 +148,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.softneez.wasaver.androidx-startup"
+            android:authorities="com.nibodev.statussaverforwhatsapp.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

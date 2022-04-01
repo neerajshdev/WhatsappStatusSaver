@@ -1,4 +1,4 @@
-com.softneez.wasaver
+com.nibodev.statussaverforwhatsapp
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -2577,6 +2577,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable drawable_logo
 drawable exo_controls_fastforward
 drawable exo_controls_fullscreen_enter
 drawable exo_controls_fullscreen_exit
@@ -3960,7 +3961,6 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fastscroll__app_name
-string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
