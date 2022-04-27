@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.nibodev.statussaverforwhatsapp"
+3    package="com.nibodev.statussaver"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -94,8 +94,8 @@
 50-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:22:9-66
 51        <activity
 51-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:24:9-31:20
-52            android:name="com.nibodev.statussaverforwhatsapp.SplashActivity"
-52-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:25:13-77
+52            android:name="com.nibodev.statussaver.SplashActivity"
+52-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:25:13-66
 53            android:exported="true" >
 53-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:26:13-36
 54            <intent-filter>
@@ -111,8 +111,8 @@
 59        </activity>
 60        <activity
 60-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:33:9-38:20
-61            android:name="com.nibodev.statussaverforwhatsapp.MainActivity"
-61-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:34:13-75
+61            android:name="com.nibodev.statussaver.MainActivity"
+61-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:34:13-64
 62            android:exported="true"
 62-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:35:13-36
 63            android:screenOrientation="portrait" >
@@ -148,7 +148,7 @@
 80-->[com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\702d7e8478f68555f2af872ac0e696ee\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:55:9-59:39
 81            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
 81-->[com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\702d7e8478f68555f2af872ac0e696ee\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:56:13-76
-82            android:authorities="com.nibodev.statussaverforwhatsapp.mobileadsinitprovider"
+82            android:authorities="com.nibodev.statussaver.mobileadsinitprovider"
 82-->[com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\702d7e8478f68555f2af872ac0e696ee\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:57:13-73
 83            android:exported="false"
 83-->[com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\702d7e8478f68555f2af872ac0e696ee\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:58:13-37
@@ -248,7 +248,7 @@
 133-->[com.google.firebase:firebase-common:20.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\b3403c78f1416697fc7f198624176ec5\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
 134            android:name="com.google.firebase.provider.FirebaseInitProvider"
 134-->[com.google.firebase:firebase-common:20.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\b3403c78f1416697fc7f198624176ec5\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
-135            android:authorities="com.nibodev.statussaverforwhatsapp.firebaseinitprovider"
+135            android:authorities="com.nibodev.statussaver.firebaseinitprovider"
 135-->[com.google.firebase:firebase-common:20.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\b3403c78f1416697fc7f198624176ec5\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
 136            android:directBootAware="true"
 136-->[com.google.firebase:firebase-common:20.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\b3403c78f1416697fc7f198624176ec5\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
@@ -277,7 +277,7 @@
 149-->[androidx.emoji2:emoji2:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\990fdbdc5d8b4dd56f5188edb490de3a\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
 150            android:name="androidx.startup.InitializationProvider"
 150-->[androidx.emoji2:emoji2:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\990fdbdc5d8b4dd56f5188edb490de3a\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
-151            android:authorities="com.nibodev.statussaverforwhatsapp.androidx-startup"
+151            android:authorities="com.nibodev.statussaver.androidx-startup"
 151-->[androidx.emoji2:emoji2:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\990fdbdc5d8b4dd56f5188edb490de3a\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
 152            android:exported="false" >
 152-->[androidx.emoji2:emoji2:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\990fdbdc5d8b4dd56f5188edb490de3a\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37

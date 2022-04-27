@@ -4,6 +4,25 @@
             "outputFile": "C:\\Users\\nsxyl\\androidStudioProjects\\WhatsappStatusSaver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\e6c1768d5f874f53665fb03d6113b473\\transformed\\jetified-exoplayer-ui-2.17.1\\res\\values-v21\\values-v21.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,114",
+                        "endLines": "2,7",
+                        "endColumns": "58,10",
+                        "endOffsets": "109,396"
+                    },
+                    "to": {
+                        "startLines": "3,282",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,21508",
+                        "endLines": "3,286",
+                        "endColumns": "58,10",
+                        "endOffsets": "227,21790"
+                    }
+                },
+                {
                     "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\f3919c2233ecea86b150899af06972a7\\transformed\\media-1.4.3\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
@@ -20,25 +39,6 @@
                         "endLines": "346,349,353,357",
                         "endColumns": "12,12,12,12",
                         "endOffsets": "26035,26198,26492,26787"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\b1ae1283ad7af3c1a10c043c1fcf3275\\transformed\\jetified-exoplayer-ui-2.17.1\\res\\values-v21\\values-v21.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,114",
-                        "endLines": "2,7",
-                        "endColumns": "58,10",
-                        "endOffsets": "109,396"
-                    },
-                    "to": {
-                        "startLines": "3,282",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,21508",
-                        "endLines": "3,286",
-                        "endColumns": "58,10",
-                        "endOffsets": "227,21790"
                     }
                 },
                 {

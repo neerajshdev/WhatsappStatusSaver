@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.nibodev.statussaverforwhatsapp",
+  "applicationId": "com.nibodev.statussaver",
   "variantName": "debug",
   "elements": []
 }

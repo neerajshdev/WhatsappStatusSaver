@@ -4,7 +4,7 @@
     "type": "PACKAGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.nibodev.statussaverforwhatsapp",
+  "applicationId": "com.nibodev.statussaver",
   "variantName": "debug",
   "elements": [
     {

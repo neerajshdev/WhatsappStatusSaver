@@ -108,7 +108,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\b1ae1283ad7af3c1a10c043c1fcf3275\\transformed\\jetified-exoplayer-ui-2.17.1\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\b62df86180bdd9198003ce8c180760ec\\transformed\\core-1.7.0\\res\\values-sr\\values-sr.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "203",
+                        "startColumns": "4",
+                        "startOffsets": "16585",
+                        "endColumns": "100",
+                        "endOffsets": "16681"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\e6c1768d5f874f53665fb03d6113b473\\transformed\\jetified-exoplayer-ui-2.17.1\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,11,16,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -124,23 +141,6 @@
                         "endLines": "10,15,20,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131",
                         "endColumns": "17,12,12,80,81,81,88,90,69,65,92,93,67,63,62,71,74,83,76,75,86,72,70,95,93,66,64,52,57,47,60,65,63,62,64,63,60,65,64,65,51,61,75,75,55",
                         "endOffsets": "332,601,862,7412,7494,7576,7665,7756,7826,7892,7985,8079,8147,8211,8274,8346,8421,8505,8582,8658,8745,8818,8889,8985,9079,9146,9211,9928,9986,10034,10095,10161,10225,10288,10353,10417,10478,10544,10609,10675,10727,10789,10865,10941,10997"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\b62df86180bdd9198003ce8c180760ec\\transformed\\core-1.7.0\\res\\values-sr\\values-sr.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "203",
-                        "startColumns": "4",
-                        "startOffsets": "16585",
-                        "endColumns": "100",
-                        "endOffsets": "16681"
                     }
                 },
                 {

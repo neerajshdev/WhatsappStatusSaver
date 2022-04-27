@@ -46,7 +46,7 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:20.1.0] C:\Us
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\nsxyl\.gradle\caches\transforms-3\1c2197f671491840fadb9874bb535a1f\transformed\jetified-play-services-stats-17.0.2\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\352e289a2761c9076d5e66a0491922d4\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.1] C:\Users\nsxyl\.gradle\caches\transforms-3\edfc722e29714a42a42e98d740d8cc5a\transformed\documentfile-1.0.1\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.exoplayer:exoplayer-ui:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\b1ae1283ad7af3c1a10c043c1fcf3275\transformed\jetified-exoplayer-ui-2.17.1\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\e6c1768d5f874f53665fb03d6113b473\transformed\jetified-exoplayer-ui-2.17.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\68373237ae03e2b74c9397d30749fba0\transformed\jetified-exoplayer-core-2.17.1\AndroidManifest.xml:17:1-26:12
 MERGED from [com.google.firebase:firebase-config-ktx:21.0.1] C:\Users\nsxyl\.gradle\caches\transforms-3\5336ebda777761f85174ac16e23a653f\transformed\jetified-firebase-config-ktx-21.0.1\AndroidManifest.xml:2:1-21:12
 MERGED from [com.google.firebase:firebase-config:21.0.1] C:\Users\nsxyl\.gradle\caches\transforms-3\27e46a968022c8ad88ea995b3655a533\transformed\jetified-firebase-config-21.0.1\AndroidManifest.xml:17:1-38:12
@@ -119,13 +119,13 @@ MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\nsxyl\.gradle\caches\trans
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\a964b5a7d919e0f3fe29ef519d55683d\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\093d31079f7fd7ceeb644e7c8b891c11\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\nsxyl\.gradle\caches\transforms-3\8e1328e276642d926de080e2bb5b15f7\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\1584660d20932a7a0ae1bbd5d235054c\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:2:1-13:12
+MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\3a337890054e8bd216574b6ef9ab5f65\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:2:1-13:12
 MERGED from [io.michaelrocks:libphonenumber-android:8.10.14] C:\Users\nsxyl\.gradle\caches\transforms-3\fba0b84a9d6a03353beb85e71cbe0406\transformed\jetified-libphonenumber-android-8.10.14\AndroidManifest.xml:2:1-11:12
 INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-46:12
 INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-46:12
 INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-46:12
 	package
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:4:5-49
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:4:5-38
 		INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -244,8 +244,8 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\nsxyl\.gradle\cach
 MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\5aa52f2a12735ac4f0d99986e8355687\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.room:room-runtime:2.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\94acaa16742391d0af39a798b59ec498\transformed\room-runtime-2.2.5\AndroidManifest.xml:24:5-29:19
 MERGED from [androidx.room:room-runtime:2.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\94acaa16742391d0af39a798b59ec498\transformed\room-runtime-2.2.5\AndroidManifest.xml:24:5-29:19
-MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\1584660d20932a7a0ae1bbd5d235054c\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:11:5-20
-MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\1584660d20932a7a0ae1bbd5d235054c\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:11:5-20
+MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\3a337890054e8bd216574b6ef9ab5f65\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:11:5-20
+MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\3a337890054e8bd216574b6ef9ab5f65\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:11:5-20
 	android:requestLegacyExternalStorage
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:21:9-52
 	android:appComponentFactory
@@ -264,12 +264,12 @@ MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:15:9-35
 	android:theme
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:22:9-66
-activity#com.nibodev.statussaverforwhatsapp.SplashActivity
+activity#com.nibodev.statussaver.SplashActivity
 ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:24:9-31:20
 	android:exported
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:26:13-36
 	android:name
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:25:13-77
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:25:13-66
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:27:13-30:29
 action#android.intent.action.MAIN
@@ -280,7 +280,7 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:17-77
 	android:name
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:27-74
-activity#com.nibodev.statussaverforwhatsapp.MainActivity
+activity#com.nibodev.statussaver.MainActivity
 ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:33:9-38:20
 	android:screenOrientation
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:36:13-49
@@ -289,7 +289,7 @@ ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main
 	tools:ignore
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:37:13-53
 	android:name
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:34:13-75
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:34:13-64
 meta-data#com.google.android.gms.ads.APPLICATION_ID
 ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:41:9-43:70
 	android:value
@@ -384,8 +384,8 @@ MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\nsxyl\.gr
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\352e289a2761c9076d5e66a0491922d4\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.1] C:\Users\nsxyl\.gradle\caches\transforms-3\edfc722e29714a42a42e98d740d8cc5a\transformed\documentfile-1.0.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.1] C:\Users\nsxyl\.gradle\caches\transforms-3\edfc722e29714a42a42e98d740d8cc5a\transformed\documentfile-1.0.1\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.exoplayer:exoplayer-ui:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\b1ae1283ad7af3c1a10c043c1fcf3275\transformed\jetified-exoplayer-ui-2.17.1\AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.exoplayer:exoplayer-ui:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\b1ae1283ad7af3c1a10c043c1fcf3275\transformed\jetified-exoplayer-ui-2.17.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\e6c1768d5f874f53665fb03d6113b473\transformed\jetified-exoplayer-ui-2.17.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\e6c1768d5f874f53665fb03d6113b473\transformed\jetified-exoplayer-ui-2.17.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\68373237ae03e2b74c9397d30749fba0\transformed\jetified-exoplayer-core-2.17.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.17.1] C:\Users\nsxyl\.gradle\caches\transforms-3\68373237ae03e2b74c9397d30749fba0\transformed\jetified-exoplayer-core-2.17.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-config-ktx:21.0.1] C:\Users\nsxyl\.gradle\caches\transforms-3\5336ebda777761f85174ac16e23a653f\transformed\jetified-firebase-config-ktx-21.0.1\AndroidManifest.xml:6:5-8:41
@@ -530,8 +530,8 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\nsxyl\.gradle\caches\transform
 MERGED from [androidx.print:print:1.0.0] C:\Users\nsxyl\.gradle\caches\transforms-3\093d31079f7fd7ceeb644e7c8b891c11\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\nsxyl\.gradle\caches\transforms-3\8e1328e276642d926de080e2bb5b15f7\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\nsxyl\.gradle\caches\transforms-3\8e1328e276642d926de080e2bb5b15f7\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\1584660d20932a7a0ae1bbd5d235054c\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:7:5-9:41
-MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\1584660d20932a7a0ae1bbd5d235054c\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:7:5-9:41
+MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\3a337890054e8bd216574b6ef9ab5f65\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:7:5-9:41
+MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\3a337890054e8bd216574b6ef9ab5f65\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:7:5-9:41
 MERGED from [io.michaelrocks:libphonenumber-android:8.10.14] C:\Users\nsxyl\.gradle\caches\transforms-3\fba0b84a9d6a03353beb85e71cbe0406\transformed\jetified-libphonenumber-android-8.10.14\AndroidManifest.xml:7:5-9:41
 MERGED from [io.michaelrocks:libphonenumber-android:8.10.14] C:\Users\nsxyl\.gradle\caches\transforms-3\fba0b84a9d6a03353beb85e71cbe0406\transformed\jetified-libphonenumber-android-8.10.14\AndroidManifest.xml:7:5-9:41
 INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml

@@ -3,7 +3,7 @@
     <string name="default_web_client_id" translatable="false">625728098526-qamljf9lodqbb2naodgnt9dmfun4o4i7.apps.googleusercontent.com</string>
     <string name="gcm_defaultSenderId" translatable="false">625728098526</string>
     <string name="google_api_key" translatable="false">AIzaSyAVDbtX2SHuNKfgwR6NbesMdJJ8kYI9MH4</string>
-    <string name="google_app_id" translatable="false">1:625728098526:android:823100843026750b8cf24f</string>
+    <string name="google_app_id" translatable="false">1:625728098526:android:8ec303a2604fc5ba8cf24f</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAVDbtX2SHuNKfgwR6NbesMdJJ8kYI9MH4</string>
     <string name="google_storage_bucket" translatable="false">statussaverforwhats.appspot.com</string>
     <string name="project_id" translatable="false">statussaverforwhats</string>

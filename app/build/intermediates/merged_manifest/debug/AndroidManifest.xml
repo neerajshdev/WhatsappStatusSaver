@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nibodev.statussaverforwhatsapp"
+    package="com.nibodev.statussaver"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -49,7 +49,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.softneez.wasaver.NoActionBar" >
         <activity
-            android:name="com.nibodev.statussaverforwhatsapp.SplashActivity"
+            android:name="com.nibodev.statussaver.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,7 +58,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.nibodev.statussaverforwhatsapp.MainActivity"
+            android:name="com.nibodev.statussaver.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" >
         </activity>
@@ -79,7 +79,7 @@
 
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:authorities="com.nibodev.statussaverforwhatsapp.mobileadsinitprovider"
+            android:authorities="com.nibodev.statussaver.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
@@ -132,7 +132,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.nibodev.statussaverforwhatsapp.firebaseinitprovider"
+            android:authorities="com.nibodev.statussaver.firebaseinitprovider"
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />
@@ -148,7 +148,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.nibodev.statussaverforwhatsapp.androidx-startup"
+            android:authorities="com.nibodev.statussaver.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
