@@ -12,24 +12,16 @@ private val DarkColorPalette = darkColors(
 )
 
 private val LightColorPalette = lightColors(
-    primary = lightGreen,
-    onPrimary = brightWhite,
-    primaryVariant = darkGreen,
-    surface = Color.White
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
+    primary = blueGreen,
     onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    primaryVariant = neonGreen,
+    surface = Color.White
 )
 
 @Composable
 fun WhatsappStatusSaverTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
         DarkColorPalette

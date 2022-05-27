@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Whatsapp Status Saver"
 include ':app'
+include ':nativetemplates'

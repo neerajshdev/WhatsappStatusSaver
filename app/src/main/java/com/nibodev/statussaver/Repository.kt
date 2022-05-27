@@ -1,7 +1,9 @@
 package com.nibodev.statussaver
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.util.Log
@@ -12,7 +14,9 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.documentfile.provider.DocumentFile
 import com.nibodev.statussaver.models.StatusImage
 import com.nibodev.statussaver.models.StatusVideo
-import java.io.*
+import java.io.File
+import java.io.InputStream
+import java.io.OutputStream
 
 class Repository {
 
@@ -55,7 +59,7 @@ class Repository {
             }
         } else {
             BitmapFactory.decodeFile(from)
-        }
+        }.also { optimizeImage(it, 300) }
         return bitmap.asImageBitmap()
     }
 
@@ -67,9 +71,24 @@ class Repository {
         } else {
             vmr.setDataSource(src)
         }
-        val bitmap = vmr.getFrameAtTime(time)
+        val bitmap = vmr.getFrameAtTime(time)?.also { optimizeImage(it, 300) }
         vmr.release()
         return bitmap!!.asImageBitmap()
+    }
+
+
+    private fun optimizeImage(bitmap: Bitmap, width: Int): Bitmap {
+        var optimizedBitmap = bitmap
+        if (bitmap.width > width) {
+            val scale = width.toFloat() / bitmap.width
+            val matrix = Matrix()
+            matrix.postScale(scale, scale)
+            optimizedBitmap =
+                Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+        }
+
+        console("Optimized image size = ${optimizedBitmap.width} x ${optimizedBitmap.height}")
+        return optimizedBitmap
     }
 
 
@@ -112,7 +131,7 @@ class Repository {
             // get frame at 1000 ms
             val imageBitmap = getVideoFrame(context, path, 1000)
             val videoLen = getVideoDuration(context, path)
-            val video = StatusVideo(path, imageBitmap, videoLen, saved[File(path).name]!!)
+            val video = StatusVideo(path, imageBitmap, videoLen, mutableStateOf(saved[File(path).name]!!))
             into.add(video)
         }
     }
@@ -125,18 +144,10 @@ class Repository {
     ) {
         for (path in paths) {
             val imageBitmap = loadImage(context, path)
-            val image = StatusImage(path, imageBitmap, mutableStateOf(saved[File(path).name] ?: false))
+            val image =
+                StatusImage(path, imageBitmap, mutableStateOf(saved[File(path).name] ?: false))
             into.add(image)
         }
-    }
-
-    fun saveFile(from: File, to: File) {
-        val fis = from.inputStream()
-        val fos = to.outputStream()
-        val data = fis.readBytes()
-        fos.write(data)
-        fis.close()
-        fos.close()
     }
 
     fun saveContent(from: InputStream, to: OutputStream) {

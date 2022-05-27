@@ -1,18 +1,24 @@
 <resources>
-    <string name="app_name">WA Saver</string>
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="app_name">StatusSaver</string>
+    <string name="title_activity_fullscreen" translatable="false">FullscreenActivity</string>
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
 
-    <string name="top_bar_title" >WA Saver</string>
+    <string name="top_bar_title">Status Saver</string>
 
 <!--    firebase config keys-->
-    <string name="key_native_ad_id">native</string>
-    <string name="key_banner_add_id">banner</string>
-    <string name="key_interstitial_add_id">interstitial</string>
-    <string name="key_interstitial_video_add_id">interstitial_video</string>
+    <string name="key_native_ad_id" translatable="false">native</string>
+    <string name="key_banner_add_id" translatable="false">banner</string>
+    <string name="key_interstitial_add_id" translatable="false">interstitial</string>
+    <string name="key_interstitial_video_add_id" translatable="false">interstitial_video</string>
 
 
     <string name="phone_number_hint">Phone</string>
     <string name="enter_your_message">Enter Your Message</string>
+    <string name="user_lang_hindi" translatable="false">हिन्दी</string>
+    <string name="user_lang_english" translatable="false">ENGLISH</string>
+    <string name="button_text_send">SEND</string>
+    <string name="move_forword">move forword</string>
+    <string name="recent_stories">Recent Stories</string>
+    <string name="saved_stories">Saved Stories</string>
 </resources>

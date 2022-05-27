@@ -31,7 +31,7 @@ const val videoExtension = ".mp4"
 const val imageExtension = ".jpg"
 
 class MainViewModel : ViewModel() {
-    lateinit var selectMediaResultLauncher: ActivityResultLauncher<Intent>
+    private lateinit var selectMediaResultLauncher: ActivityResultLauncher<Intent>
     private val desiredUri = Uri.parse("content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fmedia%2Fcom.whatsapp%2FWhatsApp%2FMedia")
     private val repository: Repository by lazy { Repository() }
     private lateinit var context: WeakReference<Context>
@@ -42,10 +42,10 @@ class MainViewModel : ViewModel() {
     private val savedMediaMap = mutableMapOf<String, Boolean>()
 
     // ui data
-    val statusVideo = mutableStateListOf<StatusVideo>()
-    val statusImage = mutableStateListOf<StatusImage>()
-    val savedImage = mutableStateListOf<StatusImage>()
-    val savedVideo = mutableStateListOf<StatusVideo>()
+    private val statusVideo = mutableStateListOf<StatusVideo>()
+    private val statusImage = mutableStateListOf<StatusImage>()
+    private val savedImage = mutableStateListOf<StatusImage>()
+    private val savedVideo = mutableStateListOf<StatusVideo>()
     val recentMedia = mutableStateListOf<Media>()
     val savedMedia = mutableStateListOf<Media>()
 
@@ -152,7 +152,7 @@ class MainViewModel : ViewModel() {
     }
 
     // helper function for user to select the media folder
-    @RequiresApi(Build.VERSION_CODES.R)
+    @RequiresApi(Build.VERSION_CODES.Q)
     fun selectMedia() {
        requestInitialUri()
     }
@@ -231,7 +231,7 @@ class MainViewModel : ViewModel() {
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.R)
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun requestInitialUri() {
         val sm = context.get()!!.getSystemService(Context.STORAGE_SERVICE) as StorageManager
         val intent = sm.primaryStorageVolume.createOpenDocumentTreeIntent()

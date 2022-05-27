@@ -1,7 +1,13 @@
 package com.nibodev.statussaver
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.ConnectivityManager
 import android.util.Log
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.remoteConfig
 import java.io.File
 
 
@@ -46,4 +52,41 @@ inline fun isDebug(content: () -> Unit) {
     }
 }
 
+// print msg with console tag if the app is in debug mode
+fun console(msg: String)  {
+    if (debug)
+        Log.d("Console", msg)
+}
 
+
+fun isNetworkConnected(context: Context): Boolean {
+    var connected = false
+    if (context is Activity) {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo = cm.activeNetworkInfo
+        if (netInfo != null) connected = netInfo.isAvailable && netInfo.isConnectedOrConnecting
+    }
+    return connected
+}
+
+
+fun isWhatsappInstalled(packageName: String, pm: PackageManager): Boolean {
+    val isInstalled: Boolean = try {
+        pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+        true
+    } catch (e: PackageManager.NameNotFoundException) {
+        false
+    }
+    return isInstalled
+}
+
+
+fun shareThisApp(activity: Activity) {
+    val myIntent = Intent(Intent.ACTION_SEND)
+    myIntent.type = "text/plain"
+    val body = Firebase.remoteConfig.getString("share_text_body")
+    val sub = Firebase.remoteConfig.getString("share_sub_body")
+    myIntent.putExtra(Intent.EXTRA_SUBJECT, sub)
+    myIntent.putExtra(Intent.EXTRA_TEXT, body)
+    activity.startActivity(Intent.createChooser(myIntent, "Share Using"))
+}

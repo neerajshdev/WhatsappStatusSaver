@@ -14,7 +14,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.core.app.ActivityCompat
-import com.nibodev.statussaver.ui.MainUserInterface
+import com.nibodev.statussaver.ui.MainUI
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
 import java.io.File
 
@@ -24,16 +24,21 @@ var saved_media_dir: String? = null
 
 class MainActivity : ComponentActivity() {
 
-    lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
-    val permissions by lazy {
+    val viewModel : MainViewModel by viewModels()
+
+    private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
+    private val permissions by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
         } else {
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
         }
     }
 
-    lateinit var onStoragePermissionResult: (Boolean) -> Unit
+    private lateinit var onStoragePermissionResult: (Boolean) -> Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +51,10 @@ class MainActivity : ComponentActivity() {
 
         pathToWhatsAppStatus = "$parentDir/Android/media/com.whatsapp/WhatsApp/Media/.Statuses"
         if (File(pathToWhatsAppStatus).exists())
-          pathToWhatsFiles = pathToWhatsAppStatus
+            pathToWhatsFiles = pathToWhatsAppStatus
 
-        saved_media_dir = if(Build.VERSION.SDK_INT == Build.VERSION_CODES.R) "${getExternalFilesDir(null)!!.absolutePath}/StatusSaver" else "$parentDir/DCIM/StatusSaver"
+        saved_media_dir =
+            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.R) "${getExternalFilesDir(null)!!.absolutePath}/StatusSaver" else "$parentDir/DCIM/StatusSaver"
         // make saved directory if it does not exists
         if (!File(saved_media_dir!!).exists()) File(saved_media_dir!!).mkdir()
 
@@ -60,23 +66,30 @@ class MainActivity : ComponentActivity() {
             Log.d(TAG, "saved media dir = $saved_media_dir")
         }
 
-        loadInterstitialAd(this) { it.show(this) }
 
-        requestPermissionLauncher = registerForActivityResult(RequestMultiplePermissions()) { result ->
-            var accepted = true
-            for (permission in permissions) {
-                accepted = accepted.and(result[permission] ?: false)
+        requestPermissionLauncher =
+            registerForActivityResult(RequestMultiplePermissions()) { result ->
+                var accepted = true
+                for (permission in permissions) {
+                    accepted = accepted.and(result[permission] ?: false)
+                }
+                onStoragePermissionResult.invoke(accepted)
             }
-            onStoragePermissionResult.invoke(accepted)
-        }
 
-        initContent()
+        try {
+            initContent()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
     }
 
     private fun isStoragePermissionsGranted(): Boolean {
         var grantPermissions = true
         for (permission in permissions) {
-            val isGranted = ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+            val isGranted = ActivityCompat.checkSelfPermission(
+                this,
+                permission
+            ) == PackageManager.PERMISSION_GRANTED
             grantPermissions = grantPermissions.and(isGranted)
             isDebug {
                 Log.d(TAG, "$permission: $isGranted")
@@ -86,8 +99,14 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun initContent() {
-        val model: MainViewModel by viewModels()
-        model.init(this)
+        viewModel.init(this)
+        // Create ad manager
+        val adIds = AdIds(
+            nativeAdId = "ca-app-pub-3940256099942544/2247696110",
+            appOpenAdId = "ca-app-pub-3940256099942544/3419835294",
+            interstitialAdId = "ca-app-pub-3940256099942544/1033173712"
+        )
+        AdManager.createInstance(this, adIds)
 
         setContent {
             val isStoragePermissionsGranted = remember {
@@ -98,20 +117,20 @@ class MainActivity : ComponentActivity() {
                     isStoragePermissionsGranted.value = result
                     if (!result) {
                         requestPermissionLauncher.launch(permissions)
-                        Toast.makeText(this, "Please, allow for storage permissions.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this,
+                            "Please, allow for storage permissions.",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
                 requestPermissionLauncher.launch(permissions)
             } else {
                 WhatsappStatusSaverTheme {
-                    MainUserInterface(model = model)
+                    MainUI(model = viewModel)
                 }
             }
         }
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        loadInterstitialAd(this) { it.show(this) }
-    }
 }

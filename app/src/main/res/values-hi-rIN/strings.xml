@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">स्टैटस सवेर</string>
+    <string name="enter_your_message">संदेश लिखे</string>
+    <string name="button_text_send">संदेश भेजे</string>
+    <string name="top_bar_title" translatable="false">"स्टैटस सेवर "</string>
+    <string name="phone_number_hint">"फोन "</string>
+    <string name="move_forword">"आगे "</string>
+    <string name="recent_stories">"नये स्टैटस "</string>
+    <string name="saved_stories">"सुरक्षित किए गये "</string>
+</resources>

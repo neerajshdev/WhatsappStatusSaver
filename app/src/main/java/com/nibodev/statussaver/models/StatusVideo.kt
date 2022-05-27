@@ -1,15 +1,11 @@
 package com.nibodev.statussaver.models
 
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.ImageBitmap
 
 class StatusVideo(
-    filepath: String,
+    override val path: String,
     val thumbnail: ImageBitmap,
     val duration: String,
-    _isSaved: Boolean = false
-) : Media() {
-    override var isSaved : MutableState<Boolean> = mutableStateOf(_isSaved)
-    override val path: String = filepath
-}
+    override val isSaved: MutableState<Boolean>
+) : Media()
