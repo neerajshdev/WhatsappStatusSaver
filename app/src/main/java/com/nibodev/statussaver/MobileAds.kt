@@ -626,12 +626,13 @@ class InterstitialAdManager(
         get() = object : InterstitialAdLoadCallback() {
             override fun onAdLoaded(ad: InterstitialAd) {
                 ads.add(ad)
+                console("interstitial ad size = ${ads.size}")
             }
         }
 
     suspend fun getAd(context: Context): InterstitialAd {
         if (ads.isEmpty()) {
-            loadAppOpenAd(context, bufferSize)
+            loadAd(context, bufferSize)
             while (ads.isEmpty()) {
                 coroutineContext.ensureActive()
                 delay(50)
@@ -641,7 +642,7 @@ class InterstitialAdManager(
         return ads.last()
     }
 
-    private fun loadAppOpenAd(context: Context, numOfAds: Int) {
+    private fun loadAd(context: Context, numOfAds: Int) {
         repeat(numOfAds) {
             InterstitialAd.load(
                 context,
@@ -653,7 +654,7 @@ class InterstitialAdManager(
     }
 }
 
-suspend fun appOpenAd(
+suspend fun interstitialAd(
     activity: Activity,
     interstitialAdManager: InterstitialAdManager,
     onAdClicked: (() -> Unit)? = null,
@@ -706,12 +707,18 @@ class NativeAdManager(
             }
         }
         val ad = ads.removeFirst()
-        ads.add(ad)
         return ad
     }
 
 
     private fun loadNativeAd(context: Context, numOfAds: Int) {
+        val videoOptions = VideoOptions.Builder()
+            .setStartMuted(false)
+            .build()
+
+        val adOptions = NativeAdOptions.Builder()
+            .setVideoOptions(videoOptions)
+            .build()
         val adLoader = AdLoader.Builder(context, adId)
             .forNativeAd { nativeAd ->
                 ads.add(nativeAd)
@@ -719,7 +726,7 @@ class NativeAdManager(
             .withAdListener(
                 object : AdListener() {
                     override fun onAdClicked() {
-                        super.onAdClicked()
+
                     }
 
                     override fun onAdClosed() {
@@ -743,6 +750,7 @@ class NativeAdManager(
                     }
                 }
             )
+            .withNativeAdOptions(adOptions)
             .build()
         adLoader.loadAds(adRequest, numOfAds)
     }

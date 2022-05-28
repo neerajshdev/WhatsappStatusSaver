@@ -38,6 +38,11 @@ import com.nibodev.statussaver.ui.LocalNavController
 import com.nibodev.statussaver.ui.components.*
 import kotlinx.coroutines.launch
 
+
+private val nativeAdManager = NativeAdManager("ca-app-pub-3940256099942544/2247696110", 5)
+private val interstitialAdManager =
+    InterstitialAdManager("ca-app-pub-3940256099942544/1033173712", 5)
+
 @Composable
 fun RecentStoriesScreen(model: MainViewModel) {
     val scaffoldState = rememberScaffoldState()
@@ -70,9 +75,10 @@ fun RecentStoriesScreen(model: MainViewModel) {
 @Composable
 fun TabLayout(model: MainViewModel, modifier: Modifier = Modifier) {
     val pagerState = rememberPagerState(pageCount = 2)
-    Column {
+    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Tabs(pagerState = pagerState)
-        TabsContent(pagerState = pagerState, model)
+        TabsContent(pagerState = pagerState,model = model, modifier = Modifier.weight(1f))
+        BannerAdUnit()
     }
 }
 
@@ -120,29 +126,17 @@ private fun Tabs(pagerState: PagerState) {
                 },
                 selected = pagerState.currentPage == index,
                 onClick = {
-                    if (isNetworkConnected(context) && adTime.timeToShow())
-                        interstitialAd {
-                            fsccConfig {
-                                onAdClicked = {
-                                    console("ad is clicked.")
-                                }
-                                onAdDismissed = {
-                                    console("ad is dismissed.")
-                                    scope.launch {
-                                        pagerState.animateScrollToPage(index)
-                                    }
-                                }
-                            }
-                            onFailed = {
-                                console("failed to load ad")
-                                scope.launch {
-                                    pagerState.animateScrollToPage(index)
-                                }
-                            }
+                    scope.launch {
+                        if (isNetworkConnected(context) && adTime.timeToShow()) {
+                            interstitialAd(
+                                context,
+                                interstitialAdManager,
+                            )
+                        } else {
+                            pagerState.animateScrollToPage(index)
                         }
-                    else scope.launch {
-                        pagerState.animateScrollToPage(index)
                     }
+
                 }
             )
         }
@@ -152,8 +146,8 @@ private fun Tabs(pagerState: PagerState) {
 
 @ExperimentalPagerApi
 @Composable
-private fun TabsContent(pagerState: PagerState, model: MainViewModel) {
-    HorizontalPager(state = pagerState) { page ->
+private fun TabsContent(modifier: Modifier = Modifier, pagerState: PagerState, model: MainViewModel) {
+    HorizontalPager(state = pagerState, modifier = modifier) { page ->
         when (page) {
             0 -> FirstTabPage(model)
             1 -> SecondTabPage(model)
@@ -184,7 +178,7 @@ private fun FirstTabPage(
         ScrollableRecentMediaList(
             media = model.recentMedia,
             onItemChosen = {
-                when(it) {
+                when (it) {
                     is StatusImage -> nc.push { ImageScreen(image = it) }
                     is StatusVideo -> nc.push { VideoScreen(video = it) }
                 }
@@ -238,7 +232,7 @@ private fun SecondTabPage(model: MainViewModel) {
     ScrollableSavedMediaList(
         media = model.savedMedia,
         onItemChosen = {
-            when(it) {
+            when (it) {
                 is StatusImage -> nc.push { ImageScreen(image = it) }
                 is StatusVideo -> nc.push { VideoScreen(video = it) }
             }
@@ -337,6 +331,11 @@ fun ScrollableRecentMediaList(
         modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        item {
+            NativeMediumAdUnit(
+                nativeAdManager = nativeAdManager
+            )
+        }
         items(media.size, key = { (media[it]).path }) {
             val mediaItem = media[it]
             val itemModifier = Modifier
@@ -385,9 +384,14 @@ fun ScrollableSavedMediaList(
 ) {
     LazyColumn(
         state = savedMediaScrollState,
-        modifier = modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.fillMaxWidth()
     ) {
+        item {
+            NativeMediumAdUnit(
+                nativeAdManager = nativeAdManager,
+            )
+        }
         items(media.size, key = { (media[it]).path }) {
             val mediaItem = media[it]
             val itemModifier = Modifier

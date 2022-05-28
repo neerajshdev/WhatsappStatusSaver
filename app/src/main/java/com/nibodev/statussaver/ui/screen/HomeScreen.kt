@@ -11,6 +11,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -22,18 +25,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.nibodev.statussaver.MainActivity
+import com.nibodev.statussaver.*
 import com.nibodev.statussaver.R
-import com.nibodev.statussaver.shareThisApp
 import com.nibodev.statussaver.ui.LocalNavController
-import com.nibodev.statussaver.ui.components.OnBackgroundImage
-import com.nibodev.statussaver.ui.components.TopAppBar
-import com.nibodev.statussaver.ui.components.VerticalGrid
+import com.nibodev.statussaver.ui.components.*
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
+import kotlinx.coroutines.launch
+
+private val nativeAdManager = NativeAdManager("ca-app-pub-3940256099942544/2247696110", 3)
+private val interstitialAdManager =
+    InterstitialAdManager("ca-app-pub-3940256099942544/1033173712", 5)
 
 @Composable
 fun HomePage() {
     val nc = LocalNavController.current
+    val scope = rememberCoroutineScope()
     val activity = LocalContext.current as Activity 
     val viewModel = (LocalContext.current as MainActivity).viewModel
     val bgImage = painterResource(R.drawable.bg)
@@ -41,6 +47,7 @@ fun HomePage() {
     val share = painterResource(R.drawable.btn_share)
     val statusSaver = painterResource(R.drawable.tools_status_saver)
     val privacy = painterResource(R.drawable.btn_privacy)
+
 
     Scaffold(
         topBar = { TopAppBar(title = stringResource(R.string.top_bar_title))}
@@ -52,15 +59,15 @@ fun HomePage() {
                 .padding(it)
         ) {
             Column(
-                verticalArrangement = Arrangement.SpaceAround,
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp)
             ) {
-                // todo: replace this box with native ad
-                Box(modifier = Modifier.height(100.dp))
+                NativeSmallAdUnit(nativeAdManager = nativeAdManager)
+                Spacer(modifier = Modifier.weight(1f))
                 VerticalGrid(
                     modifier = Modifier
-                        .padding(horizontal = 16.dp)
                 ) {
                     val imageModifier = Modifier
                         .fillMaxSize()
@@ -68,14 +75,44 @@ fun HomePage() {
                     Image(
                         painter = directChat,
                         contentDescription = "direct chat",
-                        modifier = imageModifier.clickable { }
+                        modifier = imageModifier.clickable {
+                           scope.launch {
+                               if (isNetworkConnected(activity)) {
+                                   interstitialAd(
+                                       activity, interstitialAdManager,
+                                       onAdDismissedFsc = {
+                                           nc.push {
+                                              DirectChatPage()
+                                           }
+                                       }
+                                   )
+                               } else {
+                                   nc.push {
+                                       DirectChatPage()
+                                   }
+                               }
+                           }
+                        }
                     )
                     Image(
                         painter = statusSaver,
                         contentDescription = "status saver",
                         modifier = imageModifier.clickable {
-                            nc.push {
-                                RecentStoriesScreen(viewModel)
+                            scope.launch {
+                                if (isNetworkConnected(activity)) {
+                                    interstitialAd(
+                                        activity, interstitialAdManager,
+                                        onAdDismissedFsc = {
+                                            nc.push {
+                                                RecentStoriesScreen(model = viewModel)
+                                            }
+                                        }
+                                    )
+                                } else {
+                                    nc.push {
+                                        RecentStoriesScreen(model = viewModel)
+                                    }
+                                }
                             }
                         }
                     )
@@ -92,6 +129,10 @@ fun HomePage() {
                         }
                     )
                 }
+                Spacer(modifier = Modifier.weight(1f))
+
+                // banner ad view
+                BannerAdUnit()
             }
         }
 

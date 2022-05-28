@@ -54,4 +54,9 @@ class NavigationController {
     }
 
     fun size() = contentStack.size
+
+    fun exitApp() {
+        contentStack.clear()
+        System.exit(0)
+    }
 }

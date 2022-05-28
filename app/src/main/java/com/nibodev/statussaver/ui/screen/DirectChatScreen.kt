@@ -12,11 +12,25 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.viewinterop.AndroidView
 import com.hbb20.CountryCodePicker
 import com.nibodev.statussaver.MainActivity
 import com.nibodev.statussaver.R
 import com.nibodev.statussaver.isWhatsappInstalled
+import com.nibodev.statussaver.ui.components.TopAppBar
+
+
+@Composable
+fun DirectChatPage() {
+    Scaffold(
+        topBar = { TopAppBar(title = stringResource(R.string.top_bar_title))}
+    ) {
+        DirectChatContent(modifier = Modifier
+            .padding(it)
+            .fillMaxSize())
+    }
+}
 
 
 @Composable

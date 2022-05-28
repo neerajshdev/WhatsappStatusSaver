@@ -30,7 +30,6 @@ import com.nibodev.statussaver.MainActivity
 import com.nibodev.statussaver.NativeAdManager
 import com.nibodev.statussaver.R
 import com.nibodev.statussaver.ui.LocalNavController
-import com.nibodev.statussaver.ui.components.NativeMediumAdUnit
 import com.nibodev.statussaver.ui.components.NativeSmallAdUnit
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
 import kotlinx.coroutines.launch
@@ -41,102 +40,107 @@ val USER_LANG = stringPreferencesKey("USER-LANG")
 
 private val nativeAdManager = NativeAdManager("ca-app-pub-3940256099942544/2247696110", 1)
 
+
 @Composable
-fun LangScreen() {
-    val nc = LocalNavController.current
-    val scope = rememberCoroutineScope()
-    val context = LocalContext.current
-    var userLang by remember {
-        mutableStateOf("unknown")
-    }
+fun LangPage(
+) {
+    Scaffold(
+        topBar = { com.nibodev.statussaver.ui.components.TopAppBar(title = stringResource(R.string.top_bar_title))}
+    ) {
+        val nc = LocalNavController.current
+        val scope = rememberCoroutineScope()
+        val context = LocalContext.current
+        var userLang by remember {
+            mutableStateOf("unknown")
+        }
 
-    fun savePref() {
-        scope.launch {
-            context.dataStore.edit { pref ->
-                pref[USER_LANG] = userLang
-            }
-            val activity = context as MainActivity
-            val locale = java.util.Locale(userLang, "in")
-            with(activity.resources) {
-                configuration.setLocale(locale)
-                updateConfiguration(configuration, displayMetrics)
-            }
+        fun savePref() {
+            scope.launch {
+                context.dataStore.edit { pref ->
+                    pref[USER_LANG] = userLang
+                }
+                val activity = context as MainActivity
+                val locale = java.util.Locale(userLang, "in")
+                with(activity.resources) {
+                    configuration.setLocale(locale)
+                    updateConfiguration(configuration, displayMetrics)
+                }
 
-            nc.replace {
-                HomePage()
+                nc.push {
+                    HomePage()
+                }
             }
         }
-    }
 
-    LaunchedEffect(Unit) {
-        context.dataStore.data.collect { pref ->
-            userLang = pref[USER_LANG] ?: "en"
+        LaunchedEffect(Unit) {
+            context.dataStore.data.collect { pref ->
+                userLang = pref[USER_LANG] ?: "en"
+            }
         }
-    }
 
-    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-        val (nativeAd, english, hindi, fab) = createRefs()
+        ConstraintLayout(modifier = Modifier.fillMaxSize().padding(it)) {
+            val (nativeAd, english, hindi, fab) = createRefs()
 
-        Box(
-            modifier = Modifier.constrainAs(nativeAd) {
-                    centerHorizontallyTo(parent)
-                    bottom.linkTo(english.top, 32.dp)
-                    top.linkTo(parent.top, 8.dp)
-                }
-                .padding(horizontal = 16.dp),
-//            nativeAdManager = nativeAdManager
-        )
-
-        Lang(
-            lang = stringResource(R.string.user_lang_english),
-            bgColor = Color(0xffD4F1F4),
-            isChecked = { userLang == "en" },
-            onChecked = { userLang = "en" },
-            modifier = Modifier
-                .constrainAs(english) {
-                    centerHorizontallyTo(parent)
-                    top.linkTo(nativeAd.bottom)
-                    bottom.linkTo(hindi.top)
-                }
-                .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
-        )
-
-        Lang(
-            lang = stringResource(R.string.user_lang_hindi),
-            bgColor = Color(0xffD4F1F4),
-            isChecked = { userLang == "hi" },
-            onChecked = { userLang = "hi" },
-            modifier = Modifier
-                .constrainAs(hindi) {
-                    bottom.linkTo(fab.top)
-                    top.linkTo(english.bottom)
-                }
-                .padding(start = 16.dp, end = 16.dp)
-        )
-
-        FloatingActionButton(
-            onClick = {
-                savePref()
-            },
-            modifier = Modifier
-                .constrainAs(fab) {
-                    bottom.linkTo(parent.bottom)
-                    end.linkTo(parent.end)
-                }
-                .padding(end = 16.dp, bottom = 16.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_round_arrow_forward_48),
-                contentDescription = stringResource(R.string.move_forword),
-                modifier = Modifier.padding(8.dp)
+            NativeSmallAdUnit(
+                nativeAdManager = nativeAdManager,
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .constrainAs(nativeAd) {
+                        centerHorizontallyTo(parent)
+                        top.linkTo(parent.top)
+                        bottom.linkTo(english.top)
+                    },
             )
+
+            Lang(
+                lang = stringResource(R.string.user_lang_english),
+                bgColor = Color(0xffD4F1F4),
+                isChecked = { userLang == "en" },
+                onChecked = { userLang = "en" },
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                    .constrainAs(english) {
+                        centerHorizontallyTo(parent)
+                        top.linkTo(nativeAd.bottom)
+                        bottom.linkTo(hindi.top)
+                    }
+            )
+
+            Lang(
+                lang = stringResource(R.string.user_lang_hindi),
+                bgColor = Color(0xffD4F1F4),
+                isChecked = { userLang == "hi" },
+                onChecked = { userLang = "hi" },
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp)
+                    .constrainAs(hindi) {
+                        bottom.linkTo(fab.top)
+                        top.linkTo(english.bottom)
+                    }
+            )
+
+            FloatingActionButton(
+                onClick = {
+                    savePref()
+                },
+                modifier = Modifier
+                    .constrainAs(fab) {
+                        bottom.linkTo(parent.bottom)
+                        end.linkTo(parent.end)
+                    }
+                    .padding(end = 16.dp, bottom = 16.dp)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_round_arrow_forward_48),
+                    contentDescription = stringResource(R.string.move_forword),
+                    modifier = Modifier.padding(8.dp)
+                )
+            }
+            createVerticalChain(english, hindi, chainStyle = ChainStyle.Packed)
         }
-        createVerticalChain(nativeAd, english, hindi, chainStyle = ChainStyle.Packed)
     }
 }
 
-
-// todo: implement gesture for button press effect
 
 @Composable
 fun Lang(
@@ -196,6 +200,6 @@ fun Lang(
 @Composable
 fun LangScreenPreview() {
     WhatsappStatusSaverTheme {
-        LangScreen()
+        LangPage()
     }
 }

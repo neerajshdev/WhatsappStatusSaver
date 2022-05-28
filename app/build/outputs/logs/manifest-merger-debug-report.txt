@@ -37,7 +37,7 @@ MERGED from [androidx.customview:customview-poolingcontainer:1.0.0-beta02] C:\Us
 MERGED from [androidx.core:core-ktx:1.7.0] C:\Users\nsxyl\.gradle\caches\transforms-3\5200ad97d3587c32d9b1a913ed2142e3\transformed\jetified-core-ktx-1.7.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\4947e9aabec31c226821c51fdce6fbc9\transformed\material-1.6.0\AndroidManifest.xml:17:1-26:12
 MERGED from [com.hbb20:ccp:2.4.0] C:\Users\nsxyl\.gradle\caches\transforms-3\cf40a8baf8e88f3e4000f9e57bde5580\transformed\jetified-ccp-2.4.0\AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\nsxyl\.gradle\caches\transforms-3\a50c83a8423efb0d7b2b66c237341182\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\nsxyl\.gradle\caches\transforms-3\9e416922395fee8828496e5fee7a9176\transformed\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [com.airbnb.android:lottie:5.0.3] C:\Users\nsxyl\.gradle\caches\transforms-3\8672d9ca83e0cced4ba345ec42d581ba\transformed\jetified-lottie-5.0.3\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\nsxyl\.gradle\caches\transforms-3\c16718bd7b78f2564c30f4339d9bd5be\transformed\appcompat-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-ads:20.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\0f8b84eed04eedb5540f71812cfc69d4\transformed\jetified-play-services-ads-20.6.0\AndroidManifest.xml:17:1-25:12
@@ -191,8 +191,8 @@ MERGED from [:nativetemplates] C:\Users\nsxyl\androidStudioProjects\WhatsappStat
 MERGED from [:nativetemplates] C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\nativetemplates\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-10:19
 MERGED from [com.google.android.material:material:1.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\4947e9aabec31c226821c51fdce6fbc9\transformed\material-1.6.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\4947e9aabec31c226821c51fdce6fbc9\transformed\material-1.6.0\AndroidManifest.xml:24:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\nsxyl\.gradle\caches\transforms-3\a50c83a8423efb0d7b2b66c237341182\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\nsxyl\.gradle\caches\transforms-3\a50c83a8423efb0d7b2b66c237341182\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\nsxyl\.gradle\caches\transforms-3\9e416922395fee8828496e5fee7a9176\transformed\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\nsxyl\.gradle\caches\transforms-3\9e416922395fee8828496e5fee7a9176\transformed\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
 MERGED from [com.airbnb.android:lottie:5.0.3] C:\Users\nsxyl\.gradle\caches\transforms-3\8672d9ca83e0cced4ba345ec42d581ba\transformed\jetified-lottie-5.0.3\AndroidManifest.xml:9:5-20
 MERGED from [com.airbnb.android:lottie:5.0.3] C:\Users\nsxyl\.gradle\caches\transforms-3\8672d9ca83e0cced4ba345ec42d581ba\transformed\jetified-lottie-5.0.3\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\4f272a34ebee1c46f303a9060b755fa2\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:46:5-65:19
@@ -367,8 +367,8 @@ MERGED from [com.google.android.material:material:1.6.0] C:\Users\nsxyl\.gradle\
 MERGED from [com.google.android.material:material:1.6.0] C:\Users\nsxyl\.gradle\caches\transforms-3\4947e9aabec31c226821c51fdce6fbc9\transformed\material-1.6.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.hbb20:ccp:2.4.0] C:\Users\nsxyl\.gradle\caches\transforms-3\cf40a8baf8e88f3e4000f9e57bde5580\transformed\jetified-ccp-2.4.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.hbb20:ccp:2.4.0] C:\Users\nsxyl\.gradle\caches\transforms-3\cf40a8baf8e88f3e4000f9e57bde5580\transformed\jetified-ccp-2.4.0\AndroidManifest.xml:7:5-9:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\nsxyl\.gradle\caches\transforms-3\a50c83a8423efb0d7b2b66c237341182\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\nsxyl\.gradle\caches\transforms-3\a50c83a8423efb0d7b2b66c237341182\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\nsxyl\.gradle\caches\transforms-3\9e416922395fee8828496e5fee7a9176\transformed\constraintlayout-2.0.4\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\nsxyl\.gradle\caches\transforms-3\9e416922395fee8828496e5fee7a9176\transformed\constraintlayout-2.0.4\AndroidManifest.xml:5:5-7:41
 MERGED from [com.airbnb.android:lottie:5.0.3] C:\Users\nsxyl\.gradle\caches\transforms-3\8672d9ca83e0cced4ba345ec42d581ba\transformed\jetified-lottie-5.0.3\AndroidManifest.xml:5:5-7:41
 MERGED from [com.airbnb.android:lottie:5.0.3] C:\Users\nsxyl\.gradle\caches\transforms-3\8672d9ca83e0cced4ba345ec42d581ba\transformed\jetified-lottie-5.0.3\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\nsxyl\.gradle\caches\transforms-3\c16718bd7b78f2564c30f4339d9bd5be\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
