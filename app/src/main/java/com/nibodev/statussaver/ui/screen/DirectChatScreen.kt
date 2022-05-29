@@ -1,11 +1,13 @@
 package com.nibodev.statussaver.ui.screen
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
@@ -17,18 +19,34 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.hbb20.CountryCodePicker
 import com.nibodev.statussaver.MainActivity
 import com.nibodev.statussaver.R
+import com.nibodev.statussaver.interstitialAd
 import com.nibodev.statussaver.isWhatsappInstalled
+import com.nibodev.statussaver.ui.LocalNavController
 import com.nibodev.statussaver.ui.components.TopAppBar
+import com.nibodev.statussaver.ui.interstitialAdManager
 
 
 @Composable
 fun DirectChatPage() {
+    val context = LocalContext.current
+    val nc = LocalNavController.current
+
     Scaffold(
         topBar = { TopAppBar(title = stringResource(R.string.top_bar_title))}
     ) {
         DirectChatContent(modifier = Modifier
             .padding(it)
             .fillMaxSize())
+    }
+
+    BackHandler {
+        interstitialAd(
+            activity = context as Activity,
+            interstitialAdManager = interstitialAdManager,
+            doLast = {
+                nc.pop()
+            }
+        )
     }
 }
 

@@ -40,6 +40,7 @@ import com.nibodev.statussaver.R
 import com.nibodev.statussaver.console
 import com.nibodev.statussaver.shareThisApp
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
+import kotlinx.coroutines.delay
 import kotlin.math.ceil
 
 
@@ -66,20 +67,19 @@ fun VerticalGrid(
                     it.measure(
                         constraints.copy(
                             maxWidth = itemSize.toInt(),
-                            maxHeight = itemSize.toInt()
                         )
                     )
                 }
 
             val rows = (placeables.size / rowSize.toFloat()).also { ceil(it).toInt() }
-            val totalHeight = itemSize * rows + (rows - 1) * cellSpacing.roundToPx()
+            val totalHeight = placeables[0].height * rows + (rows - 1) * cellSpacing.roundToPx()
 
             layout(constraints.maxWidth, totalHeight.toInt()) {
                 var c = 0
                 var r = 0
                 for (i in placeables.indices) {
-                    val x: Int = ((itemSize + cellSpacing.toPx()) * c).toInt()
-                    val y: Int = ((itemSize + cellSpacing.toPx()) * r).toInt()
+                    val x: Int = ((placeables[i].width + cellSpacing.toPx()) * c).toInt()
+                    val y: Int = ((placeables[i].height + cellSpacing.toPx()) * r).toInt()
 
                     // place the item
                     placeables[i].placeRelative(x, y)
@@ -162,9 +162,13 @@ fun NativeSmallAdUnit(
     val background = MaterialTheme.colors.background.toArgb()
 
     LaunchedEffect(Unit) {
-        console("NativeAdUnit Launched effect run")
-        nativeAd = nativeAdManager.getAd(context)
-        console("native ad loaded = ${nativeAd != null}")
+        var ad : NativeAd? = nativeAdManager.getAd(context)
+        var tried = 0
+        while (ad == null && tried < 5) {
+            delay(1000)
+            ad = nativeAdManager.getAd(context)
+        }
+        nativeAd = ad
     }
 
     DisposableEffect(Unit) {
@@ -214,9 +218,13 @@ fun NativeMediumAdUnit(
     val background = MaterialTheme.colors.background.toArgb()
 
     LaunchedEffect(Unit) {
-        console("NativeAdUnit Launched effect run")
-        nativeAd = nativeAdManager.getAd(context)
-        console("native ad loaded = ${nativeAd != null}")
+        var ad : NativeAd? = nativeAdManager.getAd(context)
+        var tried = 0
+        while (ad == null && tried < 5) {
+            delay(1000)
+            ad = nativeAdManager.getAd(context)
+        }
+        nativeAd = ad
     }
     DisposableEffect(Unit) {
         onDispose {

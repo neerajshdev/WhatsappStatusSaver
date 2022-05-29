@@ -1,6 +1,7 @@
 package com.nibodev.statussaver.ui.screen
 
-import android.content.Context
+import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,32 +19,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nibodev.statussaver.MainActivity
 import com.nibodev.statussaver.NativeAdManager
 import com.nibodev.statussaver.R
-import com.nibodev.statussaver.ui.LocalNavController
+import com.nibodev.statussaver.interstitialAd
+import com.nibodev.statussaver.ui.*
 import com.nibodev.statussaver.ui.components.NativeSmallAdUnit
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
 import kotlinx.coroutines.launch
 
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
-val USER_LANG = stringPreferencesKey("USER-LANG")
-
-private val nativeAdManager = NativeAdManager("ca-app-pub-3940256099942544/2247696110", 1)
-
-
 @Composable
 fun LangPage(
 ) {
+    val navController = LocalNavController.current
     Scaffold(
         topBar = { com.nibodev.statussaver.ui.components.TopAppBar(title = stringResource(R.string.top_bar_title))}
     ) {
@@ -65,10 +58,15 @@ fun LangPage(
                     configuration.setLocale(locale)
                     updateConfiguration(configuration, displayMetrics)
                 }
-
-                nc.push {
-                    HomePage()
-                }
+                interstitialAd(
+                    context as Activity,
+                    interstitialAdManager = interstitialAdManager,
+                    doLast = {
+                        navController.push {
+                            HomePage()
+                        }
+                    }
+                )
             }
         }
 
@@ -78,11 +76,13 @@ fun LangPage(
             }
         }
 
-        ConstraintLayout(modifier = Modifier.fillMaxSize().padding(it)) {
+        ConstraintLayout(modifier = Modifier
+            .fillMaxSize()
+            .padding(it)) {
             val (nativeAd, english, hindi, fab) = createRefs()
 
             NativeSmallAdUnit(
-                nativeAdManager = nativeAdManager,
+                nativeAdManager = langNativeAdManager,
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
                     .constrainAs(nativeAd) {
@@ -139,6 +139,12 @@ fun LangPage(
             createVerticalChain(english, hindi, chainStyle = ChainStyle.Packed)
         }
     }
+
+    BackHandler {
+        navController.push {
+            ExitConfirmPage()
+        }
+    }
 }
 
 
@@ -155,6 +161,8 @@ fun Lang(
     rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.lottie_multilang))
     val lottieSelected by
     rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.lottie_selected))
+
+
 
     Card(
         elevation = 4.dp,

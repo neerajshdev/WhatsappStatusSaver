@@ -32,20 +32,16 @@
         "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\mipmap-mdpi\\ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\mipmap-xxxhdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\mipmap-xxxhdpi\\ic_launcher_adaptive_fore.png"
+        "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
         "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\drawable_ic_round_download_24.xml.flat",
         "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\drawable\\ic_round_download_24.xml"
     },
     {
-        "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
-        "merged": "com.nibodev.statussaver.app-merged_res-65:/raw_lottie_loading.json.flat",
-        "source": "com.nibodev.statussaver.app-main-67:/raw/lottie_loading.json"
+        "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\mipmap-xxxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\mipmap-xxxhdpi\\ic_launcher_adaptive_fore.png"
     },
     {
         "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\raw_lottie_selected.json.flat",
@@ -92,12 +88,12 @@
         "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\drawable_bg.jpg.flat",
-        "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\drawable\\bg.jpg"
-    },
-    {
         "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\mipmap-xhdpi_ic_launcher_adaptive_fore.png.flat",
         "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\mipmap-xhdpi\\ic_launcher_adaptive_fore.png"
+    },
+    {
+        "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\drawable_bg.jpg.flat",
+        "source": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-main-67:\\drawable\\bg.jpg"
     },
     {
         "merged": "C:\\Users\\nsxyl\\.gradle\\daemon\\7.3.3\\com.nibodev.statussaver.app-merged_res-65:\\layout_native_ad_view.xml.flat",

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
-INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
-INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
-INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
+ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
 MERGED from [com.google.accompanist:accompanist-systemuicontroller:0.14.0] C:\Users\nsxyl\.gradle\caches\transforms-3\bb16fcf4b3c92bd6048facd9a177b06a\transformed\jetified-accompanist-systemuicontroller-0.14.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.accompanist:accompanist-pager-indicators:0.13.0] C:\Users\nsxyl\.gradle\caches\transforms-3\6e598aabcac41bd5b24936e35dde9204\transformed\jetified-accompanist-pager-indicators-0.13.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.accompanist:accompanist-pager:0.13.0] C:\Users\nsxyl\.gradle\caches\transforms-3\7dcb5b37f11e6444d34bcc5f0d126b00\transformed\jetified-accompanist-pager-0.13.0\AndroidManifest.xml:17:1-24:12
@@ -128,22 +128,22 @@ MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\nsxyl\.gradle\caches\trans
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\nsxyl\.gradle\caches\transforms-3\b694e5de1bf99af4cfe1a3d30fa3de2b\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\.gradle\caches\transforms-3\7c8302bd232305a0feace76e76bb4a5f\transformed\jetified-fastscroll-0.2.5\AndroidManifest.xml:2:1-13:12
 MERGED from [io.michaelrocks:libphonenumber-android:8.10.14] C:\Users\nsxyl\.gradle\caches\transforms-3\0f5600eed8769e00bfd9ab114f7f5d75\transformed\jetified-libphonenumber-android-8.10.14\AndroidManifest.xml:2:1-11:12
-INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
-INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
-INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
 	package
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:4:5-38
 		INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
 		INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-40:12
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:1-41:12
 		INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:2:11-69
@@ -184,7 +184,7 @@ ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main
 	android:name
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:11:18-45
 application
-ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:14:5-38:19
+ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:14:5-39:19
 MERGED from [androidx.compose.ui:ui-tooling:1.2.0-beta02] C:\Users\nsxyl\.gradle\caches\transforms-3\09b94f7e662ec63b1a3158c7d753a0e0\transformed\jetified-ui-tooling-1.2.0-beta02\AndroidManifest.xml:23:5-27:19
 MERGED from [androidx.compose.ui:ui-tooling:1.2.0-beta02] C:\Users\nsxyl\.gradle\caches\transforms-3\09b94f7e662ec63b1a3158c7d753a0e0\transformed\jetified-ui-tooling-1.2.0-beta02\AndroidManifest.xml:23:5-27:19
 MERGED from [:nativetemplates] C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\nativetemplates\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-10:19
@@ -276,27 +276,29 @@ MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\nsxyl\
 	android:theme
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:22:9-66
 activity#com.nibodev.statussaver.MainActivity
-ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:24:9-31:20
+ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:24:9-32:20
+	android:screenOrientation
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:26:13-49
 	android:exported
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:26:13-36
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:27:13-36
 	android:name
 		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:25:13-64
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:27:13-30:29
+ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:28:13-31:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:28:17-69
+ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:28:25-66
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:17-77
+ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:27-74
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:30:27-74
 meta-data#com.google.android.gms.ads.APPLICATION_ID
-ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:35:9-37:70
+ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:36:9-38:70
 	android:value
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:37:13-67
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:38:13-67
 	android:name
-		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:36:13-69
+		ADDED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:37:13-69
 uses-sdk
 INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml

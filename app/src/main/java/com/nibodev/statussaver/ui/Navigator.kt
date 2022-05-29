@@ -25,10 +25,10 @@ private fun NavigateThrough(
     controller: NavigationController
 ) {
     Crossfade(targetState = controller.topContent) {
-        it.invoke()
         BackHandler(controller.size() > 1) {
             controller.pop()
         }
+        it.invoke()
     }
 }
 

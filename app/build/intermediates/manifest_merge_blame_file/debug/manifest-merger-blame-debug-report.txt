@@ -72,7 +72,7 @@
 38-->[androidx.work:work-runtime:2.7.0] C:\Users\nsxyl\.gradle\caches\transforms-3\7a92899602b513f8755c70aa8180683e\transformed\work-runtime-2.7.0\AndroidManifest.xml:28:22-74
 39
 40    <application
-40-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:14:5-38:19
+40-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:14:5-39:19
 41        android:allowBackup="true"
 41-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:15:9-35
 42        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -90,34 +90,35 @@
 48-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:19:9-48
 49        android:supportsRtl="true"
 49-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:20:9-35
-50        android:testOnly="true"
-51        android:theme="@style/Theme.softneez.wasaver.NoActionBar" >
-51-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:22:9-66
-52        <activity
-52-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:24:9-31:20
-53            android:name="com.nibodev.statussaver.MainActivity"
-53-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:25:13-64
-54            android:exported="true" >
-54-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:26:13-36
+50        android:theme="@style/Theme.softneez.wasaver.NoActionBar" >
+50-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:22:9-66
+51        <activity
+51-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:24:9-32:20
+52            android:name="com.nibodev.statussaver.MainActivity"
+52-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:25:13-64
+53            android:exported="true"
+53-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:27:13-36
+54            android:screenOrientation="portrait" >
+54-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:26:13-49
 55            <intent-filter>
-55-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:27:13-30:29
+55-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:28:13-31:29
 56                <action android:name="android.intent.action.MAIN" />
-56-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:28:17-69
-56-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:28:25-66
+56-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:17-69
+56-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:25-66
 57
 58                <category android:name="android.intent.category.LAUNCHER" />
-58-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:17-77
-58-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:29:27-74
+58-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:30:17-77
+58-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:30:27-74
 59            </intent-filter>
 60        </activity>
 61
 62        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
 63        <meta-data
-63-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:35:9-37:70
+63-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:36:9-38:70
 64            android:name="com.google.android.gms.ads.APPLICATION_ID"
-64-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:36:13-69
+64-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:37:13-69
 65            android:value="ca-app-pub-3940256099942544~3347511713" />
-65-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:37:13-67
+65-->C:\Users\nsxyl\androidStudioProjects\WhatsappStatusSaver\app\src\main\AndroidManifest.xml:38:13-67
 66
 67        <activity
 67-->[androidx.compose.ui:ui-tooling:1.2.0-beta02] C:\Users\nsxyl\.gradle\caches\transforms-3\09b94f7e662ec63b1a3158c7d753a0e0\transformed\jetified-ui-tooling-1.2.0-beta02\AndroidManifest.xml:24:9-26:39

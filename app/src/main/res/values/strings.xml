@@ -22,4 +22,9 @@
     <string name="recent_stories">Recent Stories</string>
     <string name="saved_stories">Saved Stories</string>
     <string name="exit_confirm_text">Are you sure you want to exit?</string>
+    <string name="confirm_yes">yes</string>
+    <string name="confirm_no">no</string>
+    <string name="direct_chat">Direct Chat</string>
+    <string name="privacy_text">Privacy Policy</string>
+    <string name="share_text">Share</string>
 </resources>

@@ -3018,7 +3018,6 @@ drawable mtrl_navigation_bar_item_background
 drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_overlay
 drawable mtrl_tabs_default_indicator
-drawable native_ad_background
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -4013,9 +4012,12 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string confirm_no
+string confirm_yes
 string default_error_message
 string default_popup_window_title
 string default_web_client_id
+string direct_chat
 string dropdown_menu
 string dummy_button
 string dummy_content
@@ -4184,6 +4186,7 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string phone_number_hint
+string privacy_text
 string project_id
 string range_end
 string range_start
@@ -4200,6 +4203,7 @@ string search_hint
 string search_menu_title
 string select_country
 string selected
+string share_text
 string status_bar_notification_info_overflow
 string tab
 string template_percent

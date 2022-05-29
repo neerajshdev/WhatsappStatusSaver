@@ -1,5 +1,6 @@
 package com.nibodev.statussaver.ui.screen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -12,8 +13,8 @@ import com.nibodev.statussaver.NativeAdManager
 import com.nibodev.statussaver.R
 import com.nibodev.statussaver.ui.LocalNavController
 import com.nibodev.statussaver.ui.components.NativeMediumAdUnit
+import com.nibodev.statussaver.ui.exitConfirmNativeAdManager
 
-private val nativeAdManager = NativeAdManager("ca-app-pub-3940256099942544/2247696110", 1)
 
 @Composable
 fun ExitConfirmPage() {
@@ -23,8 +24,8 @@ fun ExitConfirmPage() {
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        NativeMediumAdUnit(nativeAdManager = nativeAdManager, modifier = Modifier.weight(0.5f))
-        Spacer(modifier = Modifier.height(32.dp))
+        NativeMediumAdUnit(nativeAdManager = exitConfirmNativeAdManager, modifier = Modifier.weight(0.5f))
+        Spacer(modifier = Modifier.height(64.dp))
         Dialog(modifier = Modifier.weight(0.5f))
     }
 }
@@ -39,6 +40,8 @@ private fun Dialog(modifier: Modifier = Modifier) {
         ConfirmButtons { wantToExit ->
             if (wantToExit) {
                 navController.exitApp()
+            } else {
+                navController.pop()
             }
         }
     }
@@ -48,11 +51,11 @@ private fun Dialog(modifier: Modifier = Modifier) {
 private fun ConfirmButtons(wantToExit: (Boolean) -> Unit) {
     Row(modifier = Modifier.fillMaxWidth()) {
         Button(onClick = { wantToExit(false) }, modifier = Modifier.weight(1f)) {
-            Text(text = "no")
+            Text(text = stringResource(R.string.confirm_no))
         }
         Spacer(modifier = Modifier.width(16.dp))
         Button(onClick = { wantToExit(true) }, modifier = Modifier.weight(1f)) {
-            Text(text = "yes")
+            Text(text = stringResource(R.string.confirm_yes))
         }
     }
 }

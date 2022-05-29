@@ -22,8 +22,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.ensureActive
-import kotlin.coroutines.coroutineContext
 import kotlin.random.Random
 
 
@@ -37,12 +35,13 @@ val reqAdAfterCount by lazy {
 
 var count = 0xffff
 
-fun fetchAdConfig(onSuccess: () -> Unit) {
+suspend fun fetchAdConfig(): Boolean {
+    val deferred = CompletableDeferred<Boolean>()
     Firebase.remoteConfig.fetchAndActivate()
         .addOnCompleteListener { task ->
+            deferred.complete(task.isSuccessful)
             if (task.isSuccessful) {
                 val updated = task.result
-                if (updated == true) onSuccess()
                 isDebug {
                     Log.d(TAG, "Config params updated: $updated")
                     Log.d(
@@ -75,6 +74,7 @@ fun fetchAdConfig(onSuccess: () -> Unit) {
                 }
             }
         }
+    return deferred.await()
 }
 
 
@@ -549,16 +549,12 @@ class AppOpenAdManager(
             }
         }
 
-    suspend fun getAd(context: Context): AppOpenAd {
+    fun getAd(context: Context): AppOpenAd? {
         if (ads.isEmpty()) {
             loadAppOpenAd(context, bufferSize)
-            while (ads.isEmpty()) {
-                coroutineContext.ensureActive()
-                delay(50)
-            }
+            return null
         }
-        ads.add(ads.removeFirst())
-        return ads.last()
+        return ads.removeFirst().also { preFetch(context)}
     }
 
     private fun loadAppOpenAd(context: Context, numOfAds: Int) {
@@ -571,6 +567,10 @@ class AppOpenAdManager(
                 loadCallback
             )
         }
+    }
+
+    fun preFetch(context: Context) {
+        loadAppOpenAd(context, bufferSize - ads.size)
     }
 }
 
@@ -585,18 +585,32 @@ suspend fun appOpenAd(
     onAdImpression: (() -> Unit)? = null,
     onAdShowFsc: (() -> Unit)? = null,
     onAdFailedToShowFsc: (() -> Unit)? = null,
+    doLast: (() -> Unit)? = null,
+    tryCount: Int = 1,
+    delayTime: Long = 500
 ) {
-    appOpenAdManager.getAd(activity).also { appOpenAd ->
-        appOpenAd.fullScreenContentCallback = object : FullScreenContentCallback() {
+    var tried = 0
+    var ad: AppOpenAd? = appOpenAdManager.getAd(activity)
+    while (ad == null && tried < tryCount) {
+        delay(delayTime)
+        ad = appOpenAdManager.getAd(activity)
+        tried++
+        console("tried = $tried")
+    }
+
+    if (ad != null) {
+        ad.fullScreenContentCallback = object : FullScreenContentCallback() {
             override fun onAdClicked() {
                 onAdClicked?.invoke()
             }
 
             override fun onAdDismissedFullScreenContent() {
+                doLast?.invoke()
                 onAdDismissedFsc?.invoke()
             }
 
             override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                doLast?.invoke()
                 onAdFailedToShowFsc?.invoke()
             }
 
@@ -608,7 +622,12 @@ suspend fun appOpenAd(
                 onAdShowFsc?.invoke()
             }
         }
-        appOpenAd.show(activity)
+        ad.show(activity)
+    } else {
+        if (doLast != null) {
+            console("failed to load app open ad!")
+            doLast()
+        }
     }
 }
 
@@ -626,20 +645,16 @@ class InterstitialAdManager(
         get() = object : InterstitialAdLoadCallback() {
             override fun onAdLoaded(ad: InterstitialAd) {
                 ads.add(ad)
-                console("interstitial ad size = ${ads.size}")
             }
         }
 
-    suspend fun getAd(context: Context): InterstitialAd {
+    fun getAd(context: Context): InterstitialAd? {
+        console("prefetched interstitial ad = ${ads.size}")
         if (ads.isEmpty()) {
             loadAd(context, bufferSize)
-            while (ads.isEmpty()) {
-                coroutineContext.ensureActive()
-                delay(50)
-            }
+            return null
         }
-        ads.add(ads.removeFirst())
-        return ads.last()
+        return ads.removeFirst().also { loadAd(context, bufferSize - ads.size) }
     }
 
     private fun loadAd(context: Context, numOfAds: Int) {
@@ -652,9 +667,13 @@ class InterstitialAdManager(
             )
         }
     }
+
+    fun prefetch(context: Context) {
+        loadAd(context, bufferSize - ads.size)
+    }
 }
 
-suspend fun interstitialAd(
+fun interstitialAd(
     activity: Activity,
     interstitialAdManager: InterstitialAdManager,
     onAdClicked: (() -> Unit)? = null,
@@ -662,30 +681,41 @@ suspend fun interstitialAd(
     onAdImpression: (() -> Unit)? = null,
     onAdShowFsc: (() -> Unit)? = null,
     onAdFailedToShowFsc: (() -> Unit)? = null,
+    doLast: (() -> Unit)? = null
 ) {
     interstitialAdManager.getAd(activity).also { interstitialAd ->
-        interstitialAd.fullScreenContentCallback = object : FullScreenContentCallback() {
-            override fun onAdClicked() {
-                onAdClicked?.invoke()
-            }
+        if (interstitialAd != null) {
+            interstitialAd.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdClicked() {
+                    onAdClicked?.invoke()
+                }
 
-            override fun onAdDismissedFullScreenContent() {
-                onAdDismissedFsc?.invoke()
-            }
+                override fun onAdDismissedFullScreenContent() {
+                    onAdDismissedFsc?.invoke()
+                    if (doLast != null) {
+                        doLast()
+                    }
+                }
 
-            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
-                onAdFailedToShowFsc?.invoke()
-            }
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                    onAdFailedToShowFsc?.invoke()
+                    if (doLast != null) {
+                        doLast()
+                    }
+                }
 
-            override fun onAdImpression() {
-                onAdImpression?.invoke()
-            }
+                override fun onAdImpression() {
+                    onAdImpression?.invoke()
+                }
 
-            override fun onAdShowedFullScreenContent() {
-                onAdShowFsc?.invoke()
+                override fun onAdShowedFullScreenContent() {
+                    onAdShowFsc?.invoke()
+                }
             }
+            interstitialAd.show(activity)
+        } else {
+            doLast?.invoke()
         }
-        interstitialAd.show(activity)
     }
 }
 
@@ -698,19 +728,13 @@ class NativeAdManager(
     val adRequest
         get() = AdRequest.Builder().build()
 
-    suspend fun getAd(context: Context): NativeAd {
+    fun getAd(context: Context): NativeAd? {
         if (ads.isEmpty()) {
             loadNativeAd(context, bufferSize)
-            while (ads.isEmpty()) {
-                coroutineContext.ensureActive()
-                delay(50)
-            }
+            return null
         }
-        val ad = ads.removeFirst()
-        return ad
+        return ads.removeFirst().also { prefetch(context) }
     }
-
-
     private fun loadNativeAd(context: Context, numOfAds: Int) {
         val videoOptions = VideoOptions.Builder()
             .setStartMuted(false)
@@ -753,6 +777,10 @@ class NativeAdManager(
             .withNativeAdOptions(adOptions)
             .build()
         adLoader.loadAds(adRequest, numOfAds)
+    }
+
+    fun prefetch(context: Context) {
+        loadNativeAd(context, bufferSize - ads.size)
     }
 }
 

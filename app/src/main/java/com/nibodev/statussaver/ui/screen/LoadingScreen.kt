@@ -1,5 +1,7 @@
 package com.nibodev.statussaver.ui.screen
 
+import android.app.Activity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,25 +10,28 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.rememberLottieComposition
-import com.nibodev.statussaver.R
+import androidx.datastore.preferences.core.edit
+import com.nibodev.statussaver.*
+import com.nibodev.statussaver.ui.*
 import com.nibodev.statussaver.ui.components.OnBackgroundImage
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
 import com.nibodev.statussaver.ui.theme.brightWhite
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
 
 @Composable
 fun LoadingScreen() {
-    val lottieLoading by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.lottie_loading))
+    val context = LocalContext.current
+    val navController = LocalNavController.current
     OnBackgroundImage(
         painter = painterResource(R.drawable.bg),
         modifier = Modifier
@@ -41,13 +46,9 @@ fun LoadingScreen() {
             modifier = Modifier
                 .padding(top = 32.dp)
                 .size(144.dp, 144.dp)
-                .align(alignment = Alignment.TopCenter)
+                .align(alignment = Alignment.Center)
         )
 
-        LottieAnimation(
-            composition = lottieLoading,
-            iterations = Int.MAX_VALUE,
-        )
 
         Text(
             text = "Status Saver\nfor Whatsapp",
@@ -58,6 +59,50 @@ fun LoadingScreen() {
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 42.dp)
         )
+    }
+
+    // load all the stuff here
+    LaunchedEffect(Unit) {
+        // load ad config from firebase
+        context.dataStore.data.collect {
+            val configLoaded = it[AD_CONFIG_LOADED] == true
+            if (!configLoaded) {
+                console("loading ad config")
+                // ensure that net is available
+                if(!isNetworkConnected(context)) {
+                    Toast.makeText(context, "Network isn't available!", Toast.LENGTH_LONG).show()
+                    while (!isNetworkConnected(context)) {
+                        ensureActive()
+                        delay(500)
+                    }
+                }
+                context.dataStore.edit {
+                    it[AD_CONFIG_LOADED] = fetchAdConfig()
+                }
+            }
+
+            // prefetch ads
+            interstitialAdManager.prefetch(context)
+            appOpenAdManager.preFetch(context)
+            exitConfirmNativeAdManager.prefetch(context)
+            homeNativeAdManager.prefetch(context)
+            statusSaverNativeAdManager.prefetch(context)
+            langNativeAdManager.prefetch(context)
+
+            delay(1000)
+            // show app open ad
+            appOpenAd(
+                context as Activity,
+                appOpenAdManager = appOpenAdManager,
+                tryCount = 5,
+                delayTime = 1000,
+                doLast = {
+                    navController.replace {
+                        LangPage()
+                    }
+                }
+            )
+        }
     }
 }
 

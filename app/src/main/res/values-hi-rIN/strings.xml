@@ -9,4 +9,9 @@
     <string name="recent_stories">"नये स्टैटस "</string>
     <string name="saved_stories">"सुरक्षित किए गये"</string>
     <string name="exit_confirm_text">क्या आपको एप से बाहर जाना है?</string>
+    <string name="confirm_yes">हाँ</string>
+    <string name="confirm_no">नहीं</string>
+    <string name="direct_chat">सीधी बातचीत</string>
+    <string name="privacy_text">गोपनीयता नीति</string>
+    <string name="share_text">शेयर</string>
 </resources>

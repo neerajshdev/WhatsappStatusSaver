@@ -13,7 +13,6 @@ class App : Application() {
             minimumFetchIntervalInSeconds = 10
         }
         Firebase.remoteConfig.setConfigSettingsAsync(configSettings)
-        fetchAdConfig {}
         MobileAds.initialize(this) {}
     }
 }

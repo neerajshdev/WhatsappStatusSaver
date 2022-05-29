@@ -1,6 +1,7 @@
 package com.nibodev.statussaver
 
 import android.Manifest
+import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -15,7 +16,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.core.app.ActivityCompat
 import com.nibodev.statussaver.ui.MainUI
+import com.nibodev.statussaver.ui.appOpenAdManager
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.File
 
 const val TAG = "debugOut"
@@ -133,4 +138,15 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
+    override fun onRestart() {
+        super.onRestart()
+        CoroutineScope(Dispatchers.Main).launch {
+            console("displaying app open ad on restart")
+            appOpenAd(
+                this@MainActivity,
+                appOpenAdManager,
+            )
+        }
+    }
 }
