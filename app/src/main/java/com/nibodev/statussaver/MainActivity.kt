@@ -1,7 +1,6 @@
 package com.nibodev.statussaver
 
 import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -15,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.core.app.ActivityCompat
+import com.facebook.appevents.AppEventsLogger
 import com.nibodev.statussaver.ui.MainUI
 import com.nibodev.statussaver.ui.appOpenAdManager
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
@@ -28,7 +28,6 @@ var pathToWhatsFiles = ""
 var saved_media_dir: String? = null
 
 class MainActivity : ComponentActivity() {
-
     val viewModel : MainViewModel by viewModels()
 
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
@@ -47,6 +46,15 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /**
+         * This function assumes logger is an instance of AppEventsLogger and has been
+         * created using AppEventsLogger.newLogger() call.
+         */
+
+        val logger :AppEventsLogger = AppEventsLogger.newLogger(this)
+        logger.logEvent("Application Created")
+
         // init directories
         val parentDir = getAbsoluteDir(this, null).absolutePath
 
@@ -132,7 +140,7 @@ class MainActivity : ComponentActivity() {
                 requestPermissionLauncher.launch(permissions)
             } else {
                 WhatsappStatusSaverTheme {
-                    MainUI(model = viewModel)
+                    MainUI()
                 }
             }
         }

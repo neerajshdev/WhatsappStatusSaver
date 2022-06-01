@@ -41,32 +41,18 @@ suspend fun fetchAdConfig(): Boolean {
         .addOnCompleteListener { task ->
             deferred.complete(task.isSuccessful)
             if (task.isSuccessful) {
-                val updated = task.result
                 isDebug {
-                    Log.d(TAG, "Config params updated: $updated")
-                    Log.d(
-                        TAG,
-                        "should_show_ad: ${Firebase.remoteConfig.getBoolean("should_show_ad")}"
-                    )
-                    Log.d(
-                        TAG,
-                        "request_ad_after_count: ${Firebase.remoteConfig.getBoolean("show_ad_after_count")}"
-                    )
-                    Log.d(
-                        TAG,
-                        "share_sub_body: ${Firebase.remoteConfig.getString("share_sub_body")}"
-                    )
-                    Log.d(
-                        TAG,
-                        "share_text_body: ${Firebase.remoteConfig.getString("share_text_body")}"
-                    )
-                    Log.d(TAG, "native = ${Firebase.remoteConfig.getString("native")}")
-                    Log.d(TAG, "banner = ${Firebase.remoteConfig.getString("banner")}")
-                    Log.d(TAG, "interstitial = ${Firebase.remoteConfig.getString("interstitial")}")
-                    Log.d(
-                        TAG,
-                        "interstitial_video = ${Firebase.remoteConfig.getString("interstitial_video")}"
-                    )
+                    Log.d(TAG, "Config params updated: ${task.result}")
+                    Log.d(TAG, "app_open_ad: ${Firebase.remoteConfig.getString("app_open_ad")}")
+                    Log.d(TAG, "interstitial_ad: ${Firebase.remoteConfig.getString("interstitial_ad")}")
+                    Log.d(TAG, "home_native_ad: ${Firebase.remoteConfig.getString("home_native_ad")}")
+                    Log.d(TAG, "share_text_body: ${Firebase.remoteConfig.getString("share_text_body")}")
+                    Log.d(TAG, "status_saver_native_ad = ${Firebase.remoteConfig.getString("status_saver_native_ad")}")
+                    Log.d(TAG, "banner_ad = ${Firebase.remoteConfig.getString("banner_ad")}")
+                    Log.d(TAG, "exit_confirm_native_ad = ${Firebase.remoteConfig.getString("exit_confirm_native_ad")}")
+                    Log.d(TAG, "lang_native_ad = ${Firebase.remoteConfig.getString("lang_native_ad")}")
+                    Log.d(TAG, "tabs_ad_threshold = ${Firebase.remoteConfig.getString("status_tab_swipe_ad_threshold")}")
+                    Log.d(TAG, "interstitial_ad_threshold = ${Firebase.remoteConfig.getString("interstitial_ad_clicks_threshold")}")
                 }
             } else {
                 isDebug {
@@ -415,22 +401,18 @@ suspend fun appOpenAd(
 
 
 /** Ask this class object when to show the ad
- * @param timeThreshold minimum time in milli seconds,
+ * @param threshold minimum time in milli seconds,
  * after which you can load ads
  */
-class AdTimeHandler(private val timeThreshold: Long) {
-    private var lastTime = System.currentTimeMillis()
-    private var elapsedTime = 0L
-
+class AdCounter(private val threshold: Int) {
+    private var clicks = 0
     fun timeToShow(): Boolean {
-        var result = false
-        val currentTime = System.currentTimeMillis()
-        elapsedTime += currentTime - lastTime
-        lastTime = currentTime
-        if (elapsedTime > timeThreshold) {
-            result = true // yes it's the time to show the ad.
-            elapsedTime = 0
+        clicks++
+        val result = clicks > threshold
+        if (result) {
+            clicks = 0
         }
+        console("clicked: $clicks, threshold: $threshold")
         return result
     }
 }
@@ -649,12 +631,11 @@ class InterstitialAdManager(
         }
 
     fun getAd(context: Context): InterstitialAd? {
-        console("prefetched interstitial ad = ${ads.size}")
         if (ads.isEmpty()) {
             loadAd(context, bufferSize)
             return null
         }
-        return ads.removeFirst().also { loadAd(context, bufferSize - ads.size) }
+        return ads.removeFirst().also { prefetch(context) }
     }
 
     private fun loadAd(context: Context, numOfAds: Int) {
@@ -676,6 +657,7 @@ class InterstitialAdManager(
 fun interstitialAd(
     activity: Activity,
     interstitialAdManager: InterstitialAdManager,
+    interAdCounter: AdCounter? = null,
     onAdClicked: (() -> Unit)? = null,
     onAdDismissedFsc: (() -> Unit)? = null,
     onAdImpression: (() -> Unit)? = null,
@@ -683,6 +665,10 @@ fun interstitialAd(
     onAdFailedToShowFsc: (() -> Unit)? = null,
     doLast: (() -> Unit)? = null
 ) {
+    if (interAdCounter != null && !interAdCounter.timeToShow()) {
+        doLast?.invoke()
+        return
+    }
     interstitialAdManager.getAd(activity).also { interstitialAd ->
         if (interstitialAd != null) {
             interstitialAd.fullScreenContentCallback = object : FullScreenContentCallback() {

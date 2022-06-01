@@ -26,7 +26,7 @@ interstitialAdId = "ca-app-pub-3940256099942544/1033173712"
 
 
 @Composable
-fun MainUI(model: MainViewModel) {
+fun MainUI() {
     // navigation controller
     val navController = LocalNavController.current
 

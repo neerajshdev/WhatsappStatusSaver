@@ -23,6 +23,7 @@ import com.nibodev.statussaver.interstitialAd
 import com.nibodev.statussaver.isWhatsappInstalled
 import com.nibodev.statussaver.ui.LocalNavController
 import com.nibodev.statussaver.ui.components.TopAppBar
+import com.nibodev.statussaver.ui.interAdCounter
 import com.nibodev.statussaver.ui.interstitialAdManager
 
 
@@ -43,6 +44,7 @@ fun DirectChatPage() {
         interstitialAd(
             activity = context as Activity,
             interstitialAdManager = interstitialAdManager,
+            interAdCounter = interAdCounter,
             doLast = {
                 nc.pop()
             }

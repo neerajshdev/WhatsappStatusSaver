@@ -33,6 +33,7 @@ import com.nibodev.statussaver.R
 import com.nibodev.statussaver.ui.LocalNavController
 import com.nibodev.statussaver.ui.components.*
 import com.nibodev.statussaver.ui.homeNativeAdManager
+import com.nibodev.statussaver.ui.interAdCounter
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
 import kotlinx.coroutines.launch
 import com.nibodev.statussaver.ui.interstitialAdManager
@@ -79,6 +80,7 @@ fun HomePage() {
                             interstitialAd(
                                 activity = activity,
                                 interstitialAdManager = interstitialAdManager,
+                                interAdCounter = interAdCounter,
                                 doLast = {
                                     nc.push {
                                         DirectChatPage()
@@ -95,6 +97,7 @@ fun HomePage() {
                     ) {
                         interstitialAd(
                             activity, interstitialAdManager,
+                            interAdCounter = interAdCounter,
                         ) {
                             nc.push {
                                 StatusSaverPage(model = viewModel)
@@ -130,6 +133,7 @@ fun HomePage() {
         interstitialAd(
             activity = activity,
             interstitialAdManager = interstitialAdManager,
+            interAdCounter = interAdCounter,
             doLast = {
                 nc.pop()
             }

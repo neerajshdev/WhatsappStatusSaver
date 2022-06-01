@@ -96,5 +96,5 @@ fun openPrivacyPolicyInWeb(activity: Activity) {
     val intent = Intent(Intent.ACTION_VIEW).apply {
         data = Uri.parse("https://w3cleverprogrammer.blogspot.com/p/wa-saver-privacy-policy.html")
     }
-    activity.startActivity(Intent.createChooser(intent, "View on"), )
+    activity.startActivity(Intent.createChooser(intent, "View in"), )
 }

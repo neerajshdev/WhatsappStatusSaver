@@ -10,7 +10,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 10
+            minimumFetchIntervalInSeconds = 3600
         }
         Firebase.remoteConfig.setConfigSettingsAsync(configSettings)
         MobileAds.initialize(this) {}

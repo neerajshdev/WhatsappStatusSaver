@@ -27,6 +27,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.accompanist.pager.*
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.nibodev.statussaver.*
 import com.nibodev.statussaver.R
 import com.nibodev.statussaver.models.Media
@@ -34,10 +36,15 @@ import com.nibodev.statussaver.models.StatusImage
 import com.nibodev.statussaver.models.StatusVideo
 import com.nibodev.statussaver.ui.LocalNavController
 import com.nibodev.statussaver.ui.components.*
-import kotlinx.coroutines.launch
+import com.nibodev.statussaver.ui.interAdCounter
 import com.nibodev.statussaver.ui.interstitialAdManager
 import com.nibodev.statussaver.ui.statusSaverNativeAdManager
+import kotlinx.coroutines.launch
 
+val pagerChangeInterAdCounter by lazy {
+    val clickThreshold = try {Firebase.remoteConfig.getString("status_tab_swipe_ad_threshold").toInt()} catch(ex:Exception) {3}
+    AdCounter(clickThreshold)
+}
 
 @Composable
 fun StatusSaverPage(model: MainViewModel) {
@@ -49,6 +56,7 @@ fun StatusSaverPage(model: MainViewModel) {
     BackHandler {
         interstitialAd(
             activity = activity,
+            interAdCounter = interAdCounter,
             interstitialAdManager = interstitialAdManager,
             doLast = {
                 navController.pop()
@@ -84,7 +92,7 @@ private fun TabLayout(model: MainViewModel, modifier: Modifier = Modifier) {
     val pagerState = rememberPagerState(pageCount = 2)
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Tabs(pagerState = pagerState)
-        TabsContent(pagerState = pagerState,model = model, modifier = Modifier.weight(1f))
+        TabsContent(pagerState = pagerState, model = model, modifier = Modifier.weight(1f))
         BannerAdUnit()
     }
 
@@ -95,19 +103,15 @@ private fun TabLayout(model: MainViewModel, modifier: Modifier = Modifier) {
 @Composable
 fun ShowAdOnPagerStateChange(pagerState: PagerState) {
     data class Prop(var value: Boolean)
-    val isRecomposition = remember {Prop(false)}
-    val activity = LocalContext.current as Activity
-    LaunchedEffect(pagerState.currentPage) {
-        console("Launched block run")
-        if (isRecomposition.value)
-        interstitialAd(
-            activity, interstitialAdManager,
-        )
-        isRecomposition.value = true
-    }
 
-    SideEffect {
-        console("side block run")
+    val isRecomposition = remember { Prop(false) }
+    val activity = LocalContext.current as Activity
+
+    LaunchedEffect(pagerState.currentPage) {
+        if (isRecomposition.value) {
+            interstitialAd(activity, interstitialAdManager, pagerChangeInterAdCounter)
+        }
+        isRecomposition.value = true
     }
 }
 
@@ -118,8 +122,8 @@ private fun Tabs(pagerState: PagerState) {
     val tabsList =
         listOf(stringResource(R.string.recent_stories), stringResource(R.string.saved_stories))
     val scope = rememberCoroutineScope()
-    val context = LocalContext.current as Activity
-    val adTime = remember { AdTimeHandler(10 * 1000) }
+//    val context = LocalContext.current as Activity
+//    val adTime = remember { AdTimeHandler(10 * 1000) }
     TabRow(
         selectedTabIndex = pagerState.currentPage,
         backgroundColor = Color.Transparent,
@@ -166,7 +170,11 @@ private fun Tabs(pagerState: PagerState) {
 
 @ExperimentalPagerApi
 @Composable
-private fun TabsContent(modifier: Modifier = Modifier, pagerState: PagerState, model: MainViewModel) {
+private fun TabsContent(
+    modifier: Modifier = Modifier,
+    pagerState: PagerState,
+    model: MainViewModel
+) {
     HorizontalPager(state = pagerState, modifier = modifier) { page ->
         when (page) {
             0 -> FirstTabPage(model)

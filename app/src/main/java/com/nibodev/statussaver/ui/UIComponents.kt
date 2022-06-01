@@ -335,12 +335,11 @@ fun SavedVideoCard(
 
 @Composable
 fun BannerAdUnit(modifier: Modifier = Modifier) {
-    val adIdKey = stringResource(id =  R.string.key_banner_add_id)
     AndroidView(
         factory = {
             val adView = AdView(it)
             adView.adSize = AdSize.BANNER
-            adView.adUnitId = "ca-app-pub-3940256099942544/6300978111" //Firebase.remoteConfig.getString(adIdKey)
+            adView.adUnitId = Firebase.remoteConfig.getString("banner_ad")
             adView
         }, update = { adView ->
             val adRequest = AdRequest.Builder().build()

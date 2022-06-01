@@ -27,4 +27,13 @@
     <string name="direct_chat">Direct Chat</string>
     <string name="privacy_text">Privacy Policy</string>
     <string name="share_text">Share</string>
+
+
+
+
+    <string name="facebook_app_id" translatable="false">536820601243874</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb1234</string>
+    <string name="facebook_client_token" translatable="false">6b5ef9ea80113a73e2eef1bd43ab5212</string>
+
+
 </resources>

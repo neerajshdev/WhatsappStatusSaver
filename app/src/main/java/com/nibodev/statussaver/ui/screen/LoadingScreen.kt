@@ -79,6 +79,8 @@ fun LoadingScreen() {
                 context.dataStore.edit {
                     it[AD_CONFIG_LOADED] = fetchAdConfig()
                 }
+            } else {
+                fetchAdConfig()
             }
 
             // prefetch ads

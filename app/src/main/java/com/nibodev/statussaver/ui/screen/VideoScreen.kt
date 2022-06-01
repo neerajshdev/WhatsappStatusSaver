@@ -1,6 +1,7 @@
 package com.nibodev.statussaver.ui.screen
 
 import android.app.Activity
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.net.toUri
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.StyledPlayerView
@@ -19,6 +21,7 @@ import com.nibodev.statussaver.interstitialAd
 import com.nibodev.statussaver.models.StatusVideo
 import com.nibodev.statussaver.ui.LocalNavController
 import com.nibodev.statussaver.ui.interstitialAdManager
+import java.io.File
 
 @Composable
 fun VideoScreen(video: StatusVideo) {
@@ -28,9 +31,20 @@ fun VideoScreen(video: StatusVideo) {
 
     DisposableEffect(exoPlayer) {
         with(exoPlayer) {
-            setMediaItem(MediaItem.fromUri(video.path))
-            playWhenReady = true
-            prepare()
+            try{
+                if(video.path.startsWith("content")) {
+                    setMediaItem(MediaItem.fromUri(video.path))
+                } else {
+                    setMediaItem(MediaItem.fromUri(File(video.path).toUri()))
+                }
+                playWhenReady = true
+                prepare()
+            }catch (ex: Exception){
+                ex.printStackTrace()
+                Toast.makeText(context, "something went wrong..", Toast.LENGTH_LONG
+                ).show()
+            }
+
         }
         onDispose { exoPlayer.release() }
     }

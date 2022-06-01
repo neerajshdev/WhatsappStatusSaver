@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-63:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-67:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\4947e9aabec31c226821c51fdce6fbc9\\transformed\\material-1.6.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\59e399361ca00ec111da1430e8844aee\\transformed\\material-1.6.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

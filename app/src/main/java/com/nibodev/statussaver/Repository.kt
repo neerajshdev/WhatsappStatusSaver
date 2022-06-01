@@ -52,7 +52,7 @@ class Repository {
         return uris
     }
 
-    private fun loadImage(context: Context, from: String): ImageBitmap {
+     fun loadImage(context: Context, from: String): ImageBitmap {
         val bitmap = if (from.startsWith("content")) {
             context.contentResolver.openFileDescriptor(Uri.parse(from), "r").use {
                 BitmapFactory.decodeFileDescriptor(it!!.fileDescriptor)
