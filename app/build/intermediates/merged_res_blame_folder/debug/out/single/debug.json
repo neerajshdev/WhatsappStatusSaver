@@ -24,10 +24,6 @@
         "source": "com.nibodev.statussaver.app-main-71:/mipmap-hdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-69:/drawable_bg.jpg.flat",
-        "source": "com.nibodev.statussaver.app-main-71:/drawable/bg.jpg"
-    },
-    {
         "merged": "com.nibodev.statussaver.app-merged_res-69:/layout_banner_ad_unit.xml.flat",
         "source": "com.nibodev.statussaver.app-main-71:/layout/banner_ad_unit.xml"
     },
@@ -62,6 +58,10 @@
     {
         "merged": "com.nibodev.statussaver.app-merged_res-69:/drawable_ic_round_download_done_24.xml.flat",
         "source": "com.nibodev.statussaver.app-main-71:/drawable/ic_round_download_done_24.xml"
+    },
+    {
+        "merged": "com.nibodev.statussaver.app-merged_res-69:/drawable_bg.png.flat",
+        "source": "com.nibodev.statussaver.app-main-71:/drawable/bg.png"
     },
     {
         "merged": "com.nibodev.statussaver.app-merged_res-69:/mipmap-mdpi_ic_launcher.png.flat",

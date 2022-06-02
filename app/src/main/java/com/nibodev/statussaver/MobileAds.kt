@@ -412,7 +412,6 @@ class AdCounter(private val threshold: Int) {
         if (result) {
             clicks = 0
         }
-        console("clicked: $clicks, threshold: $threshold")
         return result
     }
 }

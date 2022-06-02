@@ -7,14 +7,7 @@ plugins {
 android {
     signingConfigs {
         release {
-            storeFile file('C:\\Users\\nsxyl\\giridhari.jks')
-            storePassword 'nibodev'
-            keyAlias 'statussaver'
-            keyPassword 'nibodev'
-        }
-
-        debug {
-            storeFile file('C:\\Users\\nsxyl\\giridhari.jks')
+            storeFile file('..\\giridhari.jks')
             storePassword 'nibodev'
             keyAlias 'statussaver'
             keyPassword 'nibodev'
@@ -27,8 +20,8 @@ android {
         applicationId "com.nibodev.statussaver"
         minSdk 21
         targetSdk 31
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

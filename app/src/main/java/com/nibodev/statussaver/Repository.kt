@@ -59,7 +59,7 @@ class Repository {
             }
         } else {
             BitmapFactory.decodeFile(from)
-        }.also { optimizeImage(it, 300) }
+        }.also { optimizeImage(it, 240) }
         return bitmap.asImageBitmap()
     }
 
@@ -71,7 +71,7 @@ class Repository {
         } else {
             vmr.setDataSource(src)
         }
-        val bitmap = vmr.getFrameAtTime(time)?.also { optimizeImage(it, 300) }
+        val bitmap = vmr.getFrameAtTime(time)?.also { optimizeImage(it, 240) }
         vmr.release()
         return bitmap!!.asImageBitmap()
     }
@@ -91,20 +91,6 @@ class Repository {
         return optimizedBitmap
     }
 
-
-//    fun getVideoFrames(src: List<String>, time: Long): MutableList<ImageBitmap> {
-//        val vmr = MediaMetadataRetriever()
-//
-//        val imageBitmaps = mutableListOf<ImageBitmap>()
-//        src.forEach {
-//            vmr.setDataSource(it)
-//            val image = vmr.getFrameAtTime(time)?.asImageBitmap()
-//            imageBitmaps.add(image!!)
-//        }
-//        vmr.release()
-//
-//        return imageBitmaps
-//    }
 
     private fun getVideoDuration(context: Context, src: String): String {
         val vmr = MediaMetadataRetriever()
