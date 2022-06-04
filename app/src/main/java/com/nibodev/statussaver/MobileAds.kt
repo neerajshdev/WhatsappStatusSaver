@@ -516,8 +516,9 @@ class AdManager(var context: Context, private val adIds: AdIds) {
 
 class AppOpenAdManager(
     val adId: String,
-    val bufferSize: Int = 5
+    val bufferSize: Int = 1
 ) {
+    var reqCount = 0
     val ads = mutableListOf<AppOpenAd>()
     val adRequest
         get() = AdRequest.Builder().build()
@@ -526,13 +527,22 @@ class AppOpenAdManager(
     val loadCallback
         get() = object : AppOpenAd.AppOpenAdLoadCallback() {
             override fun onAdLoaded(ad: AppOpenAd) {
+                reqCount--
                 ads.add(ad)
+                console("loaded an app open ad, available : ${ads.size}: $this")
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                reqCount--
             }
         }
 
     fun getAd(context: Context): AppOpenAd? {
         if (ads.isEmpty()) {
-            loadAppOpenAd(context, bufferSize)
+            console("app open ad request count: $reqCount")
+            if (reqCount <= 0) {
+                preFetch(context)
+            }
             return null
         }
         return ads.removeFirst().also { preFetch(context)}
@@ -540,6 +550,7 @@ class AppOpenAdManager(
 
     private fun loadAppOpenAd(context: Context, numOfAds: Int) {
         repeat(numOfAds) {
+            reqCount++
             AppOpenAd.load(
                 context,
                 adId,
@@ -617,6 +628,7 @@ class InterstitialAdManager(
     val adId: String,
     val bufferSize: Int = 5
 ) {
+    var reqCount = 0
     val ads = mutableListOf<InterstitialAd>()
     val adRequest
         get() = AdRequest.Builder().build()
@@ -625,13 +637,22 @@ class InterstitialAdManager(
     val loadCallback
         get() = object : InterstitialAdLoadCallback() {
             override fun onAdLoaded(ad: InterstitialAd) {
+                reqCount--
                 ads.add(ad)
+                console("loaded an interstitial ad, available : ${ads.size}")
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                reqCount--
             }
         }
 
     fun getAd(context: Context): InterstitialAd? {
         if (ads.isEmpty()) {
-            loadAd(context, bufferSize)
+            console("inter ad request count: $reqCount")
+            if (reqCount <= 0) {
+                prefetch(context)
+            }
             return null
         }
         return ads.removeFirst().also { prefetch(context) }
@@ -639,6 +660,7 @@ class InterstitialAdManager(
 
     private fun loadAd(context: Context, numOfAds: Int) {
         repeat(numOfAds) {
+            reqCount++
             InterstitialAd.load(
                 context,
                 adId,
@@ -707,61 +729,66 @@ fun interstitialAd(
 
 class NativeAdManager(
     val adId: String,
-    @IntRange(from = 1, to = 5) val bufferSize: Int = 5
+    @IntRange(from = 1, to = 5) val bufferSize: Int = 1
 ) {
     val ads = mutableListOf<NativeAd>()
     val adRequest
         get() = AdRequest.Builder().build()
 
+    private var adLoader: AdLoader? = null
+
     fun getAd(context: Context): NativeAd? {
         if (ads.isEmpty()) {
-            loadNativeAd(context, bufferSize)
+            adLoader?.let {
+                if (!it.isLoading) prefetch(context)
+            }
             return null
         }
         return ads.removeFirst().also { prefetch(context) }
     }
+
     private fun loadNativeAd(context: Context, numOfAds: Int) {
-        val videoOptions = VideoOptions.Builder()
-            .setStartMuted(false)
-            .build()
+        if (adLoader == null) {
+            val videoOptions = VideoOptions.Builder()
+                .setStartMuted(false)
+                .build()
 
-        val adOptions = NativeAdOptions.Builder()
-            .setVideoOptions(videoOptions)
-            .build()
-        val adLoader = AdLoader.Builder(context, adId)
-            .forNativeAd { nativeAd ->
-                ads.add(nativeAd)
-            }
-            .withAdListener(
-                object : AdListener() {
-                    override fun onAdClicked() {
-
-                    }
-
-                    override fun onAdClosed() {
-                        super.onAdClosed()
-                    }
-
-                    override fun onAdFailedToLoad(p0: LoadAdError) {
-                        super.onAdFailedToLoad(p0)
-                    }
-
-                    override fun onAdImpression() {
-                        super.onAdImpression()
-                    }
-
-                    override fun onAdLoaded() {
-                        super.onAdLoaded()
-                    }
-
-                    override fun onAdOpened() {
-                        super.onAdOpened()
-                    }
+            val adOptions = NativeAdOptions.Builder()
+                .setVideoOptions(videoOptions)
+                .build()
+            adLoader = AdLoader.Builder(context, adId)
+                .forNativeAd { nativeAd ->
+                    ads.add(nativeAd)
+                    console("loaded a native ad, available : ${ads.size} : native ad manager: $this")
                 }
-            )
-            .withNativeAdOptions(adOptions)
-            .build()
-        adLoader.loadAds(adRequest, numOfAds)
+                .withAdListener(
+                    object : AdListener() {
+                        override fun onAdClicked() {
+
+                        }
+
+                        override fun onAdFailedToLoad(p0: LoadAdError) {
+                            super.onAdFailedToLoad(p0)
+                        }
+
+                        override fun onAdImpression() {
+                            super.onAdImpression()
+                        }
+
+                        override fun onAdLoaded() {
+                            super.onAdLoaded()
+                        }
+
+                        override fun onAdOpened() {
+                            super.onAdOpened()
+                        }
+                    }
+                )
+                .withNativeAdOptions(adOptions)
+                .build()
+        }
+
+        adLoader?.loadAds(adRequest, numOfAds)
     }
 
     fun prefetch(context: Context) {

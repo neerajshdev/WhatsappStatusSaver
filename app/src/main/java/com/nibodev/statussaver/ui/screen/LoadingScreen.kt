@@ -91,7 +91,6 @@ fun LoadingScreen() {
             statusSaverNativeAdManager.prefetch(context)
             langNativeAdManager.prefetch(context)
 
-            delay(1000)
             // show app open ad
             appOpenAd(
                 context as Activity,
