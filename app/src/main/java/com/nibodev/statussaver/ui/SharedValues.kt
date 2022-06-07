@@ -24,9 +24,3 @@ val exitConfirmNativeAdManager by lazy {   NativeAdManager(Firebase.remoteConfig
 val homeNativeAdManager by lazy {   NativeAdManager(Firebase.remoteConfig.getString("home_native_ad"), 1)}
 val statusSaverNativeAdManager by lazy {   NativeAdManager(Firebase.remoteConfig.getString("status_saver_native_ad"), 1)}
 val langNativeAdManager by lazy {NativeAdManager(Firebase.remoteConfig.getString("lang_native_ad"), 1)}
-
-
-// user prefs ; data store
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
-val USER_LANG = stringPreferencesKey("USER-LANG")
-val AD_CONFIG_LOADED = booleanPreferencesKey("ad-config-loaded")

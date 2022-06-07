@@ -1,36 +1,81 @@
 package com.nibodev.statussaver
 
-import android.app.Activity.RESULT_OK
-import android.content.Context
-import android.content.Intent
+import android.content.ContentResolver
 import android.net.Uri
-import android.os.Build
-import android.os.storage.StorageManager
-import android.provider.DocumentsContract
-import android.util.Log
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
-import androidx.compose.runtime.mutableStateListOf
+import android.os.Environment
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nibodev.statussaver.models.Media
-import com.nibodev.statussaver.models.StatusImage
-import com.nibodev.statussaver.models.StatusVideo
+import com.nibodev.statussaver.usecase.LoadWhatsAppMediaUseCase
+import com.nibodev.statussaver.usecase.LoadWhatsappMediaContentUseCase
+import com.nibodev.statussaver.usecase.downloadStatusUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.lang.ref.WeakReference
 
-const val videoExtension = ".mp4"
-const val imageExtension = ".jpg"
 
 class MainViewModel : ViewModel() {
+
+    private val _recentMedia = mutableStateOf<List<Media>>(listOf())
+    val recentMedia : State<List<Media>> = _recentMedia
+
+    private val _savedMedia = mutableStateOf<List<Media>>(listOf())
+    val savedMedia: State<List<Media>> = _savedMedia
+
+    fun loadWhatsAppStatus(documentFile: DocumentFile) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _recentMedia.value = LoadWhatsappMediaContentUseCase(documentFile).invoke()
+        }
+    }
+
+    fun loadWhatsAppStatus(path: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _recentMedia.value = LoadWhatsAppMediaUseCase(path).invoke()
+            console("loaded statuses: ${recentMedia.value}")
+        }
+    }
+
+    fun loadSavedStatus(path: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _savedMedia.value = LoadWhatsAppMediaUseCase(path).invoke()
+        }
+    }
+
+    fun download(path: String, saveTo: String, onComplete: (String)->Unit) {
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                downloadStatusUseCase(path, saveTo) {
+                    withContext(Dispatchers.Main) {
+                        onComplete(it)
+                    }
+                }
+            }catch (ex: Exception) {
+                ex.printStackTrace()
+            }
+        }
+    }
+
+    fun download(uri: Uri, contentResolver: ContentResolver,  saveTo: String, onComplete: (String)->Unit) {
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                downloadStatusUseCase(uri, contentResolver, saveTo) {
+                    withContext(Dispatchers.Main) {
+                        onComplete(it)
+                    }
+                }
+            }catch (ex: Exception) {
+                ex.printStackTrace()
+            }
+        }
+    }
+
+
+
+    /*
     private lateinit var selectMediaResultLauncher: ActivityResultLauncher<Intent>
     private val desiredUri = Uri.parse("content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fmedia%2Fcom.whatsapp%2FWhatsApp%2FMedia")
     private val repository: Repository by lazy { Repository() }
@@ -250,4 +295,5 @@ class MainViewModel : ViewModel() {
         intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, uri)
         selectMediaResultLauncher.launch(intent)
     }
+     */
 }

@@ -1,160 +1,39 @@
 package com.nibodev.statussaver
 
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
-import androidx.activity.viewModels
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.core.app.ActivityCompat
-import com.facebook.appevents.AppEventsLogger
-import com.nibodev.statussaver.ui.MainUI
-import com.nibodev.statussaver.ui.appOpenAdManager
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.lifecycle.ViewModelProvider
+import com.nibodev.statussaver.navigation.LocalNavController
+import com.nibodev.statussaver.navigation.Navigator
+import com.nibodev.statussaver.ui.screen.LoadingPage
+import com.nibodev.statussaver.ui.screen.WhatsAppStatusPage
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.io.File
 
-const val TAG = "debugOut"
-var pathToWhatsFiles = ""
-var saved_media_dir: String? = null
 
 class MainActivity : ComponentActivity() {
-    val viewModel : MainViewModel by viewModels()
 
-    private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
-    private val permissions by lazy {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-        } else {
-            arrayOf(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-        }
-    }
-
-    private lateinit var onStoragePermissionResult: (Boolean) -> Unit
+    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /**
-         * This function assumes logger is an instance of AppEventsLogger and has been
-         * created using AppEventsLogger.newLogger() call.
-         */
-
-        val logger :AppEventsLogger = AppEventsLogger.newLogger(this)
-        logger.logEvent("Application Created")
-
-        // init directories
-        val parentDir = getAbsoluteDir(this, null).absolutePath
-
-        var pathToWhatsAppStatus = "$parentDir/WhatsApp/Media/.Statuses"
-        if (File(pathToWhatsAppStatus).exists())
-            pathToWhatsFiles = pathToWhatsAppStatus
-
-        pathToWhatsAppStatus = "$parentDir/Android/media/com.whatsapp/WhatsApp/Media/.Statuses"
-        if (File(pathToWhatsAppStatus).exists())
-            pathToWhatsFiles = pathToWhatsAppStatus
-
-        saved_media_dir =
-            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.R) "${getExternalFilesDir(null)!!.absolutePath}/StatusSaver" else "$parentDir/DCIM/StatusSaver"
-        // make saved directory if it does not exists
-        if (!File(saved_media_dir!!).exists()) File(saved_media_dir!!).mkdir()
-
-        isDebug {
-            Log.d(
-                TAG,
-                "whatsapp media dir = $pathToWhatsFiles"
-            )
-            Log.d(TAG, "saved media dir = $saved_media_dir")
-        }
-
-
-        requestPermissionLauncher =
-            registerForActivityResult(RequestMultiplePermissions()) { result ->
-                var accepted = true
-                for (permission in permissions) {
-                    accepted = accepted.and(result[permission] ?: false)
-                }
-                onStoragePermissionResult.invoke(accepted)
-            }
-
-        try {
-            initContent()
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-    }
-
-    private fun isStoragePermissionsGranted(): Boolean {
-        var grantPermissions = true
-        for (permission in permissions) {
-            val isGranted = ActivityCompat.checkSelfPermission(
-                this,
-                permission
-            ) == PackageManager.PERMISSION_GRANTED
-            grantPermissions = grantPermissions.and(isGranted)
-            isDebug {
-                Log.d(TAG, "$permission: $isGranted")
-            }
-        }
-        return grantPermissions
-    }
-
-    private fun initContent() {
-        viewModel.init(this)
-        // Create ad manager
-        val adIds = AdIds(
-            nativeAdId = "ca-app-pub-3940256099942544/2247696110",
-            appOpenAdId = "ca-app-pub-3940256099942544/3419835294",
-            interstitialAdId = "ca-app-pub-3940256099942544/1033173712"
-        )
-        AdManager.createInstance(this, adIds)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         setContent {
-            val isStoragePermissionsGranted = remember {
-                mutableStateOf(isStoragePermissionsGranted())
-            }
-            if (!isStoragePermissionsGranted.value) {
-                onStoragePermissionResult = { result ->
-                    isStoragePermissionsGranted.value = result
-                    if (!result) {
-                        requestPermissionLauncher.launch(permissions)
-                        Toast.makeText(
-                            this,
-                            "Please, allow for storage permissions.",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
-                requestPermissionLauncher.launch(permissions)
-            } else {
-                WhatsappStatusSaverTheme {
-                    MainUI()
+            WhatsappStatusSaverTheme {
+                Surface(color = MaterialTheme.colors.background) {
+                    val navController = LocalNavController.current
+                    Navigator(
+                        navController = navController,
+                        content = {
+                            LoadingPage()
+                        }
+                    )
                 }
             }
-        }
-    }
-
-
-    override fun onRestart() {
-        super.onRestart()
-        CoroutineScope(Dispatchers.Main).launch {
-            console("displaying app open ad on restart")
-            appOpenAd(
-                this@MainActivity,
-                appOpenAdManager,
-            )
         }
     }
 }

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-67:/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-65:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\3cfd76026678bbeecf949ea123c03453\\transformed\\appcompat-1.4.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\0d8858591dfac988352a8950f1cba3a1\\transformed\\appcompat-1.4.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\59e399361ca00ec111da1430e8844aee\\transformed\\material-1.6.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\1b344f69cf8406688d62fc5c667145e5\\transformed\\material-1.6.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",

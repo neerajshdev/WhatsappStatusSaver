@@ -1,5 +1,6 @@
 package com.nibodev.statussaver.ui.screen
 
+import android.os.Process
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -9,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.nibodev.statussaver.R
-import com.nibodev.statussaver.ui.LocalNavController
+import com.nibodev.statussaver.navigation.LocalNavController
 import com.nibodev.statussaver.ui.components.NativeMediumAdUnit
 import com.nibodev.statussaver.ui.exitConfirmNativeAdManager
 
@@ -37,7 +38,7 @@ private fun Dialog(modifier: Modifier = Modifier) {
         )
         ConfirmButtons { wantToExit ->
             if (wantToExit) {
-                navController.exitApp()
+                Process.killProcess(Process.myPid())
             } else {
                 navController.pop()
             }

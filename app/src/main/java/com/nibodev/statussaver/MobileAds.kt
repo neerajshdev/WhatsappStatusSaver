@@ -24,7 +24,7 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
-
+/**
 val shouldReqAd by lazy {
     Firebase.remoteConfig.getBoolean("should_show_ad")
 }
@@ -40,6 +40,7 @@ suspend fun fetchAdConfig(): Boolean {
     Firebase.remoteConfig.fetchAndActivate()
         .addOnCompleteListener { task ->
             deferred.complete(task.isSuccessful)
+            val TAG = "Firebase config"
             if (task.isSuccessful) {
                 isDebug {
                     Log.d(TAG, "Config params updated: ${task.result}")
@@ -400,21 +401,7 @@ suspend fun appOpenAd(
 }
 
 
-/** Ask this class object when to show the ad
- * @param threshold minimum time in milli seconds,
- * after which you can load ads
- */
-class AdCounter(private val threshold: Int) {
-    private var clicks = 0
-    fun timeToShow(): Boolean {
-        clicks++
-        val result = clicks > threshold
-        if (result) {
-            clicks = 0
-        }
-        return result
-    }
-}
+
 
 data class AdIds(
     val nativeAdId: String,
@@ -512,7 +499,24 @@ class AdManager(var context: Context, private val adIds: AdIds) {
         return appOpenAdResult.await()
     }
 }
+*/
 
+
+/** Ask this class object when to show the ad
+ * @param threshold minimum time in milli seconds,
+ * after which you can load ads
+ */
+class AdCounter(private val threshold: Int) {
+    private var clicks = 0
+    fun timeToShow(): Boolean {
+        clicks++
+        val result = clicks > threshold
+        if (result) {
+            clicks = 0
+        }
+        return result
+    }
+}
 
 class AppOpenAdManager(
     val adId: String,
@@ -567,7 +571,9 @@ class AppOpenAdManager(
 }
 
 /**
- * App open ad builder fun
+ * App open ad builder fun.
+ * If the ad can be loaded in time
+ * then show it otherwise doLast
  */
 suspend fun appOpenAd(
     activity: Activity,
@@ -794,6 +800,36 @@ class NativeAdManager(
     fun prefetch(context: Context) {
         loadNativeAd(context, bufferSize - ads.size)
     }
+}
+
+
+suspend fun fetchAdConfig(): Boolean {
+    val deferred = CompletableDeferred<Boolean>()
+    Firebase.remoteConfig.fetchAndActivate()
+        .addOnCompleteListener { task ->
+            deferred.complete(task.isSuccessful && task.result == true)
+            val TAG = "Firebase config"
+            if (task.isSuccessful) {
+                isDebug {
+                    Log.d(TAG, "Config params updated: ${task.result}")
+                    Log.d(TAG, "app_open_ad: ${Firebase.remoteConfig.getString("app_open_ad")}")
+                    Log.d(TAG, "interstitial_ad: ${Firebase.remoteConfig.getString("interstitial_ad")}")
+                    Log.d(TAG, "home_native_ad: ${Firebase.remoteConfig.getString("home_native_ad")}")
+                    Log.d(TAG, "share_text_body: ${Firebase.remoteConfig.getString("share_text_body")}")
+                    Log.d(TAG, "status_saver_native_ad = ${Firebase.remoteConfig.getString("status_saver_native_ad")}")
+                    Log.d(TAG, "banner_ad = ${Firebase.remoteConfig.getString("banner_ad")}")
+                    Log.d(TAG, "exit_confirm_native_ad = ${Firebase.remoteConfig.getString("exit_confirm_native_ad")}")
+                    Log.d(TAG, "lang_native_ad = ${Firebase.remoteConfig.getString("lang_native_ad")}")
+                    Log.d(TAG, "tabs_ad_threshold = ${Firebase.remoteConfig.getString("status_tab_swipe_ad_threshold")}")
+                    Log.d(TAG, "interstitial_ad_threshold = ${Firebase.remoteConfig.getString("interstitial_ad_clicks_threshold")}")
+                }
+            } else {
+                isDebug {
+                    Log.d(TAG, "Could not fetch ad configurations")
+                }
+            }
+        }
+    return deferred.await()
 }
 
 

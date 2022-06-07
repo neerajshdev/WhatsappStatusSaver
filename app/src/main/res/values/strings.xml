@@ -28,12 +28,11 @@
     <string name="privacy_text">Privacy Policy</string>
     <string name="share_text">Share</string>
 
-
-
-
     <string name="facebook_app_id" translatable="false">536820601243874</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb1234</string>
     <string name="facebook_client_token" translatable="false">6b5ef9ea80113a73e2eef1bd43ab5212</string>
 
+    <string name="uri_permission_dialog_text" translatable="false">Open WhatsApp/Media folder on your device.</string>
+    <string name="whatsapp_media_folder" translatable="false">Android/media/com.whatsapp/WhatsApp/Media</string>
 
 </resources>

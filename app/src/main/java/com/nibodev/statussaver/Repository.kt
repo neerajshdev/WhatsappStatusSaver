@@ -7,19 +7,11 @@ import android.graphics.Matrix
 import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.util.Log
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.documentfile.provider.DocumentFile
-import com.nibodev.statussaver.models.StatusImage
-import com.nibodev.statussaver.models.StatusVideo
 import java.io.File
-import java.io.InputStream
-import java.io.OutputStream
 
 class Repository {
-
     fun getListFiles(parentDir: File): List<String> {
         val paths = mutableListOf<String>()
         val files = parentDir.listFiles()
@@ -37,6 +29,7 @@ class Repository {
         return paths
     }
 
+    /*
     // uri should be whatsapp .Statuses folder
     fun getDocument(context: Context, uri: Uri): List<String> {
         val document = DocumentFile.fromTreeUri(context, uri)
@@ -51,6 +44,8 @@ class Repository {
         }
         return uris
     }
+
+     */
 
      fun loadImage(context: Context, from: String): ImageBitmap {
         val bitmap = if (from.startsWith("content")) {
@@ -90,8 +85,9 @@ class Repository {
         console("Optimized image size = ${optimizedBitmap.width} x ${optimizedBitmap.height}")
         return optimizedBitmap
     }
+}
 
-
+/*
     private fun getVideoDuration(context: Context, src: String): String {
         val vmr = MediaMetadataRetriever()
         if (src.startsWith("content")) {
@@ -105,6 +101,7 @@ class Repository {
         vmr.release()
         return len
     }
+
 
     // fill data into mutableStateList
     fun loadStatusVideo(
@@ -144,3 +141,5 @@ class Repository {
         to.close()
     }
 }
+
+     */

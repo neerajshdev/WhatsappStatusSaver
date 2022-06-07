@@ -21,7 +21,7 @@ import com.nibodev.statussaver.MainActivity
 import com.nibodev.statussaver.R
 import com.nibodev.statussaver.interstitialAd
 import com.nibodev.statussaver.isWhatsappInstalled
-import com.nibodev.statussaver.ui.LocalNavController
+import com.nibodev.statussaver.navigation.LocalNavController
 import com.nibodev.statussaver.ui.components.TopAppBar
 import com.nibodev.statussaver.ui.interAdCounter
 import com.nibodev.statussaver.ui.interstitialAdManager
