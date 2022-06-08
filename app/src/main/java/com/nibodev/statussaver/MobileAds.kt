@@ -742,11 +742,13 @@ class NativeAdManager(
         get() = AdRequest.Builder().build()
 
     private var adLoader: AdLoader? = null
+    private var reqCount = 0
+
 
     fun getAd(context: Context): NativeAd? {
         if (ads.isEmpty()) {
-            adLoader?.let {
-                if (!it.isLoading) prefetch(context)
+            if(reqCount <= 0) {
+                prefetch(context)
             }
             return null
         }
@@ -774,7 +776,7 @@ class NativeAdManager(
                         }
 
                         override fun onAdFailedToLoad(p0: LoadAdError) {
-                            super.onAdFailedToLoad(p0)
+                            reqCount--
                         }
 
                         override fun onAdImpression() {
@@ -794,6 +796,7 @@ class NativeAdManager(
                 .build()
         }
 
+        reqCount += numOfAds
         adLoader?.loadAds(adRequest, numOfAds)
     }
 
@@ -820,6 +823,7 @@ suspend fun fetchAdConfig(): Boolean {
                     Log.d(TAG, "banner_ad = ${Firebase.remoteConfig.getString("banner_ad")}")
                     Log.d(TAG, "exit_confirm_native_ad = ${Firebase.remoteConfig.getString("exit_confirm_native_ad")}")
                     Log.d(TAG, "lang_native_ad = ${Firebase.remoteConfig.getString("lang_native_ad")}")
+                    Log.d(TAG, "direct_chat_native_ad = ${Firebase.remoteConfig.getString("direct_chat_native_ad")}")
                     Log.d(TAG, "tabs_ad_threshold = ${Firebase.remoteConfig.getString("status_tab_swipe_ad_threshold")}")
                     Log.d(TAG, "interstitial_ad_threshold = ${Firebase.remoteConfig.getString("interstitial_ad_clicks_threshold")}")
                 }

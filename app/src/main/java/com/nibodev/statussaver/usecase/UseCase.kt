@@ -213,6 +213,6 @@ suspend fun downloadStatusUseCase(uri: Uri, contentResolver: ContentResolver, sa
 
 private fun getNewName() : String {
     val date = Date()
-    val formatter = SimpleDateFormat("dd-MM-yyyy hh:mm:ss", Locale.getDefault())
+    val formatter = SimpleDateFormat("dd-MM-yyyy hh.mm.ss", Locale.getDefault())
     return formatter.format(date)
 }

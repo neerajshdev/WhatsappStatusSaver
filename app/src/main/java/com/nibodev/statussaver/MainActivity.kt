@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.lifecycle.ViewModelProvider
 import com.nibodev.statussaver.navigation.LocalNavController
 import com.nibodev.statussaver.navigation.Navigator
+import com.nibodev.statussaver.ui.screen.DirectChatPage
 import com.nibodev.statussaver.ui.screen.LoadingPage
 import com.nibodev.statussaver.ui.screen.WhatsAppStatusPage
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     Navigator(
                         navController = navController,
                         content = {
-                            LoadingPage()
+                           LoadingPage()
                         }
                     )
                 }

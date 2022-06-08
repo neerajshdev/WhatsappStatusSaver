@@ -41,6 +41,7 @@ import com.nibodev.statussaver.console
 import com.nibodev.statussaver.shareThisApp
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
 import kotlin.math.ceil
 
 
@@ -163,9 +164,9 @@ fun NativeSmallAdUnit(
 
     LaunchedEffect(Unit) {
         var ad : NativeAd? = nativeAdManager.getAd(context)
-        var tried = 0
-        while (ad == null && tried < 5) {
-            delay(1000)
+        while (ad == null) {
+            ensureActive()
+            delay(500)
             ad = nativeAdManager.getAd(context)
         }
         nativeAd = ad
@@ -219,9 +220,9 @@ fun NativeMediumAdUnit(
 
     LaunchedEffect(Unit) {
         var ad : NativeAd? = nativeAdManager.getAd(context)
-        var tried = 0
-        while (ad == null && tried < 5) {
-            delay(1000)
+        while (ad == null) {
+            ensureActive()
+            delay(500)
             ad = nativeAdManager.getAd(context)
         }
         nativeAd = ad

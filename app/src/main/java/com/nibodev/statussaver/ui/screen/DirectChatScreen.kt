@@ -8,13 +8,18 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.hbb20.CountryCodePicker
 import com.nibodev.statussaver.MainActivity
@@ -22,9 +27,13 @@ import com.nibodev.statussaver.R
 import com.nibodev.statussaver.interstitialAd
 import com.nibodev.statussaver.isWhatsappInstalled
 import com.nibodev.statussaver.navigation.LocalNavController
+import com.nibodev.statussaver.ui.components.NativeMediumAdUnit
 import com.nibodev.statussaver.ui.components.TopAppBar
+import com.nibodev.statussaver.ui.directChatNativeAdManager
+import com.nibodev.statussaver.ui.exitConfirmNativeAdManager
 import com.nibodev.statussaver.ui.interAdCounter
 import com.nibodev.statussaver.ui.interstitialAdManager
+import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
 
 
 @Composable
@@ -56,50 +65,69 @@ fun DirectChatPage() {
 @Composable
 private fun DirectChatContent(modifier: Modifier = Modifier) {
     val activity = (LocalContext.current as MainActivity)
-    AndroidView(
-        modifier = Modifier.fillMaxSize(),
-        factory = {
-            LayoutInflater.from(it).inflate(R.layout.whatsapp_msg_sender, null)
-        },
-        update = { view ->
-            val phoneno = view.findViewById<EditText>(R.id.phonenumber)
-            val message = view.findViewById<EditText>(R.id.messages)
-            val ccpp = view.findViewById<CountryCodePicker>(R.id.ccp)
-            val sendButton = view.findViewById<ImageView>(R.id.sendbutton)
+    LazyColumn(modifier = modifier) {
+        item {
+            NativeMediumAdUnit(nativeAdManager = directChatNativeAdManager, modifier = Modifier.padding(16.dp))
+        }
 
-            sendButton.setOnClickListener {
-                val messageStr = message.text.toString().trim { it <= ' ' }
-                var phoneStr = phoneno.text.toString().trim { it <= ' ' }
-                if (phoneStr.isEmpty()) {
-                    phoneno.error = "Please Enter Phone"
-                } else if (messageStr.isEmpty()) {
-                    message.error = "Please Enter Message"
-                } else {
-                    ccpp.registerCarrierNumberEditText(phoneno)
-                    phoneStr = ccpp.fullNumber
-                    val isInstalled: Boolean =
-                        isWhatsappInstalled("com.whatsapp", activity.packageManager)
-                    //if whatsapp is installed it will be true otherwise false
-                    if (isInstalled) {
-                        //Whatsapp send message using Intent
-                        val whatsapp = Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse("https://api.whatsapp.com/send?phone=$phoneStr&text=$messageStr")
-                        )
-                        activity.startActivity(whatsapp)
-                        phoneno.setText("")
-                        message.setText("")
-                    } else {
-                        Toast.makeText(
-                            activity,
-                            "Whatsapp is not Installed on your Device",
-                            Toast.LENGTH_SHORT
-                        ).show()
+        item {
+            AndroidView(
+                modifier = Modifier.fillMaxSize(),
+                factory = {
+                    LayoutInflater.from(it).inflate(R.layout.whatsapp_msg_sender, null)
+                },
+                update = { view ->
+                    val phoneno = view.findViewById<EditText>(R.id.phonenumber)
+                    val message = view.findViewById<EditText>(R.id.messages)
+                    val ccpp = view.findViewById<CountryCodePicker>(R.id.ccp)
+                    val sendButton = view.findViewById<ImageView>(R.id.sendbutton)
+
+                    sendButton.setOnClickListener {
+                        val messageStr = message.text.toString().trim { it <= ' ' }
+                        var phoneStr = phoneno.text.toString().trim { it <= ' ' }
+                        if (phoneStr.isEmpty()) {
+                            phoneno.error = "Please Enter Phone"
+                        } else if (messageStr.isEmpty()) {
+                            message.error = "Please Enter Message"
+                        } else {
+                            ccpp.registerCarrierNumberEditText(phoneno)
+                            phoneStr = ccpp.fullNumber
+                            val isInstalled: Boolean =
+                                isWhatsappInstalled("com.whatsapp", activity.packageManager)
+                            //if whatsapp is installed it will be true otherwise false
+                            if (isInstalled) {
+                                //Whatsapp send message using Intent
+                                val whatsapp = Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://api.whatsapp.com/send?phone=$phoneStr&text=$messageStr")
+                                )
+                                activity.startActivity(whatsapp)
+                                phoneno.setText("")
+                                message.setText("")
+                            } else {
+                                Toast.makeText(
+                                    activity,
+                                    "Whatsapp is not Installed on your Device",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
                     }
                 }
-            }
+            )
         }
-    )
+
+    }
+}
+
+
+
+@Preview
+@Composable
+fun DirectChatPreview() {
+    WhatsappStatusSaverTheme {
+        DirectChatPage()
+    }
 }
 
 

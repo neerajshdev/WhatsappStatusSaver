@@ -6,6 +6,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -18,8 +19,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ChainStyle
-import androidx.constraintlayout.compose.ConstraintLayout
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
@@ -27,7 +26,7 @@ import com.nibodev.statussaver.MainActivity
 import com.nibodev.statussaver.R
 import com.nibodev.statussaver.interstitialAd
 import com.nibodev.statussaver.navigation.LocalNavController
-import com.nibodev.statussaver.ui.components.NativeSmallAdUnit
+import com.nibodev.statussaver.ui.components.NativeMediumAdUnit
 import com.nibodev.statussaver.ui.interstitialAdManager
 import com.nibodev.statussaver.ui.langNativeAdManager
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
@@ -75,67 +74,53 @@ fun UserLangPage(
             userLang = prefs.getString("userLanguage", "en") ?: "en"
         }
 
-        ConstraintLayout(modifier = Modifier
-            .fillMaxSize()
-            .padding(it)) {
-            val (nativeAd, english, hindi, fab) = createRefs()
 
-            NativeSmallAdUnit(
-                nativeAdManager = langNativeAdManager,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .constrainAs(nativeAd) {
-                        centerHorizontallyTo(parent)
-                        top.linkTo(parent.top)
-                        bottom.linkTo(english.top)
-                    },
-            )
-
-            Lang(
-                lang = stringResource(R.string.user_lang_english),
-                bgColor = Color(0xffD4F1F4),
-                isChecked = { userLang == "en" },
-                onChecked = { userLang = "en" },
-                modifier = Modifier
-                    .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
-                    .constrainAs(english) {
-                        centerHorizontallyTo(parent)
-                        top.linkTo(nativeAd.bottom)
-                        bottom.linkTo(hindi.top)
-                    }
-            )
-
-            Lang(
-                lang = stringResource(R.string.user_lang_hindi),
-                bgColor = Color(0xffD4F1F4),
-                isChecked = { userLang == "hi" },
-                onChecked = { userLang = "hi" },
-                modifier = Modifier
-                    .padding(start = 16.dp, end = 16.dp)
-                    .constrainAs(hindi) {
-                        bottom.linkTo(fab.top)
-                        top.linkTo(english.bottom)
-                    }
-            )
-
-            FloatingActionButton(
-                onClick = {
-                    savePref()
-                },
-                modifier = Modifier
-                    .constrainAs(fab) {
-                        bottom.linkTo(parent.bottom)
-                        end.linkTo(parent.end)
-                    }
-                    .padding(end = 16.dp, bottom = 16.dp)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_round_arrow_forward_48),
-                    contentDescription = stringResource(R.string.move_forword),
-                    modifier = Modifier.padding(8.dp)
+        LazyColumn {
+            item {
+                NativeMediumAdUnit(
+                    nativeAdManager = langNativeAdManager,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 56.dp)
                 )
             }
-            createVerticalChain(english, hindi, chainStyle = ChainStyle.Packed)
+
+            item {
+                Column(modifier = Modifier.padding(bottom = 56.dp)) {
+                    Lang(
+                        lang = stringResource(R.string.user_lang_english),
+                        bgColor = Color(0xffD4F1F4),
+                        isChecked = { userLang == "en" },
+                        onChecked = { userLang = "en" },
+                        modifier = Modifier
+                            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                    )
+
+                    Lang(
+                        lang = stringResource(R.string.user_lang_hindi),
+                        bgColor = Color(0xffD4F1F4),
+                        isChecked = { userLang == "hi" },
+                        onChecked = { userLang = "hi" },
+                        modifier = Modifier
+                            .padding(start = 16.dp, end = 16.dp)
+                    )
+                }
+
+            }
+
+            item {
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    FloatingActionButton(onClick = { savePref() },
+                        modifier = Modifier.align(Alignment.Center).padding(bottom = 56.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_round_arrow_forward_48),
+                            contentDescription = stringResource(R.string.move_forword),
+                            modifier = Modifier.padding(8.dp)
+                        )
+                    }
+                }
+            }
         }
     }
 

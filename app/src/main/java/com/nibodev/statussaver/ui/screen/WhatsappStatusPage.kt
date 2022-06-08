@@ -302,6 +302,13 @@ private fun RecentMedia() {
                 if (uriTree != null) {
                     viewModel.loadWhatsAppStatus(uriTree)
                 }
+
+                File(Environment.getExternalStorageDirectory().absolutePath + "/" + Environment.DIRECTORY_DCIM + "/StatusSaver").run {
+                    if (!exists()) {
+                        val created = mkdir()
+                        console("is StatusSaver dir created = $created")
+                    }
+                }
             }
 
             ScrollableRecentMediaList(
@@ -313,12 +320,11 @@ private fun RecentMedia() {
                     }
                 },
                 onDownloadClick = { media ->
-                    activity.getExternalFilesDir(null)?.absolutePath?.let {
-                        viewModel.download(Uri.parse(media.location), context.contentResolver, it) {
-                            Toast.makeText(activity, "saved to: $it", Toast.LENGTH_LONG).show()
-                            activity.getExternalFilesDir(null)?.absolutePath?.let {
-                                viewModel.loadSavedStatus(it)
-                            }
+                    val StatusSaverPath = "${Environment.getExternalStorageDirectory()}/${Environment.DIRECTORY_DCIM}/StatusSaver"
+                    viewModel.download(Uri.parse(media.location), context.contentResolver, StatusSaverPath) {
+                        Toast.makeText(activity, "saved to: $it", Toast.LENGTH_LONG).show()
+                        activity.getExternalFilesDir(null)?.absolutePath?.let {
+                            viewModel.loadSavedStatus(it)
                         }
                     }
 

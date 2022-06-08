@@ -1,10 +1,15 @@
 package com.nibodev.statussaver.ui.screen
 
+import android.widget.ListView
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -25,14 +30,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nibodev.statussaver.*
-import com.nibodev.statussaver.R
 import com.nibodev.statussaver.navigation.LocalNavController
 import com.nibodev.statussaver.ui.components.*
 import com.nibodev.statussaver.ui.homeNativeAdManager
 import com.nibodev.statussaver.ui.interAdCounter
+import com.nibodev.statussaver.ui.interstitialAdManager
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
 import kotlinx.coroutines.launch
-import com.nibodev.statussaver.ui.interstitialAdManager
+import com.nibodev.statussaver.R
 
 @Composable
 fun Homepage() {
@@ -54,73 +59,78 @@ fun Homepage() {
                 .fillMaxSize()
                 .padding(it)
         ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
+                    .align(Alignment.TopCenter)
+                    .fillMaxHeight(0.90f)
             ) {
-                NativeSmallAdUnit(nativeAdManager = homeNativeAdManager)
-
-                Spacer(modifier = Modifier.weight(1f))
-
-                VerticalGrid(modifier = Modifier) {
-                    Tile(
-                        text = stringResource(R.string.direct_chat),
-                        image = directChat,
-                        textColor = Color.White,
-                        bgColor = Color(0xFFA53A14),
-                    ) {
-                        scope.launch {
-                            interstitialAd(
-                                activity = activity,
-                                interstitialAdManager = interstitialAdManager,
-                                interAdCounter = interAdCounter,
-                                doLast = {
-                                    navController.push {
-                                        DirectChatPage()
-                                    }
-                                }
-                            )
-                        }
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                ) {
+                    item {
+                        NativeMediumAdUnit(nativeAdManager = homeNativeAdManager)
                     }
 
-                    Tile(
-                        text = stringResource(R.string.top_bar_title),
-                        image = statusSaver,
-                        bgColor = Color(0xFF27A53C)
-                    ) {
-                        interstitialAd(
-                            activity, interstitialAdManager,
-                            interAdCounter = interAdCounter,
-                        ) {
-                            navController.push {
-                                WhatsAppStatusPage()
+                    item {
+                        VerticalGrid(modifier = Modifier) {
+                            Tile(
+                                text = stringResource(R.string.direct_chat),
+                                image = directChat,
+                                textColor = Color.White,
+                                bgColor = Color(0xFFA53A14),
+                            ) {
+                                scope.launch {
+                                    interstitialAd(
+                                        activity = activity,
+                                        interstitialAdManager = interstitialAdManager,
+                                        interAdCounter = interAdCounter,
+                                        doLast = {
+                                            navController.push {
+                                                DirectChatPage()
+                                            }
+                                        }
+                                    )
+                                }
+                            }
+
+                            Tile(
+                                text = stringResource(R.string.top_bar_title),
+                                image = statusSaver,
+                                bgColor = Color(0xFF27A53C)
+                            ) {
+                                interstitialAd(
+                                    activity, interstitialAdManager,
+                                    interAdCounter = interAdCounter,
+                                ) {
+                                    navController.push {
+                                        WhatsAppStatusPage()
+                                    }
+                                }
+                            }
+
+                            Tile(
+                                text = stringResource(R.string.privacy_text),
+                                image = privacy,
+                                bgColor = Color(0xFF015786),
+                            ) {
+                                openPrivacyPolicyInWeb(activity)
+                            }
+
+                            Tile(
+                                text = stringResource(R.string.share_text),
+                                image = share,
+                                bgColor = Color(0xFFA2094C),
+                            ) {
+                                shareThisApp(activity)
                             }
                         }
                     }
 
-                    Tile(
-                        text = stringResource(R.string.privacy_text),
-                        image = privacy,
-                        bgColor = Color(0xFF015786),
-                    ) {
-                        openPrivacyPolicyInWeb(activity)
-                    }
-
-                    Tile(
-                        text = stringResource(R.string.share_text),
-                        image = share,
-                        bgColor = Color(0xFFA2094C),
-                    ) {
-                        shareThisApp(activity)
-                    }
                 }
-
-                Spacer(modifier = Modifier.weight(1f))
-                // banner ad view
-                BannerAdUnit()
             }
+            BannerAdUnit(modifier = Modifier.align(Alignment.BottomCenter))
         }
     }
 

@@ -2,7 +2,6 @@ package com.nibodev.statussaver.ui.screen
 
 import android.app.Activity
 import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,20 +18,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.datastore.preferences.core.edit
 import com.nibodev.statussaver.*
 import com.nibodev.statussaver.navigation.LocalNavController
-import com.nibodev.statussaver.ui.*
+import com.nibodev.statussaver.ui.appOpenAdManager
 import com.nibodev.statussaver.ui.components.OnBackgroundImage
-import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
+import com.nibodev.statussaver.ui.interstitialAdManager
+import com.nibodev.statussaver.ui.langNativeAdManager
 import com.nibodev.statussaver.ui.theme.brightWhite
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 
-@OptIn(InternalCoroutinesApi::class)
 @Composable
 fun LoadingPage() {
     val context = LocalContext.current
@@ -88,13 +85,11 @@ fun LoadingPage() {
         }
         pref.edit().putBoolean("firebaseConfig", configLoaded).apply()
 
+        langNativeAdManager.prefetch(context)
+
         // prefetch ads
         interstitialAdManager.prefetch(context)
         appOpenAdManager.preFetch(context)
-        exitConfirmNativeAdManager.prefetch(context)
-        homeNativeAdManager.prefetch(context)
-        statusSaverNativeAdManager.prefetch(context)
-        langNativeAdManager.prefetch(context)
 
         appOpenAd(
             context as Activity,
