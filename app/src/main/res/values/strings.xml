@@ -34,5 +34,6 @@
 
     <string name="uri_permission_dialog_text" translatable="false">Open WhatsApp/Media folder on your device.</string>
     <string name="whatsapp_media_folder" translatable="false">Android/media/com.whatsapp/WhatsApp/Media</string>
+    <string name="btn_stylish_font">Stylish Font</string>
 
 </resources>

@@ -26,7 +26,6 @@ import com.nibodev.statussaver.ui.components.OnBackgroundImage
 import com.nibodev.statussaver.ui.interstitialAdManager
 import com.nibodev.statussaver.ui.langNativeAdManager
 import com.nibodev.statussaver.ui.theme.brightWhite
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 

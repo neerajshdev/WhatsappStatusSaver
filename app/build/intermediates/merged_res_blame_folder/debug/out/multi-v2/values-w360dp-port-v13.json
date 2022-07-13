@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-65:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-69:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\1b344f69cf8406688d62fc5c667145e5\\transformed\\material-1.6.0\\res\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\b056a29e52c027a2377252dc704b2250\\transformed\\material-1.6.1\\res\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

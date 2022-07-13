@@ -4,9 +4,12 @@ import android.app.Activity
 import android.content.Context.MODE_PRIVATE
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -27,6 +30,7 @@ import com.nibodev.statussaver.R
 import com.nibodev.statussaver.interstitialAd
 import com.nibodev.statussaver.navigation.LocalNavController
 import com.nibodev.statussaver.ui.components.NativeMediumAdUnit
+import com.nibodev.statussaver.ui.interAdCounter
 import com.nibodev.statussaver.ui.interstitialAdManager
 import com.nibodev.statussaver.ui.langNativeAdManager
 import com.nibodev.statussaver.ui.theme.WhatsappStatusSaverTheme
@@ -37,6 +41,8 @@ import kotlinx.coroutines.launch
 fun UserLangPage(
 ) {
     val navController = LocalNavController.current
+    val scrollState = rememberLazyListState()
+
     Scaffold(
         topBar = { com.nibodev.statussaver.ui.components.TopAppBar(title = stringResource(R.string.top_bar_title))}
     ) {
@@ -60,6 +66,7 @@ fun UserLangPage(
                 interstitialAd(
                     context as Activity,
                     interstitialAdManager = interstitialAdManager,
+                    interAdCounter = interAdCounter,
                     doLast = {
                         navController.push {
                             Homepage()
@@ -69,13 +76,18 @@ fun UserLangPage(
             }
         }
 
+        fun scrollToEnd() {
+            scope.launch {
+                scrollState.animateScrollBy(1000f, animationSpec = tween(1000))
+            }
+        }
+
         LaunchedEffect(Unit) {
             val prefs = context.getSharedPreferences("settings", MODE_PRIVATE)
             userLang = prefs.getString("userLanguage", "en") ?: "en"
         }
 
-
-        LazyColumn {
+        LazyColumn(state = scrollState) {
             item {
                 NativeMediumAdUnit(
                     nativeAdManager = langNativeAdManager,
@@ -91,7 +103,7 @@ fun UserLangPage(
                         lang = stringResource(R.string.user_lang_english),
                         bgColor = Color(0xffD4F1F4),
                         isChecked = { userLang == "en" },
-                        onChecked = { userLang = "en" },
+                        onChecked = { userLang = "en"; scrollToEnd() },
                         modifier = Modifier
                             .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
                     )
@@ -100,7 +112,7 @@ fun UserLangPage(
                         lang = stringResource(R.string.user_lang_hindi),
                         bgColor = Color(0xffD4F1F4),
                         isChecked = { userLang == "hi" },
-                        onChecked = { userLang = "hi" },
+                        onChecked = { userLang = "hi"; scrollToEnd() },
                         modifier = Modifier
                             .padding(start = 16.dp, end = 16.dp)
                     )
@@ -111,7 +123,9 @@ fun UserLangPage(
             item {
                 Box(modifier = Modifier.fillMaxWidth()) {
                     FloatingActionButton(onClick = { savePref() },
-                        modifier = Modifier.align(Alignment.Center).padding(bottom = 56.dp)
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .padding(bottom = 56.dp)
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_round_arrow_forward_48),

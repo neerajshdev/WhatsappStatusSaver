@@ -2,7 +2,6 @@ package com.nibodev.statussaver.navigation
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.Crossfade
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.*
 import com.nibodev.statussaver.console
 
@@ -23,7 +22,6 @@ fun Navigator(
 }
 
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 private fun NavigateThrough(
     controller: NavigationController

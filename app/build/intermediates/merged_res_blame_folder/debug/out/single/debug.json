@@ -1,190 +1,190 @@
 [
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_round_home_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_round_home_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xxxhdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_tools_status_saver.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/tools_status_saver.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xxhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xxhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_launcher_background.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xxxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xxxhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_round_download_done_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_round_download_done_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/layout_native_ad_view.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/layout/native_ad_view.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_round_home_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_round_home_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/layout_banner_ad_unit.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/layout/banner_ad_unit.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-mdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-mdpi/ic_launcher_adaptive_back.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_tools_direct_chat.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/tools_direct_chat.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xxhdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xxhdpi/ic_launcher_adaptive_fore.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_whatsapp.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/whatsapp.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/layout_whatsapp_msg_sender.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/layout/whatsapp_msg_sender.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_box.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_box.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/layout_banner_ad_unit.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/layout/banner_ad_unit.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_rounded_edittext.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/rounded_edittext.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable-v24/ic_launcher_foreground.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_round_play_circle_outline_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_round_play_circle_outline_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_drawable_logo.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/drawable_logo.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_splash_image.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/splash_image.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xhdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xhdpi/ic_launcher_adaptive_back.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_baseline_language_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_baseline_language_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xhdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xhdpi/ic_launcher_adaptive_fore.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_tools_direct_chat.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/tools_direct_chat.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_baseline_send_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_baseline_send_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_baseline_menu_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_baseline_menu_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/layout_whatsapp_msg_sender.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/layout/whatsapp_msg_sender.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_baseline_share_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_baseline_share_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-mdpi/ic_launcher.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_baseline_file_download_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_baseline_file_download_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-hdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-hdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/layout_native_ad_template_small.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/layout/native_ad_template_small.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_btn_privacy.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/btn_privacy.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_round_play_circle_outline_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_round_play_circle_outline_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_round_download_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_round_download_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xxhdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xxhdpi/ic_launcher_adaptive_back.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_drawable_logo.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/drawable_logo.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/raw_lottie_selected.json.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/raw/lottie_selected.json"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_baseline_menu_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_baseline_menu_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_box.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_box.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/raw_lottie_multilang.json.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/raw/lottie_multilang.json"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_bg.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/bg.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_baseline_send_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_baseline_send_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xxxhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_baseline_share_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_baseline_share_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/layout_native_ad_view.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/layout/native_ad_view.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/raw_lottie_loading.json.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/raw/lottie_loading.json"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-mdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-mdpi/ic_launcher_adaptive_fore.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_btn_share.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/btn_share.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_whatsapp.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/whatsapp.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/raw_lottie_selected.json.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/raw/lottie_selected.json"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_splash_image.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/splash_image.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/layout_video_view.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/layout/video_view.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_btn_privacy.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/btn_privacy.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-hdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-hdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-xxxhdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-xxxhdpi/ic_launcher_adaptive_fore.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_round_download_done_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_round_download_done_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_bg.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/bg.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_round_arrow_forward_48.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_round_arrow_forward_48.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_round_arrow_forward_48.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_round_arrow_forward_48.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/layout_video_view.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/layout/video_view.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/layout_native_ad_template_medium.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/layout/native_ad_template_medium.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-hdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-hdpi/ic_launcher_adaptive_back.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/layout_native_ad_template_small.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/layout/native_ad_template_small.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/raw_lottie_loading.json.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/raw/lottie_loading.json"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_btn_share.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/btn_share.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_baseline_language_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_baseline_language_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_ic_baseline_file_download_24.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/ic_baseline_file_download_24.xml"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/layout_native_ad_template_medium.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/layout/native_ad_template_medium.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/raw_lottie_multilang.json.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/raw/lottie_multilang.json"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_tools_status_saver.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/tools_status_saver.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-mdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-mdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/drawable_ic_round_download_24.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/drawable/ic_round_download_24.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-xxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-xxhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-hdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-hdpi/ic_launcher_adaptive_fore.png"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/mipmap-mdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/mipmap-mdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "com.nibodev.statussaver.app-merged_res-67:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.nibodev.statussaver.app-main-69:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.nibodev.statussaver.app-merged_res-71:/drawable_rounded_edittext.xml.flat",
+        "source": "com.nibodev.statussaver.app-main-73:/drawable/rounded_edittext.xml"
     }
 ]

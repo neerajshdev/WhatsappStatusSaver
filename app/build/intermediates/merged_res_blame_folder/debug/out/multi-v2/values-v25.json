@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-65:/values-v25/values-v25.xml",
+            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-69:/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\0d8858591dfac988352a8950f1cba3a1\\transformed\\appcompat-1.4.1\\res\\values-v25\\values-v25.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\50f22b0f8b892a55417999fa9caf0573\\transformed\\appcompat-1.4.2\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

@@ -68,6 +68,7 @@ fun VerticalGrid(
                     it.measure(
                         constraints.copy(
                             maxWidth = itemSize.toInt(),
+                            maxHeight = itemSize.toInt()
                         )
                     )
                 }
@@ -222,7 +223,7 @@ fun NativeMediumAdUnit(
         var ad : NativeAd? = nativeAdManager.getAd(context)
         while (ad == null) {
             ensureActive()
-            delay(500)
+            delay(1000)
             ad = nativeAdManager.getAd(context)
         }
         nativeAd = ad
@@ -322,7 +323,7 @@ fun BannerAdUnit(modifier: Modifier = Modifier) {
     AndroidView(
         factory = {
             val adView = AdView(it)
-            adView.adSize = AdSize.BANNER
+            adView.setAdSize(AdSize.BANNER)
             adView.adUnitId = Firebase.remoteConfig.getString("banner_ad")
             adView
         }, update = { adView ->

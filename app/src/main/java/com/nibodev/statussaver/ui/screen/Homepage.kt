@@ -61,22 +61,41 @@ fun Homepage() {
         ) {
             Box(
                 modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .fillMaxHeight(0.90f)
             ) {
                 LazyColumn(
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxSize()
                         .padding(16.dp)
+                        .padding(bottom = 56.dp)
                 ) {
                     item {
                         NativeMediumAdUnit(nativeAdManager = homeNativeAdManager)
                     }
-
                     item {
-                        VerticalGrid(modifier = Modifier) {
+                        VerticalGrid(modifier = Modifier.padding(vertical = 16.dp)) {
                             Tile(
                                 text = stringResource(R.string.direct_chat),
+                                image = directChat,
+                                textColor = Color.White,
+                                bgColor = Color(0xFFA53A14),
+                            ) {
+                                scope.launch {
+                                    interstitialAd(
+                                        activity = activity,
+                                        interstitialAdManager = interstitialAdManager,
+                                        interAdCounter = interAdCounter,
+                                        doLast = {
+                                            navController.push {
+                                                DirectChatPage()
+                                            }
+                                        }
+                                    )
+                                }
+                            }
+
+
+                            Tile(
+                                text = stringResource(R.string.btn_stylish_font),
                                 image = directChat,
                                 textColor = Color.White,
                                 bgColor = Color(0xFFA53A14),
@@ -127,7 +146,6 @@ fun Homepage() {
                             }
                         }
                     }
-
                 }
             }
             BannerAdUnit(modifier = Modifier.align(Alignment.BottomCenter))
@@ -165,13 +183,23 @@ fun Tile(
     bgColor: Color = Color.Black,
     onClick: () -> Unit
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
+            .size(240.dp)
             .clip(RoundedCornerShape(24.dp))
             .background(bgColor)
+            .padding(24.dp)
             .clickable(onClick = onClick)
     ) {
+        Image(
+            painter = image, contentDescription = null,
+            modifier = Modifier
+                .padding(16.dp)
+                .size(56.dp)
+                .shadow(elevation = 12.dp)
+        )
         Text(
             text = text,
             fontSize = 16.sp,
@@ -180,14 +208,6 @@ fun Tile(
             color = textColor,
             modifier = Modifier
                 .padding(horizontal = 8.dp)
-                .weight(1f)
-        )
-        Image(
-            painter = image, contentDescription = null,
-            modifier = Modifier
-                .padding(top = 16.dp, end = 16.dp, bottom = 16.dp)
-                .size(56.dp)
-                .shadow(elevation = 12.dp)
         )
     }
 }

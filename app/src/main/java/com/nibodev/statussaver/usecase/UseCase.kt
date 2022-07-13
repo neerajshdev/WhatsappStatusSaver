@@ -172,8 +172,7 @@ class LoadWhatsappMediaContentUseCase(
             "image/png", "image/jpeg"-> {
                 ImageMedia(mediaFile.uri.toString())
             }
-            // TODO: add support to video media
-//            "video/mp4" -> {}
+            "video/mp4" -> {VideoMedia(mediaFile.uri.toString())}
             else -> throw IllegalArgumentException("$mediaFile is not a media so couldn't convert it to Media object")
         }
     }

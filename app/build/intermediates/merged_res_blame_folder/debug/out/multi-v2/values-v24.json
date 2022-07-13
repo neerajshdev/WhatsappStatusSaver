@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-65:/values-v24/values-v24.xml",
+            "outputFile": "com.nibodev.statussaver.app-mergeDebugResources-69:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\0d8858591dfac988352a8950f1cba3a1\\transformed\\appcompat-1.4.1\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\50f22b0f8b892a55417999fa9caf0573\\transformed\\appcompat-1.4.2\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\49d094dda1a2413066df767f04db5626\\transformed\\media-1.4.3\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\e363eaff6513eb71be1501ffa6c5bcfe\\transformed\\media-1.4.3\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -31,7 +31,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\1b344f69cf8406688d62fc5c667145e5\\transformed\\material-1.6.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\nsxyl\\.gradle\\caches\\transforms-3\\b056a29e52c027a2377252dc704b2250\\transformed\\material-1.6.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
